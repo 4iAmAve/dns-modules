@@ -8,8 +8,8 @@ node {
   download = true
 }
 
-def gsp_frontend_port = 4888
-def image_name = 'gsp-frontend'
+def frontend_port = 4888
+def image_name = 'frontend'
 def docker_registry = 'denotsl111.int.kn'
 def tag = docker_registry+'/'+image_name
 
@@ -59,35 +59,19 @@ task bootstrap(type: YarnTask, group: 'lerna') {
 }
 
 task build_gsp(type: YarnTask, group: 'lerna') {
-  args = ['build:gsp']
-}
-
-task build_cc(type: YarnTask, group: 'lerna') {
-  args = ['build:cc']
-}
-
-task start_cc(type: YarnTask, group: 'lerna') {
-  args = ['start:cc']
+  args = ['build:fe']
 }
 
 task start_gsp(type: YarnTask, group: 'lerna') {
-  args = ['start:gsp']
-}
-
-task pree2e_gsp(type: YarnTask, group: 'lerna') {
-  args = ['pree2e:gsp']
-}
-
-task e2e_gsp(type: YarnTask, group: 'lerna') {
-  args = ['e2e:gsp']
+  args = ['start:fe']
 }
 
 task pree2e_cc(type: YarnTask, group: 'lerna') {
-  args = ['pree2e:cc']
+  args = ['pree2e:fe']
 }
 
 task e2e_cc(type: YarnTask, group: 'lerna') {
-  args = ['e2e:cc']
+  args = ['e2e:fe']
 }
 
 task buildVersion(type: YarnTask, group: 'lerna') {
@@ -120,10 +104,4 @@ task cleanDist(type: YarnTask, group: 'lerna') {
 
 task cleanBuild(type: YarnTask, group: 'lerna') {
   args = ['clean:build']
-}
-
-task('build') {
-  install
-  buildAngular
-  generateConfig
 }
