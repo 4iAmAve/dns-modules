@@ -34,14 +34,6 @@ task pushDocker(type: Exec) {
   commandLine 'docker', 'push', tag
 }
 
-task npmHttpProxy(type: YarnTask, group: 'node') {
-  args = ['config', 'set', 'proxy', "http://10.200.0.17:80"]
-}
-
-task npmHttpsProxy(type: YarnTask, group: 'node') {
-  args = ['config', 'set', 'https-proxy', "http://10.200.0.17:80"]
-}
-
 task deleteNpmHttpProxy(type: YarnTask, group: 'node') {
   args = ['config', 'delete', 'proxy']
 }
