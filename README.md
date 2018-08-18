@@ -84,4 +84,5 @@ yarn buildversion
 There is still a lot todo. Each package consists of a TODO text file which entails the open tasks for now.
 
 #### License
-@dns-modules is MIT licensed.
+
+@dns-modules is [MIT licensed](./LICENSE).

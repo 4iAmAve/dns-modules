@@ -1,6 +1,6 @@
 ## @dns/api
 
-TSLint configuration
+HTTP requests with [axios](https://github.com/axios/axios)
 
 ### Usage
 ```
