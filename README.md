@@ -12,15 +12,15 @@ This repository houses a multitude of npm modules, mostly for React applications
 
 Note: modules are constantly updated and enhanced
 
-[dns-api](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-api/README.md)
-[dns-common-styles](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-common-styles/README.md)
-[dns-renderJSON](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-renderJSON/README.md)
-[dns-renderXML](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-renderXML/README.md)
-[dns-service-worker](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-service-worker/README.md)
-[dns-store-configuration](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-store-configuration/README.md)
-[dns-store-modules](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-store-modules/README.md)
-[dns-toolbox](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-toolbox/README.md)
-[dns-tslint-config](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-tslint-config/README.md)
+[dns-api](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-api/README.md) \
+[dns-common-styles](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-common-styles/README.md) \
+[dns-renderJSON](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-renderJSON/README.md) \
+[dns-renderXML](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-renderXML/README.md) \
+[dns-service-worker](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-service-worker/README.md) \
+[dns-store-configuration](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-store-configuration/README.md) \
+[dns-store-modules](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-store-modules/README.md) \
+[dns-toolbox](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-toolbox/README.md) \
+[dns-tslint-config](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-tslint-config/README.md) \
 [dns-utils](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-utils/README.md)
 
 #### Set-Up
