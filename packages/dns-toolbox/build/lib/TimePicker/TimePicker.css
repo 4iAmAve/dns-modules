@@ -1,0 +1,137 @@
+a {
+  color: #63b4eb;
+  cursor: pointer;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1; }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40); } }
+
+@keyframes click-wave {
+  0% {
+    height: 20px;
+    width: 20px;
+    opacity: 1;
+    position: relative; }
+  100% {
+    height: 42px;
+    width: 42px;
+    margin-left: -14px;
+    margin-top: -14px;
+    opacity: 0; } }
+
+@keyframes loadingBefore {
+  0% {
+    left: -35%;
+    right: 100%; }
+  60% {
+    left: 100%;
+    right: -90%; }
+  100% {
+    left: 100%;
+    right: -90%; } }
+
+@keyframes loadingAfter {
+  0% {
+    left: -200%;
+    right: 100%; }
+  60% {
+    left: 107%;
+    right: -8%; }
+  100% {
+    left: 107%;
+    right: -8%; } }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35; }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124; } }
+
+@keyframes color {
+  0% {
+    stroke: #3f88f8; }
+  20% {
+    stroke: #3f88f8; }
+  25% {
+    stroke: #dd413b; }
+  45% {
+    stroke: #dd413b; }
+  50% {
+    stroke: #f6ae2e; }
+  70% {
+    stroke: #f6ae2e; }
+  75% {
+    stroke: #259a5d; }
+  95% {
+    stroke: #259a5d; } }
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    margin-top: -16px; }
+  100% {
+    opacity: 1;
+    margin-top: 0; } }
+
+.time-picker {
+  display: flex; }
+  .time-picker--disabled {
+    pointer-events: none;
+    opacity: .6;
+    color: #999; }
+  .time-picker .time-picker_wrapper {
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+    font-size: 1.1em;
+    margin: 0 8px; }
+    .time-picker .time-picker_wrapper label {
+      position: absolute;
+      top: -10px;
+      font-size: .6em;
+      left: 0;
+      color: #999; }
+    .time-picker .time-picker_wrapper select {
+      padding: 6.4px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+      position: relative;
+      cursor: pointer;
+      width: 58px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.54);
+      font-size: .9em; }
+      .time-picker .time-picker_wrapper select:required, .time-picker .time-picker_wrapper select:focus, .time-picker .time-picker_wrapper select:valid {
+        box-shadow: none;
+        outline: none; }
+    .time-picker .time-picker_wrapper i {
+      position: absolute;
+      right: 4px;
+      font-size: .9em;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; }

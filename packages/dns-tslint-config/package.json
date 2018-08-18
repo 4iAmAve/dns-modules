@@ -1,0 +1,18 @@
+{
+  "name": "@dns/tslint-config",
+  "version": "3.2.4",
+  "description": "TSLint configuration for @dns packages",
+  "main": "tslint.js",
+  "scripts": {
+    "build": "npm run build-lib",
+    "build-lib": "node_modules/.bin/tsc"
+  },
+  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-tslint-config",
+  "author": "Ave <me@aves.site>",
+  "license": "MIT",
+  "peerDependencies": {
+    "tslint": "^5.7.0",
+    "tslint-react": "^3.2.0"
+  }
+}
+

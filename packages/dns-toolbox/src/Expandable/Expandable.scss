@@ -1,0 +1,16 @@
+@import '../styles/variables.scss';
+
+.expandable {
+  display: block;
+  max-height: 0;
+  opacity: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  transition: max-height .3s $cubic-bezier, opacity .225s $cubic-bezier;
+
+  &:not(.expandable_open) {
+    overflow: hidden;
+    overflow-y: auto;
+    opacity: 0;
+  }
+}

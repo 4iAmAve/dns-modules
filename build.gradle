@@ -1,0 +1,129 @@
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+node {
+  version = '8.10.0'
+  yarnVersion = '1.3.2'
+  download = true
+}
+
+def gsp_frontend_port = 4888
+def image_name = 'gsp-frontend'
+def docker_registry = 'denotsl111.int.kn'
+def tag = docker_registry+'/'+image_name
+
+task pipeline(dependsOn: ['npmHttpProxy', 'npmHttpsProxy', 'install', 'lint', 'build:gsp', 'copyConfToBuild', 'copyDockerToBuild', 'deleteNpmHttpProxy', 'deleteNpmHttpsProxy'])
+
+task copyDockerToBuild(type: Copy) {
+  from 's2i'
+  into 'dist'
+}
+
+task copyConfToBuild(type: Copy) {
+  mkdir 'dist/config'
+  from 'config'
+  into 'dist/config'
+}
+
+task buildDocker(type: Exec, dependsOn: ['build', 'copyDockerToBuild', 'copyConfToBuild']) {
+  commandLine 'docker', 'build', '-t', tag, '--no-cache', 'dist'
+}
+
+task pushDocker(type: Exec) {
+  commandLine 'docker', 'push', tag
+}
+
+task npmHttpProxy(type: YarnTask, group: 'node') {
+  args = ['config', 'set', 'proxy', "http://10.200.0.17:80"]
+}
+
+task npmHttpsProxy(type: YarnTask, group: 'node') {
+  args = ['config', 'set', 'https-proxy', "http://10.200.0.17:80"]
+}
+
+task deleteNpmHttpProxy(type: YarnTask, group: 'node') {
+  args = ['config', 'delete', 'proxy']
+}
+
+task deleteNpmHttpsProxy(type: YarnTask, group: 'node') {
+  args = ['config', 'delete', 'https-proxy']
+}
+
+task install(type: YarnTask, group: 'node') {
+  args = ['install']
+}
+
+task bootstrap(type: YarnTask, group: 'lerna') {
+  args = ['bootstrap']
+}
+
+task build_gsp(type: YarnTask, group: 'lerna') {
+  args = ['build:gsp']
+}
+
+task build_cc(type: YarnTask, group: 'lerna') {
+  args = ['build:cc']
+}
+
+task start_cc(type: YarnTask, group: 'lerna') {
+  args = ['start:cc']
+}
+
+task start_gsp(type: YarnTask, group: 'lerna') {
+  args = ['start:gsp']
+}
+
+task pree2e_gsp(type: YarnTask, group: 'lerna') {
+  args = ['pree2e:gsp']
+}
+
+task e2e_gsp(type: YarnTask, group: 'lerna') {
+  args = ['e2e:gsp']
+}
+
+task pree2e_cc(type: YarnTask, group: 'lerna') {
+  args = ['pree2e:cc']
+}
+
+task e2e_cc(type: YarnTask, group: 'lerna') {
+  args = ['e2e:cc']
+}
+
+task buildVersion(type: YarnTask, group: 'lerna') {
+  args = ['buildversion']
+}
+
+task start(type: YarnTask, group: 'node') {
+  args = ['start']
+}
+
+task runE2E(type: YarnTask, group: 'lerna') {
+  args = ['e2e']
+}
+
+task preE2E(type: YarnTask, group: 'lerna') {
+  args = ['pree2e']
+}
+
+task lint(type: YarnTask, group: 'lerna') {
+  args = ['lint']
+}
+
+task cleanNpm(type: YarnTask, group: 'lerna') {
+  args = ['clean:npm']
+}
+
+task cleanDist(type: YarnTask, group: 'lerna') {
+  args = ['clean:dist']
+}
+
+task cleanBuild(type: YarnTask, group: 'lerna') {
+  args = ['clean:build']
+}
+
+task('build') {
+  install
+  buildAngular
+  generateConfig
+}

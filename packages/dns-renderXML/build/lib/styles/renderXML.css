@@ -1,0 +1,24 @@
+.render-xml_viewer .rx_elem_tag {
+  color: #0b1f52; }
+  .render-xml_viewer .rx_elem_tag--selectable {
+    cursor: pointer; }
+
+.render-xml_viewer .rx_elem_toggle {
+  float: left;
+  line-height: 18px;
+  transition: transform .225s ease-in-out;
+  color: #0b1f52;
+  cursor: pointer; }
+  .render-xml_viewer .rx_elem_toggle--open {
+    transform: rotate(-180deg); }
+
+.render-xml_viewer--dark {
+  color: #fff;
+  background-color: #000; }
+
+.render-xml_viewer--dark .rj_added-to-clipboard {
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff; }
+
+.render-xml_viewer .clickable {
+  cursor: pointer; }

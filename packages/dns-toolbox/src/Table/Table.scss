@@ -1,0 +1,154 @@
+@import '../styles/variables.scss';
+
+.table_container {
+  display: flex;
+  width: 100%;
+  //display: block;
+  //clear: both;
+  max-height: 100vh;
+
+  .with_paginator {
+    max-height: calc(100vh - 56px);
+  }
+
+  .table {
+    display: block;
+    flex: 1;
+    background-color: #fff;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &--with-detail-content {
+      float: left;
+      width: 50%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .table_detail-content {
+    display: block;
+    flex: 1;
+    width: 50%;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: auto;
+    box-shadow: $default-box-shadow-inset;
+    //background-color: $bg-color;
+    padding: $spacing / 2;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .table_header {
+    margin: 0;
+    border: none;
+    font: inherit;
+    outline: none;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    box-sizing: border-box;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+
+    div {
+      padding: 0;
+      margin: 0;
+      border: none;
+      font: inherit;
+      outline: none;
+      box-sizing: border-box;
+      color: rgba(0, 0, 0, 0.54);
+      font-size: .9em;
+      font-weight: 500;
+      flex: 1;
+      overflow: hidden;
+      word-wrap: break-word;
+      line-height: 56px;
+    }
+
+    .checkbox {
+      font-size: 1.1em;
+    }
+  }
+
+  .table_content {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    min-height: 48px;
+
+    &> div {
+      padding: 0;
+      margin: 0;
+      border: none;
+      font: inherit;
+      outline: none;
+      box-sizing: border-box;
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 1em;
+      flex: 1;
+      overflow: hidden;
+      word-wrap: break-word;
+      width: 100%;
+    }
+  }
+
+  .table_selected-row {
+    background-color: $bg-color;
+  }
+
+  .column_select,
+  .column_toggle,
+  .column--small {
+    flex: none;
+    display: flex;
+    height: 50px;
+    margin-right: 16px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .column_select {
+    width: 40px;
+    max-width: 40px;
+  }
+
+  .column_toggle,
+  .column--small {
+    width: 70px;
+    max-width: 70px;
+  }
+
+  .column--small {
+    text-align: left;
+    justify-content: left;
+  }
+
+  .column_operation {
+    flex: none;
+    width: 120px;
+    max-width: 120px;
+    text-align: right;
+  }
+
+  .table--empty {
+    display: flex;
+    font-size: 2em;
+    height: 3em;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  .column-chip {
+    display: flex;
+
+    &.column--small {
+      overflow: inherit;
+    }
+  }
+}

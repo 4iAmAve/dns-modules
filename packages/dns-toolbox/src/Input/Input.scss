@@ -1,0 +1,157 @@
+@import '../styles/variables.scss';
+
+.input-group {
+  position:relative;
+  margin: $spacing;
+  margin-top: $spacing *  1.25;
+  flex: 1;
+
+  input {
+    font-size: 1em;
+    padding: $spacing / 2 $spacing / 2 $spacing / 2 0;
+    display: block;
+    width: 100%;
+    border: none;
+    //border-bottom: 1px solid #757575;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .input_bar:before,
+    &:focus ~ .input_bar:after {
+      width: 50%;
+    }
+
+    &:required {
+      box-shadow: none;
+    }
+  }
+
+  label {
+    color: #999;
+    font-size: 1em;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: top 0.225s $cubic-bezier, font-size .225s $cubic-bezier;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+
+    &.input_label--small {
+      top: -10px;
+      font-size: 12px;
+      font-size: .75em;
+      color: $default-border-color;
+    }
+  }
+
+  .input_bar {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    &:before,
+    &:after {
+      content: '';
+      height: 1px;
+      width: 0;
+      bottom: 1px;
+      position: absolute;
+      background: $primary;
+      transition: left 0.225s ease-in-out, right .225s ease-in-out;
+    }
+
+    &:before {
+      left: 50%;
+    }
+
+    &:after {
+      right: 50%;
+    }
+  }
+
+  .input_bar--default {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    &:before,
+    &:after {
+      content: '';
+      height: 1px;
+      bottom: 1px;
+      position: absolute;
+      background: $default-border-color;
+      transition: left 0.225s ease-in-out, right .225s ease-in-out;
+      width: 50%;
+    }
+
+    &:before {
+      left: 50%;
+    }
+
+    &:after {
+      right: 50%;
+    }
+  }
+
+  &.input--disabled {
+    //pointer-events: none;
+    //opacity: .6;
+
+    .input_bar--default {
+      display: none;
+    }
+  }
+
+  .input_error {
+    color: $danger;
+    font-size: .75em;
+    position: absolute;
+    bottom: -16px;
+    animation: showError .225s cubic-bezier(0.35, 0, 0.25, 1);
+  }
+
+  &.input--error {
+    label {
+      color: $danger;
+    }
+
+    .input_bar {
+      &:before,
+      &:after {
+        background: $danger;
+      }
+    }
+
+    .input_bar--default {
+      &:before,
+      &:after {
+        background: $danger;
+      }
+    }
+  }
+
+  .input_required {
+    padding-left: 4px;
+    color: $danger;
+  }
+}
+
+@keyframes showError {
+  0% {
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+  }
+  100% {
+    bottom: -16px;
+    opacity: 1;
+    z-index: 1;
+  }
+}

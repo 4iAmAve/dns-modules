@@ -1,0 +1,28 @@
+.activity-indicator_spinner {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  z-index: 10; }
+  .activity-indicator_spinner .activity-indicator_spinner--circular {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: rotate 2s linear infinite;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%); }
+  .activity-indicator_spinner .activity-indicator_spinner-path {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    stroke-linecap: round;
+    stroke: #0b1f52; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

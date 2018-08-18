@@ -1,0 +1,71 @@
+.render-json .copy-to-clipboard-container {
+  vertical-align: top;
+  display: none; }
+
+.render-json .click-to-add {
+  display: none; }
+
+.render-json .click-to-remove {
+  display: none; }
+
+.render-json .click-to-edit {
+  display: none; }
+
+.render-json--dark {
+  color: #fff;
+  background-color: #000; }
+
+.render-json .render-json--flex {
+  display: flex;
+  align-items: center;
+  margin: 4px;
+  position: relative;
+  width: 100%;
+  overflow: hidden; }
+  .render-json .render-json--flex .render-json_type {
+    font-size: .7em;
+    margin: 0 4px; }
+  .render-json .render-json--flex .render-json_data {
+    margin-left: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .render-json .render-json--flex.render-json_string .render-json_type {
+    color: #cb4b16; }
+  .render-json .render-json--flex.render-json_string .render-json_data {
+    color: #9d3a11; }
+  .render-json .render-json--flex.render-json_number .render-json_type {
+    color: #268bd2; }
+  .render-json .render-json--flex.render-json_number .render-json_data {
+    color: #1e6ea7; }
+  .render-json .render-json--flex.render-json_boolean .render-json_type {
+    color: #2aa198; }
+  .render-json .render-json--flex.render-json_boolean .render-json_data {
+    color: #1f7972; }
+  .render-json .render-json--flex.render-json_date .render-json_type {
+    color: #586e75; }
+  .render-json .render-json--flex.render-json_array, .render-json .render-json--flex.render-json_object {
+    align-items: start; }
+    .render-json .render-json--flex.render-json_array .render-json_array_count, .render-json .render-json--flex.render-json_object .render-json_array_count {
+      font-size: .7em;
+      color: rgba(0, 0, 0, 0.3);
+      font-style: italic;
+      cursor: default;
+      margin-left: 4px; }
+
+.render-json .rj_added-to-clipboard {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  text-align: center;
+  bottom: -50px;
+  transition: bottom .225s ease-in-out; }
+  .render-json .rj_added-to-clipboard--open {
+    bottom: 0; }
+
+.render-json--dark .rj_added-to-clipboard {
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff; }
+
+.render-json .clickable {
+  cursor: pointer; }

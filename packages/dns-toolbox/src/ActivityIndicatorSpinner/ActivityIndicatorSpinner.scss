@@ -1,0 +1,36 @@
+@import '../styles/variables.scss';
+
+.activity-indicator_spinner {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, .5);
+  position: absolute;
+  z-index: 10;
+
+  .activity-indicator_spinner--circular {
+    position: absolute;
+    //top: 20%;
+    //left: 50%;
+    width: 50px;
+    height: 50px;
+    animation: rotate 2s linear infinite;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+  }
+
+  .activity-indicator_spinner-path {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s $cubic-bezier infinite;
+    stroke-linecap: round;
+    stroke: $primary;
+  }
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}

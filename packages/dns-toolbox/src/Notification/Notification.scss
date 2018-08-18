@@ -1,0 +1,85 @@
+@import '../styles/variables.scss';
+
+.notification {
+  margin-bottom: 12px;
+  pointer-events: auto;
+  transition: top .3s $cubic-bezier, bottom .3s $cubic-bezier;
+  background-color: $defaultColor;
+  width: 50%;
+  line-height: 10px;
+  padding: 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  color: #fff;
+  position: absolute;
+  border-radius: 6px;
+
+  &--tc,
+  &--bc {
+    transform: translateX(50%);
+    margin: 0 auto;
+  }
+
+  &--tc,
+  &--tr,
+  &--tl {
+    top: -250px;
+
+    &.notification--visible {
+      top: $spacing / 2;
+    }
+  }
+
+  &--bc,
+  &--br,
+  &--bl {
+    bottom: -250px;
+
+    &.notification--visible {
+      bottom: $spacing / 2;
+    }
+  }
+
+  &--tl,
+  &--bl {
+    margin-left: 12px;
+  }
+
+  &--tr,
+  &--br {
+    margin-right: 12px;
+    right: 0;
+  }
+
+  &--stacked {
+    position: relative;
+    transform: translateX(0);
+  }
+
+  &--success {
+    background-color: $success;
+  }
+
+  &--warning {
+    background-color: $warning;
+  }
+
+  &--error {
+    background-color: $danger;
+  }
+
+  .notification_close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: $spacing / 2;
+    cursor: pointer;
+  }
+}
+
+.notification-container {
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  pointer-events: none;
+  max-width: 1400px;
+}

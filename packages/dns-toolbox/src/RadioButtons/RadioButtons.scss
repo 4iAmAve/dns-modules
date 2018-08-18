@@ -1,0 +1,79 @@
+@import '../styles/variables.scss';
+
+.radio-buttons {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin: $spacing / 2;
+
+  label {
+    display: block;
+    width: auto;
+    margin-right: $spacing;
+    cursor: pointer;
+  }
+
+  .radio-buttons_label {
+    position: relative;
+    top: -8px;
+  }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    transition: background .225s $cubic-bezier, border .225s $cubic-bezier;
+    background: #fff;
+    border: 2px solid $default-border-color;
+    color: $accent;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    z-index: 1;
+    border-radius: 50%;
+
+    &:checked {
+      background: #fff;
+      border: 2px solid $accent;
+
+      &::before {
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background-color: $accent;
+        content: '';
+        position: absolute;
+        display: inline-block;
+        font-size: 12px;
+        text-align: center;
+        line-height: 12px;
+        color: #fff;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &::after {
+        animation: click-wave 0.5s;
+        background: $accent-light;
+        content: '';
+        display: block;
+        position: relative;
+        pointer-events: none;
+        z-index: 2;
+      }
+    }
+
+    &::after {
+      border-radius: 50%;
+    }
+  }
+}

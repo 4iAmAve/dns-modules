@@ -1,0 +1,39 @@
+$primary: #0b1f52;
+
+.render-xml_viewer {
+  .rx_elem_tag {
+    color: $primary;
+
+    &--selectable {
+      cursor: pointer;
+    }
+  }
+
+  .rx_elem_toggle {
+    float: left;
+    line-height: 18px;
+    transition: transform .225s ease-in-out;
+    color: $primary;
+    cursor: pointer;
+
+    &--open {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &--dark {
+    color: #fff;
+    background-color: #000;
+  }
+
+  &--dark {
+    .rj_added-to-clipboard {
+      background: rgba(0, 0, 0, .9);
+      color: #fff;
+    }
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+}

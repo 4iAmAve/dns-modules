@@ -1,0 +1,38 @@
+{
+  "name": "@dns/toolbox",
+  "version": "0.4.1",
+  "main": "build/lib/index.js",
+  "types": "build/lib/index.d.ts",
+  "files": [
+    "build/lib"
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "build": "npm run build-lib && build-storybook",
+    "build-lib": "npm run build-tsc && npm run build-sass && npm run copy-css-to-lib",
+    "build-tsc": "node_modules/.bin/tsc",
+    "build-sass": "node_modules/.bin/node-sass src/ -o src/",
+    "build-storybook": "build-storybook",
+    "clean-build": "rm -rf build",
+    "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
+    "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
+  },
+  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-toolbox",
+  "author": "Ave <me@aves.site>",
+  "license": "MIT",
+  "devDependencies": {
+    "@storybook/addon-info": "^3.4.8",
+    "@storybook/addon-knobs": "^3.4.8",
+    "@storybook/react": "^3.4.8",
+    "awesome-typescript-loader": "^4.0.1",
+    "babel-core": "^6.26.0",
+    "cpx": "^1.5.0",
+    "css-loader": "^1.0.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "storybook-addon-jsx": "^5.3.0",
+    "typescript": "^2.8.1"
+  },
+  "dependencies": {
+    "@dns/utils": "^0.6.3"
+  }
+}

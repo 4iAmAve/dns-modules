@@ -1,0 +1,97 @@
+@import '../styles/variables.scss';
+
+.auto-complete {
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid $default-border-color;
+  background-color: #fff;
+  font-size: 1em;
+  line-height: normal;
+  min-height: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2.5px;
+  padding-left: 0;
+  margin: $spacing;
+
+  &--disabled {
+    pointer-events: none;
+    opacity: .7;
+    border-bottom: 0;
+  }
+
+  label {
+    color: #999;
+    font-size: 1em;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 2px;
+    top: 6px;
+    transition: top 0.225s $cubic-bezier, font-size .225s $cubic-bezier;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+
+    &.input_label--small {
+      top: -10px;
+      font-size: 12px;
+      font-size: .75em;
+      color: $default-border-color;
+    }
+
+    .input_required {
+      padding-left: 4px;
+      color: $danger;
+    }
+  }
+
+  .auto-complete-input_wrapper {
+    flex: 1 1 0%;
+
+    input {
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+      width: 100%;
+      //padding: $spacing / .75;
+      //margin: 2.5px;
+      margin: 0;
+      font-size: 1em;
+    }
+  }
+
+  .auto-complete-container {
+    position: fixed;
+    z-index: 4;
+    animation: show .225s $cubic-bezier;
+    border-radius: 6px;
+
+    ul {
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: $default-box-shadow;
+      max-height: 30vh;
+      overflow: hidden;
+      overflow-y: auto;
+      border-radius: 6px;
+
+      li {
+        padding: $spacing / 2 $spacing;
+
+        &:hover,
+        &.acc_item--selected {
+          background-color: $defaultColor;
+        }
+      }
+    }
+  }
+}

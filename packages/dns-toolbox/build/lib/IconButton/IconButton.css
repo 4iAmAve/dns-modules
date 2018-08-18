@@ -1,0 +1,53 @@
+.icon-button {
+  color: #63b4eb;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+  font-size: 1em;
+  font-weight: 500;
+  border: none;
+  border-radius: 50%;
+  position: relative;
+  outline: none;
+  user-select: none;
+  transition: opacity 0.225s cubic-bezier(0.35, 0, 0.25, 1), color 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+  cursor: pointer;
+  overflow: hidden; }
+  .icon-button[disabled] {
+    opacity: .6;
+    pointer-events: none; }
+  .icon-button .icon-button_ripple {
+    background: rgba(0, 0, 0, 0.25); }
+  .icon-button i {
+    position: relative;
+    top: 2px;
+    pointer-events: none; }
+  .icon-button--simple {
+    box-shadow: none;
+    padding: 0;
+    margin-left: 0;
+    min-width: 0;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    line-height: 40px;
+    border-radius: 50%; }
+    .icon-button--simple .icon-button_ripple {
+      background: rgba(124, 183, 231, 0.4); }
+    .icon-button--simple i {
+      top: 7px; }
+  .icon-button--success {
+    color: #66BB6A; }
+    .icon-button--success .icon-button_ripple {
+      background: rgba(102, 187, 106, 0.4); }
+  .icon-button--danger {
+    color: #f44336; }
+    .icon-button--danger .icon-button_ripple {
+      background: rgba(226, 81, 65, 0.4); }
+  .icon-button--warning {
+    color: #FDD835; }
+    .icon-button--warning .icon-button_ripple {
+      background: rgba(253, 216, 53, 0.4); }

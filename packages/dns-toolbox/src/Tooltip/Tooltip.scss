@@ -1,0 +1,23 @@
+@import '../styles/variables.scss';
+
+.tooltip {
+  display: block;
+  position: fixed;
+  padding: 8px;
+  background: $tooltip-background;
+  font-size: .75em;
+  color: #fff;
+  border-radius: $default-border-radius;
+  transition: z-index .225s $cubic-bezier, transform .225s $cubic-bezier;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transform: scale(0);
+  max-width: 160px;
+
+  &--open {
+    opacity: 1;
+    z-index: 7;
+    transform: scale(1);
+  }
+}

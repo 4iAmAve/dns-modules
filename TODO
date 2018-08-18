@@ -1,0 +1,11 @@
+- provide test front-end
+- publish modules to npm
+- publish storybook on homepage
+
+- !!!! upgrade ts-loader after upgrading webpack to 4
+  - write separate webpack config for webpack 4 for test reasons
+
+
+- use react
+  https://github.com/jamiebuilds/react-loadable and https://webpack.js.org/guides/code-splitting/
+  => https://github.com/coryhouse/dynamic-import-example

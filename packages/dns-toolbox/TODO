@@ -1,0 +1,40 @@
+- (/) implement tabs
+- (/) implement chips
+- (/) implement radiobutton
+- (/) use fragments or arrays to avoid unnecessary divs
+- (/) implement time picker
+- (/) remove class modules for sass in webpack and use bem
+- (/) implement tooltip (still needs to be tested)
+  - detect borders and inner height for positioning
+- (/) master-detail
+- (/) autocomplete with chips
+
+- (-) implement table
+  - implement sorting with onSort callback for Table header
+- (-) implement better date-picker using react-date lib (still needs to be tested thoroughly)
+- (-) implement cover flow/collection lane
+  - still needs navigation buttons
+  - still needs pastScrollRange/futureScrollRange for lazy loading
+- (-) implement slider (multi / range)
+  - still needs multi handle support and collision detection
+- (-) convert master detail
+  - with option to have detail open + positioning side by side, top - bottom (will be default on mobile (50%, 50% default))
+  - responsive
+
+- grid component (variable grid size or flex)
+- filter / look-up in drop-down
+- implement multi select
+- implement stepper
+- implement switches
+- implement hero
+- implement calendar function
+- build better / leaner swipeable tabs
+- (?) row and column component
+
+- !!!! upgrade ts-loader after upgrading to webpack4
+
+- maybe use react
+  https://github.com/jamiebuilds/react-loadable and https://webpack.js.org/guides/code-splitting/
+  => https://github.com/coryhouse/dynamic-import-example
+
+- (x)move all scss files to styles directory

@@ -1,0 +1,95 @@
+.input-group {
+  position: relative;
+  margin: 16px;
+  margin-top: 20px;
+  flex: 1; }
+  .input-group input {
+    font-size: 1em;
+    padding: 8px 8px 8px 0;
+    display: block;
+    width: 100%;
+    border: none; }
+    .input-group input:focus {
+      outline: none; }
+    .input-group input:focus ~ .input_bar:before,
+    .input-group input:focus ~ .input_bar:after {
+      width: 50%; }
+    .input-group input:required {
+      box-shadow: none; }
+  .input-group label {
+    color: #999;
+    font-size: 1em;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: top 0.225s cubic-bezier(0.35, 0, 0.25, 1), font-size 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%; }
+    .input-group label.input_label--small {
+      top: -10px;
+      font-size: 12px;
+      font-size: .75em;
+      color: rgba(0, 0, 0, 0.54); }
+  .input-group .input_bar {
+    position: relative;
+    display: block;
+    width: 100%; }
+    .input-group .input_bar:before, .input-group .input_bar:after {
+      content: '';
+      height: 1px;
+      width: 0;
+      bottom: 1px;
+      position: absolute;
+      background: #0b1f52;
+      transition: left 0.225s ease-in-out, right .225s ease-in-out; }
+    .input-group .input_bar:before {
+      left: 50%; }
+    .input-group .input_bar:after {
+      right: 50%; }
+  .input-group .input_bar--default {
+    position: relative;
+    display: block;
+    width: 100%; }
+    .input-group .input_bar--default:before, .input-group .input_bar--default:after {
+      content: '';
+      height: 1px;
+      bottom: 1px;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.54);
+      transition: left 0.225s ease-in-out, right .225s ease-in-out;
+      width: 50%; }
+    .input-group .input_bar--default:before {
+      left: 50%; }
+    .input-group .input_bar--default:after {
+      right: 50%; }
+  .input-group.input--disabled .input_bar--default {
+    display: none; }
+  .input-group .input_error {
+    color: #f44336;
+    font-size: .75em;
+    position: absolute;
+    bottom: -16px;
+    animation: showError 0.225s cubic-bezier(0.35, 0, 0.25, 1); }
+  .input-group.input--error label {
+    color: #f44336; }
+  .input-group.input--error .input_bar:before, .input-group.input--error .input_bar:after {
+    background: #f44336; }
+  .input-group.input--error .input_bar--default:before, .input-group.input--error .input_bar--default:after {
+    background: #f44336; }
+  .input-group .input_required {
+    padding-left: 4px;
+    color: #f44336; }
+
+@keyframes showError {
+  0% {
+    bottom: 0;
+    opacity: 0;
+    z-index: -1; }
+  100% {
+    bottom: -16px;
+    opacity: 1;
+    z-index: 1; } }

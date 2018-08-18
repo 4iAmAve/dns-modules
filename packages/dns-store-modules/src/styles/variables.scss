@@ -1,0 +1,55 @@
+$spacing: 16px;
+$primary: #0b1f52;
+$secondary: #F4B142;
+$accent: #63b4eb;
+$defaultColor: #e0e0e0;
+$ripple: rgba(99, 180, 235, .4);
+$accent-light: lighten($accent, 30%);
+$defaultColor-dark: darken(#e0e0e0, 20%);
+$defaultColor-light: darken(#e0e0e0, 2%);
+$defaultColor-darkest: lighten(#000, 60%);
+$black: #000;
+$black-light: lighten(#000, 20%);
+$success: #66BB6A;
+$success-light: lighten($success, 25%);
+$warning: #FDD835;
+$warning-light: lighten($warning, 30%);
+$danger: #f44336;
+$danger-light: lighten($danger, 30%);
+$default-ripple-background: rgba(0, 0, 0, .25);
+$primary-ripple-background: rgba(255, 255, 255, .5);
+$accent-ripple-background: rgba(124, 183, 231, .4);
+$warning-ripple-background: rgba(253, 216, 53, .4);
+$danger-ripple-background: rgba(226, 81, 65, .4);
+$success-ripple-background: rgba(102, 187, 106, .4);
+$default-label-color: #999;
+
+$bg-color: #f1f2f5;
+
+$cubic-bezier: cubic-bezier(.35,0,.25,1);
+
+$tooltip-background: #9E9E9E;
+$default-border-radius: 2px;
+
+$body-font: "Roboto";
+$default-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+$default-box-shadow-inset: inset 0 3px 1px -2px rgba(0,0,0,.2), inset 0 2px 2px 0 rgba(0,0,0,.14), inset 0 1px 5px 0 rgba(0,0,0,.12);
+$dialogue-box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+$default-border-color: rgba(0, 0, 0, .54);
+$default-border-color-light: rgba(0, 0, 0, .12);
+// Font Weights
+$thin: 100;
+$light: 300;
+$regular: 400;
+$semibold: 500;
+$bold: 700;
+$ultra: 800;
+// Base Font
+$base-font-family: $body-font, sans-serif;
+$base-font-size: 14px;
+$base-font-weight: $regular;
+$base-line-height: 1.6em;
+// Form Settings
+$max-width: 600px;
+$max-height: 400px;
+$gutters: 24px;

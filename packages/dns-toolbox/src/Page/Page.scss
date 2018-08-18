@@ -1,0 +1,42 @@
+@import '../styles/variables.scss';
+
+.page {
+  display: block;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  .page_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    text-align: center;
+    border-bottom: 2px solid $primary;
+    color: $primary;
+    box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+
+    h1 {
+      line-height: $spacing * 2.5;
+      font-size: 1.4em;
+    }
+  }
+
+  .page_content {
+    display: block;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: $spacing / 2;
+    height: calc(100% - 40px);
+    max-height: calc(100% - 40px);
+
+    &--full-height {
+      height: 100%;
+      max-height: 100%;
+    }
+
+    &--without-offset {
+      padding: 0;
+    }
+  }
+}

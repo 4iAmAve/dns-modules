@@ -1,0 +1,79 @@
+@import '../styles/variables.scss';
+
+.chip {
+  margin: 2.5px;
+  border-radius: $spacing;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  box-sizing: border-box;
+  color: rgb(238, 238, 238);
+  //font-weight: bold;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin: $spacing / 4;
+    overflow: hidden;
+    border-radius: $spacing / 0.75;
+    background: rgb(136, 136, 136);
+  }
+
+  .chip_value {
+    font-size: 1em;
+    box-sizing: border-box;
+    padding: 0 $spacing / 4 0 $spacing / 2;
+    //text-shadow: .5px .5px #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 24px;
+
+    &.chip-value_clickable {
+      cursor: pointer;
+    }
+  }
+
+  &--free {
+    .chip_value {
+      padding: 0 $spacing / 2 0 $spacing / 2;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--selectable {
+    cursor: pointer;
+  }
+
+  .chip_delete-icon {
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    color: #e2e2e2;
+    border-radius: $spacing / 0.75;
+    margin: 0 6px;
+    z-index: 2;
+    transition: background-color .225s $cubic-bezier;
+
+    &:hover {
+      background-color: rgba(102, 102, 102, .9);
+    }
+
+    i {
+      //color: #e2e2e2;
+      font-weight: 700;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      font-size: 1.3em;
+      //text-shadow: .5px .5px #000;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import '../styles/variables.scss';
+@import '../styles/calendar.scss';
+
+.date-picker {
+  position: relative;
+  margin: 0;
+
+  .dp_input {
+    margin-top: 5px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .dp_icon {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    cursor: pointer;
+    color: $default-border-color;
+    font-size: 22px;
+  }
+
+  .dp_calendar {
+    width: 350px;
+    max-width: 100vw;
+    position: fixed;
+    border: 0;
+    z-index: 4;
+    box-shadow: $default-box-shadow-3;
+    animation: show .225s $cubic-bezier;
+    background-color: #fff;
+    border-radius: 6px;
+
+    .react-calendar {
+      background: none;
+      border: 0
+    }
+
+    .react-calendar__tile--active {
+      background-color: $accent;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+  }
+
+  &_clearable {
+    input {
+      width: calc(100% - 64px);
+    }
+
+    .dp_calendar-icon {
+      right: 26px;
+    }
+  }
+
+  .dp_time-selection {
+    position: relative;
+    display: flex;
+
+    & > div {
+      flex: 1;
+      margin: $spacing;
+      margin-bottom: 0;
+    }
+  }
+}

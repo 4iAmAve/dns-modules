@@ -1,0 +1,80 @@
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+require("./Ripple.css");
+var Ripple = /** @class */ (function (_super) {
+    __extends(Ripple, _super);
+    function Ripple(props) {
+        var _this = _super.call(this, props) || this;
+        _this.rippling = function (cursorPos, parent) {
+            // Get the element
+            var $button = parent;
+            var buttonPos = $button.getBoundingClientRect();
+            var buttonWidth = $button.offsetWidth;
+            var buttonHeight = $button.offsetHeight;
+            // Make a Square Ripple
+            var rippleWidthShouldBe = Math.max(buttonHeight, buttonWidth);
+            // Make Ripple Position to be center
+            var centerize = rippleWidthShouldBe / 2;
+            _this.setState({
+                animate: true,
+                width: rippleWidthShouldBe,
+                height: rippleWidthShouldBe,
+                top: cursorPos.top - buttonPos.top - centerize,
+                left: cursorPos.left - buttonPos.left - centerize
+            });
+        };
+        _this.handleRef = function (ref) { return _this.rippleRef = ref; };
+        _this.state = {
+            animate: false,
+            width: 0,
+            height: 0,
+            top: 0,
+            left: 0
+        };
+        return _this;
+    }
+    Ripple.prototype.componentDidUpdate = function (prevProps) {
+        var _this = this;
+        var cursorPos = prevProps.cursorPos;
+        // Prevent Component duplicates ripple effect at the same time
+        if (cursorPos.time !== this.props.cursorPos.time) {
+            // If Has Animated, set state to "false" First
+            if (this.state.animate) {
+                this.setState({ animate: false }, function () {
+                    _this.rippling(_this.props.cursorPos, _this.props.parent);
+                });
+            }
+            else {
+                // else, Do Reppling
+                this.rippling(this.props.cursorPos, this.props.parent);
+            }
+        }
+    };
+    Ripple.prototype.render = function () {
+        var _a = this.state, animate = _a.animate, height = _a.height, left = _a.left, top = _a.top, width = _a.width;
+        var _b = this.props, classNames = _b.classNames, inlineStyle = _b.inlineStyle;
+        var style = __assign({}, inlineStyle, { top: top + "px", left: left + "px", width: width + "px", height: height + "px" });
+        return (React.createElement("div", { className: "ripple " + (animate ? 'ripple--animate' : '') + " " + (classNames ? classNames : ''), ref: this.handleRef, style: style }));
+    };
+    return Ripple;
+}(React.Component));
+exports.Ripple = Ripple;

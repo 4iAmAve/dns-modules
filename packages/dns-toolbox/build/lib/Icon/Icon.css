@@ -1,0 +1,12 @@
+.icon {
+  color: #333333; }
+  .icon--danger {
+    color: #f44336; }
+  .icon--warning {
+    color: #FDD835; }
+  .icon--success {
+    color: #66BB6A; }
+  .icon--primary {
+    color: #0b1f52; }
+  .icon--accent {
+    color: #63b4eb; }

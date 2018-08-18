@@ -1,0 +1,58 @@
+@import '../theme.scss';
+
+.time-picker{
+  display: flex;
+
+  &--disabled {
+    pointer-events: none;
+    opacity: .6;
+    color: $default-label-color;
+  }
+
+  .time-picker_wrapper {
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+    font-size: 1.1em;
+    margin: 0 $spacing / 2;
+
+    label {
+      position: absolute;
+      top: -10px;
+      font-size: .6em;
+      left: 0;
+      color: $default-label-color;
+    }
+
+    select {
+      padding: $spacing / 2.5;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+      position: relative;
+      cursor: pointer;
+      width: 58px;
+      border-bottom: 1px solid $default-border-color;
+      font-size: .9em;
+
+      &:required,
+      &:focus,
+      &:valid {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    i {
+      position: absolute;
+      right: 4px;
+      font-size: .9em;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
+}

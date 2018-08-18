@@ -1,0 +1,25 @@
+@import '../styles/variables.scss';
+
+.icon {
+  color: $black-light;
+
+  &--danger {
+    color: $danger;
+  }
+
+  &--warning {
+    color: $warning;
+  }
+
+  &--success {
+    color: $success;
+  }
+
+  &--primary {
+    color: $primary;
+  }
+
+  &--accent {
+    color: $accent;
+  }
+}

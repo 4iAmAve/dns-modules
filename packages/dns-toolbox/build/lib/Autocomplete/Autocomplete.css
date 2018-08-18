@@ -1,0 +1,71 @@
+.auto-complete {
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.54);
+  background-color: #fff;
+  font-size: 1em;
+  line-height: normal;
+  min-height: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2.5px;
+  padding-left: 0;
+  margin: 16px; }
+  .auto-complete--disabled {
+    pointer-events: none;
+    opacity: .7;
+    border-bottom: 0; }
+  .auto-complete label {
+    color: #999;
+    font-size: 1em;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 2px;
+    top: 6px;
+    transition: top 0.225s cubic-bezier(0.35, 0, 0.25, 1), font-size 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%; }
+    .auto-complete label.input_label--small {
+      top: -10px;
+      font-size: 12px;
+      font-size: .75em;
+      color: rgba(0, 0, 0, 0.54); }
+    .auto-complete label .input_required {
+      padding-left: 4px;
+      color: #f44336; }
+  .auto-complete .auto-complete-input_wrapper {
+    flex: 1 1 0%; }
+    .auto-complete .auto-complete-input_wrapper input {
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
+      font-size: 1em; }
+  .auto-complete .auto-complete-container {
+    position: fixed;
+    z-index: 4;
+    animation: show 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    border-radius: 6px; }
+    .auto-complete .auto-complete-container ul {
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      background-color: white;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      max-height: 30vh;
+      overflow: hidden;
+      overflow-y: auto;
+      border-radius: 6px; }
+      .auto-complete .auto-complete-container ul li {
+        padding: 8px 16px; }
+        .auto-complete .auto-complete-container ul li:hover, .auto-complete .auto-complete-container ul li.acc_item--selected {
+          background-color: #e0e0e0; }

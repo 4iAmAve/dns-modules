@@ -1,0 +1,15 @@
+{
+  "name": "@dns/common-styles",
+  "version": "3.5.7",
+  "main": "lib/common-style.scss",
+  "private": true,
+  "scripts": {
+    "xlint": "node_modules/.bin/stylelint lib/**/*.scss"
+  },
+  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-common-styles",
+  "author": "Ave <me@aves.site>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "stylelint": "^9.3.0"
+  }
+}

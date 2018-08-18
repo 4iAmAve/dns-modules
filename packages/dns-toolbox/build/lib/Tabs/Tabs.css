@@ -1,0 +1,94 @@
+.tabs {
+  display: block;
+  width: 100%;
+  height: auto; }
+  .tabs .tabs_header {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    z-index: 1;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 6px; }
+    .tabs .tabs_header .tabs_border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: #0b1f52;
+      width: auto;
+      height: 2px;
+      transition: left 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+      z-index: 2; }
+    .tabs .tabs_header .tabs_list {
+      display: flex;
+      flex-direction: row;
+      width: 100%; }
+      .tabs .tabs_header .tabs_list.tabs--with-navigation {
+        width: calc(100% - 92px); }
+      .tabs .tabs_header .tabs_list .tabs_tab {
+        font-weight: 500;
+        z-index: 1;
+        display: block;
+        box-sizing: border-box;
+        padding: 16px;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        user-select: none;
+        font-size: .95em;
+        opacity: .7;
+        color: #0b1f52;
+        background-color: transparent;
+        white-space: nowrap;
+        transition: opacity .225s ease-in, background-color .225s ease-in; }
+        .tabs .tabs_header .tabs_list .tabs_tab--selected {
+          opacity: 1;
+          background-color: #ebf5fc; }
+        .tabs .tabs_header .tabs_list .tabs_tab:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 5px;
+          height: 5px;
+          background: rgba(255, 255, 255, 0.5);
+          opacity: 0;
+          border-radius: 100%;
+          transform: scale(1, 1) translate(-50%);
+          transform-origin: 50% 50%;
+          pointer-events: none;
+          overflow: hidden; }
+        .tabs .tabs_header .tabs_list .tabs_tab:focus:not(:active)::after {
+          animation: ripple .5s ease-out; }
+  .tabs .tabs_tab-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    color: #63b4eb;
+    user-select: none; }
+    .tabs .tabs_tab-nav:before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%; }
+  .tabs .tabs_content {
+    position: relative;
+    transition: .225s ease;
+    z-index: 1; }
+    .tabs .tabs_content:after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 1px; }
+    .tabs .tabs_content .tabs_tab-content.tabs_tab-content--active {
+      display: block; }

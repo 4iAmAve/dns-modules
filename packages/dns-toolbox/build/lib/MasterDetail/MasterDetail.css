@@ -1,0 +1,31 @@
+.master-detail {
+  height: auto;
+  max-height: calc(100vh - 200px);
+  background-color: #f1f2f5;
+  overflow: hidden; }
+  .master-detail .master {
+    height: auto;
+    max-height: calc(100vh - 200px);
+    min-height: 50px;
+    transition: max-height 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    overflow: hidden; }
+  .master-detail .detail {
+    height: auto;
+    max-height: 0;
+    min-height: 0;
+    transition: min-height 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    overflow: hidden;
+    overflow-y: auto; }
+  .master-detail--open {
+    height: 100vh; }
+    .master-detail--open .master {
+      max-height: calc(50vh - 145px);
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.4), inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), inset 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      z-index: 1;
+      position: relative; }
+    .master-detail--open .detail {
+      background-color: #f1f2f5;
+      min-height: calc(50vh - 55px);
+      max-height: calc(100vh - 200px); }
+    .master-detail--open .ctl-table_class {
+      max-height: calc(50vh - 200px); }

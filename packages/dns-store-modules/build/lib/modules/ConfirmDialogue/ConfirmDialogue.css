@@ -1,0 +1,62 @@
+.dialogue {
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity .225s ease-in-out, z-index .225s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .dialogue .dialogue-back-drop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1); }
+  .dialogue .dialogue-container {
+    margin-top: 50px;
+    height: auto;
+    width: auto;
+    transition: margin-top 0.225s cubic-bezier(0.35, 0, 0.25, 1), transform 0.225s cubic-bezier(0.35, 0, 0.25, 1); }
+    .dialogue .dialogue-container.confirm {
+      max-width: 40em; }
+    .dialogue .dialogue-container .dialogue-container_content {
+      display: block;
+      box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+      transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      padding: 24px;
+      border-radius: 6px;
+      background: #fff;
+      color: rgba(0, 0, 0, 0.87); }
+      .dialogue .dialogue-container .dialogue-container_content.without-offset {
+        padding: 0; }
+      .dialogue .dialogue-container .dialogue-container_content h2 {
+        color: #63b4eb;
+        margin-top: 0; }
+  .dialogue.dialogue_open {
+    z-index: 15;
+    pointer-events: auto;
+    opacity: 1; }
+    .dialogue.dialogue_open .dialogue-container {
+      margin-top: 0; }
+  .dialogue .c-d_text {
+    white-space: pre-line; }
+  .dialogue .dialogue_hidden-input {
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+    outline: none;
+    pointer-events: none;
+    border: none; }
+    .dialogue .dialogue_hidden-input:focus {
+      outline: none; }

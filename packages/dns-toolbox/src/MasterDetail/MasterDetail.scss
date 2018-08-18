@@ -1,0 +1,53 @@
+@import '../styles/variables.scss';
+
+.master-detail {
+  height: auto;
+  max-height: calc(100vh - 200px);
+  background-color: $bg-color;
+  overflow: hidden;
+
+  .master {
+    height: auto;
+    max-height: calc(100vh - 200px);
+    min-height: 50px;
+    transition: max-height .225s $cubic-bezier;
+    overflow: hidden;
+    //overflow-y: auto;
+  }
+
+  .detail {
+    height: auto;
+    max-height: 0;
+    min-height: 0;
+    transition: min-height .225s $cubic-bezier;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
+  &--open {
+    height: 100vh;
+
+    .master {
+      //max-height: calc(50vh - 250px);
+      max-height: calc(50vh - 145px);
+      //min-height: calc(50vh - 145px);
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.4), inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), inset 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      //margin-bottom: $spacing;
+      z-index: 1;
+      position: relative;
+    }
+
+    .detail {
+      //background-color: #fff;
+      background-color: $bg-color;
+      //max-height: calc(50vh - 250px);
+      min-height: calc(50vh - 55px);
+      max-height: calc(100vh - 200px);
+      //box-shadow: inset 0 3px 1px -2px rgba(0, 0, 0, 0.2), inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), inset 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .ctl-table_class {
+      max-height: calc(50vh - 200px);
+    }
+  }
+}

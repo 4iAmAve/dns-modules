@@ -1,0 +1,60 @@
+@import '../styles/variables.scss';
+
+.native-select {
+  display: flex;
+  padding: $spacing;
+
+  &--disabled {
+    pointer-events: none;
+    opacity: .6;
+    color: $default-label-color;
+  }
+
+  .native-select-wrapper {
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+    font-size: 1.1em;
+    margin-top: 32px;
+
+    label {
+      position: absolute;
+      top: -10px;
+      font-size: .6em;
+      left: 0;
+      color: $default-label-color;
+    }
+
+    select {
+      padding: 0 $spacing / 2.5;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+      position: relative;
+      cursor: pointer;
+      width: auto;
+      padding-right: $spacing * 1.5;
+      border-bottom: 1px solid $default-border-color;
+      font-size: .9em;
+
+      &:required,
+      &:focus,
+      &:valid {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    i {
+      position: absolute;
+      right: 4px;
+      font-size: .9em;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
+}
