@@ -264,7 +264,9 @@ export class SelectDropdown extends React.Component<SelectDropdownProps, SelectD
           className={`select-dd_text ${selection.length ? '' : 'select-dd_text--empty'}`}
           onClick={() => this.handleToggleSelect()}
         >
-          <span>{selected.label ? selected.label : ''}</span>
+          <div>
+            <div className="select-dd_text_value">{selected.label ? selected.label : ''}</div>
+          </div>
         </div>
         <label
           className={`
@@ -282,59 +284,59 @@ export class SelectDropdown extends React.Component<SelectDropdownProps, SelectD
         </i>
         {
           isOpen &&
-            <ul
-              ref={this.handleListRef}
-              className={`
+          <ul
+            ref={this.handleListRef}
+            className={`
                 select-dd_list ${resetable ? 'select-dd_list--wrl' : ''} ${filterable ? 'select-dd_list--wf' : ''}
               `}
-              style={listStyle}
-            >
-              {
-                filterable ?
-                  <li
-                    className={`select-dd_list-item select-dd_list-item--filterable`}
-                  >
-                    <Input
-                      label={searchValue.length ? '' : 'Search'}
-                      onKeyUp={this.handleFilterChange}
-                      value={searchValue}
-                      autoFocus={true}
-                    />
-                    <i className="material-icons">search</i>
-                  </li> : null
-              }
-              {
-                resetable && resetLabel &&
+            style={listStyle}
+          >
+            {
+              filterable ?
                 <li
-                  className={`select-dd_list-item select-dd_list-item--reset`}
-                  onMouseDown={() => this.handleResetSelect()}
-                  onClick={() => this.handleResetSelect()}
+                  className={`select-dd_list-item select-dd_list-item--filterable`}
                 >
-                  {resetLabel}
-                </li>
-              }
-              {
-                optionsList && optionsList.length ?
-                  <div className="select-dd_list_scrollable" ref={this.handleScrollViewRef}>
-                    {optionsList.map((option: any, key: number) => {
-                      return (
-                        <li
-                          key={'dns-dd-select_' + option.key}
-                          className={`
+                  <Input
+                    label={searchValue.length ? '' : 'Search'}
+                    onKeyUp={this.handleFilterChange}
+                    value={searchValue}
+                    autoFocus={true}
+                  />
+                  <i className="material-icons">search</i>
+                </li> : null
+            }
+            {
+              resetable && resetLabel &&
+              <li
+                className={`select-dd_list-item select-dd_list-item--reset`}
+                onMouseDown={() => this.handleResetSelect()}
+                onClick={() => this.handleResetSelect()}
+              >
+                {resetLabel}
+              </li>
+            }
+            {
+              optionsList && optionsList.length ?
+                <div className="select-dd_list_scrollable" ref={this.handleScrollViewRef}>
+                  {optionsList.map((option: any, key: number) => {
+                    return (
+                      <li
+                        key={'dns-dd-select_' + option.key}
+                        className={`
                             select-dd_list-item ${option.key === isSelected ? 'select-dd_list-item--active' : ''}
                           `}
-                          value={key}
-                          onMouseDown={() => this.handleOptionClick(key, option)}
-                          onClick={() => this.handleOptionClick(key, option)}
-                          ref={ref => this.handleSelectedRef(ref, option.key)}
-                        >
-                          {option.label}
-                        </li>
-                      );
-                    })}
-                  </div> : null
-              }
-            </ul>
+                        value={key}
+                        onMouseDown={() => this.handleOptionClick(key, option)}
+                        onClick={() => this.handleOptionClick(key, option)}
+                        ref={ref => this.handleSelectedRef(ref, option.key)}
+                      >
+                        {option.label}
+                      </li>
+                    );
+                  })}
+                </div> : null
+            }
+          </ul>
         }
       </div>
     );

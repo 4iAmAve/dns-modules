@@ -54,24 +54,33 @@
   cursor: pointer;
   height: 0;
 
-  span {
+  & > div {
     border: none;
     border-bottom: 1px solid #999;
     display: block;
     font-size: 1em;
     margin: 4px 0 20px;
-    padding: 20px 0 12px;
+    //padding: 20px 0 12px;
+    padding: 10px 0 5px;
     width: 100%;
     background: none;
     text-align: left;
     color: inherit;
+    line-height: normal;
+
+    .select-dd_text_value {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 32px);
+      position: relative;
+    }
   }
 
   &--empty {
-    span {
+    div {
       color: #999;
       font-weight: 100;
-      height: 0;
     }
 
     & + label {
@@ -93,7 +102,7 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   position: relative;
-  top: -24px;
+  top: -26px;
   color: #999;
   cursor: pointer;
   z-index: 2;

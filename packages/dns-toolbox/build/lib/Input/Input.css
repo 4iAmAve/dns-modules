@@ -31,7 +31,6 @@
     width: 100%; }
     .input-group label.input_label--small {
       top: -10px;
-      font-size: 12px;
       font-size: .75em;
       color: rgba(0, 0, 0, 0.54); }
   .input-group .input_bar {

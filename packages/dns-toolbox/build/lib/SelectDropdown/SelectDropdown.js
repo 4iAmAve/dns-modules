@@ -206,7 +206,8 @@ var SelectDropdown = /** @class */ (function (_super) {
         this.getSelectedPosition();
         return (React.createElement("div", { className: "\n          select-dropdown_wrapper\n          " + (classNames ? classNames : '') + "\n        ", ref: this.handleWrapperRef },
             React.createElement("div", { className: "select-dd_text " + (selection.length ? '' : 'select-dd_text--empty'), onClick: function () { return _this.handleToggleSelect(); } },
-                React.createElement("span", null, selected.label ? selected.label : '')),
+                React.createElement("div", null,
+                    React.createElement("div", { className: "select-dd_text_value" }, selected.label ? selected.label : ''))),
             React.createElement("label", { className: "\n            select-dd_label\n            " + (selection.length ? '' : 'select-dd_label--unselected-label') + "\n          " }, label),
             React.createElement("i", { onClick: function () { return _this.handleToggleSelect(); }, className: "material-icons select-dd_caret" }, "arrow_drop_down"),
             isOpen &&
