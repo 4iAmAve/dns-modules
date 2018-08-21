@@ -27,6 +27,8 @@
       display: inline-block;
       position: relative;
       text-align: left; }
+      .paginator .paginator_size .paginator_size-select .select-dd_text > div {
+        margin: 6px 0 20px; }
       .paginator .paginator_size .paginator_size-select .select-dd_caret {
         top: -20px;
         left: calc(100% - 20px); }
