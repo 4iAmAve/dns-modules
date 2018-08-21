@@ -185,7 +185,6 @@ case ${CMD} in
 #  test) task_test ${@:1} ;;
   pree2e) task_pre_e2e ${@:1} ;;
   e2e) task_e2e ${@:1} ;;
-  protractor) task_protractor ${@:1} ;;
   lint) task_lint ;;
   build_version) task_build_version ;;
   *) task_usage ;;

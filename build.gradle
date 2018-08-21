@@ -10,7 +10,7 @@ node {
 
 def frontend_port = 4888
 def image_name = 'frontend'
-def docker_registry = 'denotsl111.int.kn'
+def docker_registry = ''
 def tag = docker_registry+'/'+image_name
 
 task pipeline(dependsOn: ['npmHttpProxy', 'npmHttpsProxy', 'install', 'lint', 'build:gsp', 'copyConfToBuild', 'copyDockerToBuild', 'deleteNpmHttpProxy', 'deleteNpmHttpsProxy'])
