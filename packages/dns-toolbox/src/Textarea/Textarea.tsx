@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import './Textarea.css';
+import './Textarea.scss';
 
 export interface TextareaProps {
   classNames?: any;
@@ -26,6 +26,8 @@ export interface TextareaProps {
 
 export interface TextareaState {
   value: number | string;
+  initialRowHeight: number | null;
+  initialRows: number;
   labelSmall: boolean;
   textareaHeight: number | null;
 }
@@ -39,6 +41,8 @@ export class Textarea extends React.Component<TextareaProps, TextareaState> {
     this.state = {
       value: props.value || '',
       labelSmall: !!props.value,
+      initialRowHeight: null,
+      initialRows: props.rows || 1,
       textareaHeight: null
     };
   }
@@ -55,17 +59,39 @@ export class Textarea extends React.Component<TextareaProps, TextareaState> {
   }
 
   public componentDidMount() {
-    if (this.textarea && this.props.autoFocus) {
-      this.textarea.focus();
+    if (this.textarea) {
+      const paddingOffset = 16;
+      const scrollHeight = this.textarea.scrollHeight - paddingOffset;
+      const rows = parseInt(this.textarea.getAttribute('rows') || '1', 10);
+
+      this.setState(
+        { initialRowHeight: scrollHeight / rows },
+        () => {
+          if (this.props.autoFocus) {
+            this.textarea.focus();
+          }
+        }
+      );
     }
   }
 
   public onChange = (e: any) => {
     const { autoExpand } = this.props;
-    const scrollHeight = this.textarea.scrollHeight;
+    const { initialRowHeight, initialRows } = this.state;
+
+    let taRows = e.target.value.split('\n').length;
+    if (initialRows > taRows) {
+      taRows = initialRows;
+    }
+
+    let height = this.state.textareaHeight;
+    if (autoExpand && initialRowHeight) {
+      height = taRows * initialRowHeight;
+    }
+
     this.setState({
       value: e.target.value,
-      textareaHeight: autoExpand ? scrollHeight : this.state.textareaHeight
+      textareaHeight: height
     });
   }
 
@@ -93,8 +119,8 @@ export class Textarea extends React.Component<TextareaProps, TextareaState> {
   public render() {
     const {
       classNames,
-      onClick,
       onKeyUp,
+      onClick,
       onChange,
       rows = 2,
       label,
@@ -105,14 +131,15 @@ export class Textarea extends React.Component<TextareaProps, TextareaState> {
       extraProps = {},
       style = {},
       name,
+      maxHeight = null
     } = this.props;
     const { /*labelSmall,*/ textareaHeight, value } = this.state;
     const labelSmall = value && value.toString().length > 0;
-    let inlineStyle = { ...style } as any;
+    let inlineStyle = { ...style, maxHeight: maxHeight || null } as any;
     if (textareaHeight) {
       inlineStyle = {
         ...inlineStyle,
-        height: textareaHeight
+        height: `${textareaHeight}px`,
       };
     }
 

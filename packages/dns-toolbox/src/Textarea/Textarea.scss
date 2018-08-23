@@ -12,6 +12,8 @@
     display: block;
     width: 100%;
     border: none;
+    transition: height .225s $cubic-bezier;
+    line-height: inherit;
     //border-bottom: 1px solid #757575;
 
     &:focus {

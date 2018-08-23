@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Textarea.css';
+import './Textarea.scss';
 export interface TextareaProps {
     classNames?: any;
     disabled?: boolean;
@@ -13,6 +13,8 @@ export interface TextareaProps {
     style?: any;
     autoFocus?: boolean;
     autoExpand?: boolean;
+    maxHeight?: number;
+    disableResize?: boolean;
     onBlur?: (event: any) => void;
     onFocus?: (event: any) => void;
     onClick?: (event: any) => void;
@@ -21,6 +23,8 @@ export interface TextareaProps {
 }
 export interface TextareaState {
     value: number | string;
+    initialRowHeight: number | null;
+    initialRows: number;
     labelSmall: boolean;
     textareaHeight: number | null;
 }
