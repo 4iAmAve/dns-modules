@@ -15,6 +15,8 @@ export interface TextareaProps {
   style?: any;
   autoFocus?: boolean;
   autoExpand?: boolean;
+  maxHeight?: number;
+  disableResize?: boolean;
   onBlur?: (event: any) => void;
   onFocus?: (event: any) => void;
   onClick?: (event: any) => void;
@@ -98,6 +100,7 @@ export class Textarea extends React.Component<TextareaProps, TextareaState> {
       label,
       required = false,
       disabled = false,
+      disableResize = false,
       error = null,
       extraProps = {},
       style = {},
@@ -115,11 +118,8 @@ export class Textarea extends React.Component<TextareaProps, TextareaState> {
 
     return (
       <div
-        className={`
-          input-group
-          ${classNames ? classNames : ''}
-          ${disabled ? 'input--disabled' : ''}
-          ${error ? 'input--error' : ''}
+        className={`ta ${classNames ? classNames : ''} ${disabled ? 'ta--disabled' : ''}
+          ${disableResize ? 'ta--resize-disabled' : ''} ${error ? 'ta--error' : ''}
         `}
       >
         <textarea
@@ -138,13 +138,13 @@ export class Textarea extends React.Component<TextareaProps, TextareaState> {
           style={inlineStyle}
           ref={this.handleTextareaRef}
         />
-        <span className="input_bar--default" />
-        <span className="input_bar" />
-        <label className={`${labelSmall ? 'input_label--small' : ''}`}>
+        <span className="ta_bar--default" />
+        <span className="ta_bar" />
+        <label className={`${labelSmall ? 'ta_label--small' : ''}`}>
           {label}
-          {required ? <span className="input_required">*</span> : null}
+          {required ? <span className="ta_required">*</span> : null}
         </label>
-        {error ? <div className="input_error">{error}</div> : null}
+        {error ? <div className="ta_error">{error}</div> : null}
       </div>
     );
   }
