@@ -1,177 +1,356 @@
 import * as React from 'react';
+import { validURL } from '@dns/utils';
 
-import './Textarea.scss';
+import { TableColumn } from '../definitions';
+import { Checkbox } from '../Checkbox/Checkbox';
+import { IconButton } from '../IconButton/IconButton';
+import { Chip } from '../Chip/Chip';
 
-export interface TextareaProps {
+import './Table.css';
+
+export interface TableProps {
+  columns: TableColumn[];
+  data: any;
   classNames?: any;
-  disabled?: boolean;
-  error?: string | null;
-  label: string;
-  name?: string;
-  required?: boolean;
-  rows?: number;
-  value?: string | number;
-  extraProps?: any;
-  style?: any;
-  autoFocus?: boolean;
-  autoExpand?: boolean;
-  maxHeight?: number;
-  disableResize?: boolean;
-  onBlur?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onClick?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
-  onChange?: (event: any) => void;
+  emptyLabel?: string;
+  detailContent?: any;
+  operationsClass?: any;
+  selectedRow?: number;
+  renderSubPanel?: any;
+  stickyHeader?: boolean;
+  withoutHeader?: boolean;
+  onRowClick?: (data: any, key: number) => void;
 }
 
-export interface TextareaState {
-  value: number | string;
-  initialRowHeight: number | null;
-  initialRows: number;
-  labelSmall: boolean;
-  textareaHeight: number | null;
+export interface TableState {
 }
 
-export class Textarea extends React.Component<TextareaProps, TextareaState> {
-  private textarea: HTMLElement;
+export class Table extends React.Component<TableProps, TableState> {
+  public static defaultProps: Partial<TableProps> = {
+    columns: [],
+    data: [],
+    emptyLabel: 'no data available',
+    selectedRow: -1,
+    stickyHeader: true,
+    withoutHeader: false
+  };
 
-  public constructor(props: TextareaProps) {
-    super(props);
+  private table: HTMLElement;
 
-    this.state = {
-      value: props.value || '',
-      labelSmall: !!props.value,
-      initialRowHeight: null,
-      initialRows: props.rows || 1,
-      textareaHeight: null
-    };
+  public buildOperations = (operations: any, data: any, rowKey?: number) => {
+    const elements = [] as any;
+
+    if (operations) {
+      operations.map((operation: any, id: number) => (
+        elements.push(
+          <IconButton
+            key={id}
+            icon={operation.icon}
+            color={operation.type}
+            type="simple"
+            classNames={operation.classNames}
+            onClick={() => operation.action(data, rowKey)}
+          />
+        )
+      ));
+    }
+    return elements;
   }
 
-  public componentDidUpdate(prevProps: TextareaProps) {
-    if (prevProps.value !== this.props.value) {
-      const value = this.props.value || '';
-      this.setState({ value });
-
-      if (value.toString().length > 0) {
-        this.setState({ labelSmall: true });
-      }
-    }
-  }
-
-  public componentDidMount() {
-    if (this.textarea) {
-      const paddingOffset = 16;
-      const scrollHeight = this.textarea.scrollHeight - paddingOffset;
-      const rows = parseInt(this.textarea.getAttribute('rows') || '1', 10);
-
-      this.setState(
-        { initialRowHeight: scrollHeight / rows },
-        () => {
-          if (this.props.autoFocus) {
-            this.textarea.focus();
-          }
-        }
-      );
-    }
-  }
-
-  public onChange = (e: any) => {
-    const { autoExpand } = this.props;
-    const { initialRowHeight, initialRows } = this.state;
-
-    let taRows = e.target.value.split('\n').length;
-    if (initialRows > taRows) {
-      taRows = initialRows;
-    }
-
-    let height = this.state.textareaHeight;
-    if (autoExpand && initialRowHeight) {
-      height = taRows * initialRowHeight;
-    }
-
-    this.setState({
-      value: e.target.value,
-      textareaHeight: height
-    });
-  }
-
-  public handleFocus = (e: any) => {
-    if (!this.state.labelSmall) {
-      this.setState({ labelSmall: true });
-    }
-    if (this.props.onFocus) {
-      this.props.onFocus(e);
-    }
-  }
-
-  public handleBlur = (e: any) => {
-    const { labelSmall, value } = this.state;
-    if (labelSmall && value.toString().length <= 0 ) {
-      this.setState({ labelSmall: false });
-    }
-    if (this.props.onBlur) {
-      this.props.onBlur(e);
-    }
-  }
-
-  public handleTextareaRef = ref => this.textarea = ref;
-
-  public render() {
+  public renderHeader = (column: TableColumn, key: number) => {
     const {
       classNames,
-      onKeyUp,
-      onClick,
-      onChange,
-      rows = 2,
+      // definition,
       label,
-      required = false,
-      disabled = false,
-      disableResize = false,
-      error = null,
-      extraProps = {},
-      style = {},
-      name,
-      maxHeight = null
-    } = this.props;
-    const { /*labelSmall,*/ textareaHeight, value } = this.state;
-    const labelSmall = value && value.toString().length > 0;
-    let inlineStyle = { ...style, maxHeight: maxHeight || null } as any;
-    if (textareaHeight) {
-      inlineStyle = {
-        ...inlineStyle,
-        height: `${textareaHeight}px`,
-      };
+      /*action, */
+      // render,
+      small,
+      type,
+      withHeaderOperation
+    } = column;
+    const { operationsClass } = this.props;
+    let node = null as any;
+
+    switch (type) {
+      case 'select':
+        return (
+          <div
+            className={`
+                column_select
+                ${classNames ? classNames : ''}
+              `}
+            key={key}
+          >
+            <Checkbox onChange={() => console.log('eeeeee')} id="all" />
+          </div>
+        );
+      case 'expand':
+        return (
+          <div
+            className={`
+                column_toggle
+                ${classNames ? classNames : ''}
+              `}
+            key={key}
+          >
+            {label}
+          </div>
+        );
+      case 'operations':
+        node = this.buildOperations(withHeaderOperation, 'header-operation');
+        return (
+          <div
+            key={`operations-${key}`}
+            className={`
+                column_operation
+                ${operationsClass ? operationsClass : ''}
+                ${classNames ? classNames : ''}
+              `}
+          >
+            {node}
+          </div>
+        );
+      default:
+        node = this.buildOperations(withHeaderOperation, 'header-operation');
+        return (
+          <div
+            key={key}
+            className={`
+              ${small ? 'column--small' : ''}
+              ${classNames ? classNames : ''}
+            `}
+          >
+            {label}{node}
+          </div>
+        );
     }
+  }
+
+  public handleRowClick = (data: any, key: number) => {
+    const { onRowClick } = this.props;
+
+    if (onRowClick) {
+      onRowClick(data, key);
+    }
+  }
+
+  public handleColumnClick = (column: TableColumn, data: any, key: number, checked?: boolean) => {
+    const { onClick } = column;
+
+    if (onClick) {
+      onClick(data, key, checked);
+    }
+  }
+
+  public renderRow = (data: any, rowKey: number) => {
+    const { columns, operationsClass, renderSubPanel, selectedRow } = this.props;
+
+    const element = [] as any;
+
+    Object.keys(columns).forEach((key: any) => {
+      const column = columns[key] as TableColumn;
+      switch (column.type) {
+        case 'select':
+          element.push(
+            <div
+              className={`
+                column_select
+                ${column.classNames ? column.classNames : ''}
+              `}
+              key={`select-${key}`}
+            >
+              <Checkbox
+                onChange={(e: any, checked: boolean) => this.handleColumnClick(column, data, rowKey, checked)}
+                id="single"
+              />
+            </div>
+          );
+          break;
+        case 'expand':
+          element.push(
+            <div
+              className={`
+                column_toggle
+                ${column.classNames ? column.classNames : ''}
+              `}
+              key={`expand-${key}`}
+              onClick={() => this.handleColumnClick(column, data, rowKey)}
+            >
+              <i className={`material-icons`}>keyboard_arrow_down</i>
+            </div>
+          );
+          break;
+        case 'operations':
+          let operations = this.buildOperations(column.operations, data, rowKey);
+          element.push(
+            <div
+              key={`operations-${key}`}
+              className={`
+                column_operation
+                ${operationsClass ? operationsClass : ''}
+                ${column.classNames ? column.classNames : ''}
+              `}
+            >
+              {operations}
+            </div>
+          );
+          break;
+        case 'render':
+          const render = column.render(data, rowKey);
+          element.push(render);
+          break;
+        case 'chip':
+          const chip = (
+            <div
+              key={`default-${key}`}
+              className={`
+                  column-chip
+                  ${column.small ? 'column--small' : ''}
+                  ${column.classNames ? column.classNames : ''}
+                `}
+            >
+              <Chip
+                title={data[column.definition]}
+                id={`${rowKey}-${key}`}
+                deletable={false}
+                fullWidth={column.fullWidth}
+                selectable={column.selectable}
+                onClick={() => this.handleColumnClick(column, data, rowKey)}
+              />
+            </div>
+          );
+          element.push(chip);
+          break;
+        case 'date':
+          let date = data[column.definition];
+          date = column.formater(date);
+          element.push(
+            <div
+              key={`default-${key}`}
+              className={`
+                  ${column.small ? 'column--small' : ''}
+                  ${column.classNames ? column.classNames : ''}
+                `}
+              onClick={() => this.handleColumnClick(column, data, rowKey)}
+            >
+              {date}
+            </div>
+          );
+          break;
+        case 'link':
+          let value = data[column.definition];
+          let elem: any = 'invalid link';
+          if (validURL(value)) {
+            elem = <a href={value} target="_blank">Link</a>;
+          }
+          element.push(
+            <div
+              key={`default-${key}`}
+              className={`
+                ${column.small ? 'column--small' : ''}
+                ${column.classNames ? column.classNames : ''}
+              `}
+            >
+              {elem}
+            </div>
+          );
+          break;
+        default:
+          let content = data[column.definition];
+          if (column.validate) {
+            if (data[column.definition]) {
+              content = column.validate[0];
+            } else {
+              content = column.validate[1];
+            }
+          }
+
+          let domElement = null as any;
+          domElement = (
+            <div
+              key={`default-${key}`}
+              className={`
+                ${column.small ? 'column--small' : ''}
+                ${column.classNames ? column.classNames : ''}
+              `}
+              onClick={() => this.handleColumnClick(column, data, rowKey)}
+            >
+              {content}
+            </div>
+          );
+
+          element.push(domElement);
+          break;
+      }
+    });
 
     return (
+      <React.Fragment key={`t_fragment-${rowKey}`}>
+        <div
+          className={`
+            table_content
+            ${selectedRow === rowKey ? 'table_selected-row' : ''}
+          `}
+          onClick={() => this.handleRowClick(data, rowKey)}
+        >
+          {element}
+        </div>
+        {
+          renderSubPanel ?
+            <div
+              className={`table_row_sub-panel ${selectedRow === rowKey ? 'table_selected-row' : ''}`}
+            >
+              {renderSubPanel(data, rowKey)}
+            </div> : null
+        }
+      </React.Fragment>
+    );
+  }
+
+  handleRef = ref => this.table = ref;
+
+  public render() {
+    const { classNames, columns, data, detailContent, emptyLabel, stickyHeader, withoutHeader } = this.props;
+    return (
       <div
-        className={`ta ${classNames ? classNames : ''} ${disabled ? 'ta--disabled' : ''}
-          ${disableResize ? 'ta--resize-disabled' : ''} ${error ? 'ta--error' : ''}
+        className={`
+          table_container
+          ${classNames ? classNames : ''}
         `}
+        ref={this.handleRef}
       >
-        <textarea
-          {...extraProps}
-          required={required}
-          value={value}
-          rows={rows}
-          name={name ? name : label}
-          onKeyUp={onKeyUp}
-          onClick={onClick}
-          onChange={onChange ? onChange : this.onChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          disabled={disabled}
-          tabIndex={disabled ? -1 : 1}
-          style={inlineStyle}
-          ref={this.handleTextareaRef}
-        />
-        <span className="ta_bar--default" />
-        <span className="ta_bar" />
-        <label className={`${labelSmall ? 'ta_label--small' : ''}`}>
-          {label}
-          {required ? <span className="ta_required">*</span> : null}
-        </label>
-        {error ? <div className="ta_error">{error}</div> : null}
+        <div
+          className={`table ${detailContent ? 'table--with-detail-content' : ''}
+            ${stickyHeader ? 'table--with-sticky-header' : ''} ${withoutHeader ? 'table--without-header' : ''}
+          `}
+        >
+          {
+            withoutHeader ?
+              null :
+              <div className="table_header">
+                {columns.map((column: TableColumn, key: number) => (
+                  this.renderHeader(column, key)
+                ))}
+              </div>
+          }
+          <div className="table_content-wrapper">
+            {
+              data && data.length ?
+                data.map((rowData: any, key: number) => (
+                  this.renderRow(rowData, key)
+                )) :
+                <div className="table--empty">
+                  {emptyLabel}
+                </div>
+            }
+          </div>
+        </div>
+        {
+          detailContent ?
+            <div className="table_detail-content">
+              {detailContent}
+            </div> : null
+        }
       </div>
     );
   }

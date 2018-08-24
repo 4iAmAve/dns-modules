@@ -24,6 +24,26 @@
       width: 50%;
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     }
+
+    &--with-sticky-header {
+      overflow-y: hidden;
+
+      .table_content-wrapper {
+        max-height: calc(100% - 56px);
+        overflow: hidden;
+        overflow-y: auto;
+      }
+    }
+
+    &--without-header {
+      overflow-y: hidden;
+
+      .table_content-wrapper {
+        max-height: 100%;
+        overflow: hidden;
+        overflow-y: auto;
+      }
+    }
   }
 
   .table_detail-content {

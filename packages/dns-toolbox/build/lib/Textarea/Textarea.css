@@ -1,0 +1,100 @@
+.ta {
+  position: relative;
+  margin: 16px;
+  margin-top: 20px;
+  flex: 1; }
+  .ta textarea {
+    font-size: 1em;
+    padding: 8px 8px 8px 0;
+    display: block;
+    width: 100%;
+    border: none;
+    transition: height 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    line-height: inherit; }
+    .ta textarea:focus {
+      outline: none; }
+    .ta textarea:focus ~ .ta_bar:before,
+    .ta textarea:focus ~ .ta_bar:after {
+      width: 50%; }
+    .ta textarea:required {
+      box-shadow: none; }
+  .ta label {
+    color: #999;
+    font-size: 1em;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: top 0.225s cubic-bezier(0.35, 0, 0.25, 1), font-size 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%; }
+    .ta label.ta_label--small {
+      top: -10px;
+      font-size: .75em;
+      color: rgba(0, 0, 0, 0.54); }
+  .ta .ta_bar {
+    position: relative;
+    display: block;
+    width: 100%; }
+    .ta .ta_bar:before, .ta .ta_bar:after {
+      content: '';
+      height: 1px;
+      width: 0;
+      bottom: 1px;
+      position: absolute;
+      background: #0b1f52;
+      transition: left 0.225s ease-in-out, right .225s ease-in-out; }
+    .ta .ta_bar:before {
+      left: 50%; }
+    .ta .ta_bar:after {
+      right: 50%; }
+  .ta .ta_bar--default {
+    position: relative;
+    display: block;
+    width: 100%; }
+    .ta .ta_bar--default:before, .ta .ta_bar--default:after {
+      content: '';
+      height: 1px;
+      bottom: 1px;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.54);
+      transition: left 0.225s ease-in-out, right .225s ease-in-out;
+      width: 50%; }
+    .ta .ta_bar--default:before {
+      left: 50%; }
+    .ta .ta_bar--default:after {
+      right: 50%; }
+  .ta.ta--disabled .ta_bar--default {
+    display: none; }
+  .ta.ta--disabled textarea {
+    resize: none; }
+  .ta.ta--resize-disabled textarea {
+    resize: none; }
+  .ta .ta_error {
+    color: #f44336;
+    font-size: .75em;
+    position: absolute;
+    bottom: -16px;
+    animation: showError 0.225s cubic-bezier(0.35, 0, 0.25, 1); }
+  .ta.ta--error label {
+    color: #f44336; }
+  .ta.ta--error .ta_bar:before, .ta.ta--error .ta_bar:after {
+    background: #f44336; }
+  .ta.ta--error .ta_bar--default:before, .ta.ta--error .ta_bar--default:after {
+    background: #f44336; }
+  .ta .ta_required {
+    padding-left: 4px;
+    color: #f44336; }
+
+@keyframes showError {
+  0% {
+    bottom: 0;
+    opacity: 0;
+    z-index: -1; }
+  100% {
+    bottom: -16px;
+    opacity: 1;
+    z-index: 1; } }
