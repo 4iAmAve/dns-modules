@@ -105,7 +105,12 @@ export class Slider extends React.Component<SliderProps, SliderState> {
   }
 
   public handleStart = e => {
-    const { onChangeStart } = this.props;
+    const { disabled, onChangeStart } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     document.addEventListener('mousemove', this.handleDrag);
     document.addEventListener('mouseup', this.handleEnd);
     this.setState(
@@ -122,7 +127,12 @@ export class Slider extends React.Component<SliderProps, SliderState> {
 
   public handleDrag = (e: any) => {
     e.stopPropagation();
-    const { onChange } = this.props;
+    const { disabled, onChange } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     const { target: { className } } = e;
     if (className === 'rangeslider__labels') {
       return;
@@ -138,7 +148,12 @@ export class Slider extends React.Component<SliderProps, SliderState> {
   }
 
   public handleEnd = (e: any) => {
-    const { onChangeEnd } = this.props;
+    const { disabled, onChangeEnd } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     this.setState(
       {
         active: false
@@ -155,6 +170,12 @@ export class Slider extends React.Component<SliderProps, SliderState> {
 
   public handleKeyDown = (e: any) => {
     e.preventDefault();
+    const { disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     const { keyCode } = e;
     const { value, min = 0, max = 100, step = 1, onChange } = this.props;
     let sliderValue;

@@ -4,7 +4,7 @@ export interface CheckboxProps {
     id: number | string;
     onChange: (id: number | string, checked: boolean) => void;
     checked?: boolean;
-    isDisabled?: boolean;
+    disabled?: boolean;
     classNames?: any;
     labelBefore?: string | number;
     labelAfter?: string | number;

@@ -4,7 +4,6 @@ export interface ChipsProps {
     chips: ChipDefinition[];
     onDeleteChip: (chip: any, key: number) => void;
     classNames?: any;
-    deletable?: boolean;
 }
 export interface ChipsState {
 }

@@ -14,12 +14,6 @@
   padding-left: 0;
   margin: $spacing;
 
-  &--disabled {
-    pointer-events: none;
-    opacity: .7;
-    border-bottom: 0;
-  }
-
   label {
     color: #999;
     font-size: 1em;
@@ -59,6 +53,16 @@
       //margin: 2.5px;
       margin: 0;
       font-size: 1em;
+    }
+  }
+
+  &--disabled {
+    //pointer-events: none;
+    opacity: .7;
+    border-bottom: 0;
+
+    input {
+      pointer-events: none;
     }
   }
 

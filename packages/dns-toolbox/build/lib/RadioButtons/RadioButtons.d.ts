@@ -5,6 +5,7 @@ export interface RadioButtonsProps {
     buttons: RadioButton[];
     onClick: (key: number, button: RadioButton) => void;
     selected: number;
+    disabled?: boolean;
 }
 export interface RadioButtonsState {
     selectedButton: number;

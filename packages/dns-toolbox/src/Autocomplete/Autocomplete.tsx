@@ -276,7 +276,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
           />
         </div>
         {
-          autocompleteVisible ?
+          autocompleteVisible && !disabled ?
             <div className="auto-complete-container" style={autocompleteInlineStyle}>
               <ul>
                 {

@@ -9,6 +9,7 @@ var modules_1 = require("./modules");
 exports.ConfirmDialogue = modules_1.ConfirmDialogue;
 exports.Dialogue = modules_1.Dialogue;
 exports.Drawer = modules_1.Drawer;
+exports.Filter = modules_1.Filter;
 exports.NotificationBar = modules_1.NotificationBar;
 exports.Overlay = modules_1.Overlay;
 exports.Paginator = modules_1.Paginator;

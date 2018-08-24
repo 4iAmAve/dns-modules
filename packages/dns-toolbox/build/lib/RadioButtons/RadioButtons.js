@@ -17,6 +17,10 @@ var RadioButtons = /** @class */ (function (_super) {
     function RadioButtons(props) {
         var _this = _super.call(this, props) || this;
         _this.onClick = function (key, button) {
+            var disabled = _this.props.disabled;
+            if (disabled) {
+                return;
+            }
             _this.setState({
                 selectedButton: key,
             });

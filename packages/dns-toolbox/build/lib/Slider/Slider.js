@@ -55,7 +55,10 @@ var Slider = /** @class */ (function (_super) {
             });
         };
         _this.handleStart = function (e) {
-            var onChangeStart = _this.props.onChangeStart;
+            var _a = _this.props, disabled = _a.disabled, onChangeStart = _a.onChangeStart;
+            if (disabled) {
+                return;
+            }
             document.addEventListener('mousemove', _this.handleDrag);
             document.addEventListener('mouseup', _this.handleEnd);
             _this.setState({
@@ -68,7 +71,10 @@ var Slider = /** @class */ (function (_super) {
         };
         _this.handleDrag = function (e) {
             e.stopPropagation();
-            var onChange = _this.props.onChange;
+            var _a = _this.props, disabled = _a.disabled, onChange = _a.onChange;
+            if (disabled) {
+                return;
+            }
             var className = e.target.className;
             if (className === 'rangeslider__labels') {
                 return;
@@ -80,7 +86,10 @@ var Slider = /** @class */ (function (_super) {
             }
         };
         _this.handleEnd = function (e) {
-            var onChangeEnd = _this.props.onChangeEnd;
+            var _a = _this.props, disabled = _a.disabled, onChangeEnd = _a.onChangeEnd;
+            if (disabled) {
+                return;
+            }
             _this.setState({
                 active: false
             }, function () {
@@ -93,6 +102,10 @@ var Slider = /** @class */ (function (_super) {
         };
         _this.handleKeyDown = function (e) {
             e.preventDefault();
+            var disabled = _this.props.disabled;
+            if (disabled) {
+                return;
+            }
             var keyCode = e.keyCode;
             var _a = _this.props, value = _a.value, _b = _a.min, min = _b === void 0 ? 0 : _b, _c = _a.max, max = _c === void 0 ? 100 : _c, _d = _a.step, step = _d === void 0 ? 1 : _d, onChange = _a.onChange;
             var sliderValue;

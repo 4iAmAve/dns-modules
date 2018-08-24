@@ -33,8 +33,8 @@ var Checkbox = /** @class */ (function (_super) {
     };
     Checkbox.prototype.render = function () {
         var _this = this;
-        var _a = this.props, classNames = _a.classNames, labelBefore = _a.labelBefore, labelAfter = _a.labelAfter, isDisabled = _a.isDisabled;
-        return (React.createElement("div", { className: "\n          " + (classNames ? classNames : '') + " checkbox\n          " + (isDisabled ? 'checkbox--disabled' : '') + "\n        ", onClick: function () { return _this.toggleChecked(); } },
+        var _a = this.props, classNames = _a.classNames, labelBefore = _a.labelBefore, labelAfter = _a.labelAfter, disabled = _a.disabled;
+        return (React.createElement("div", { className: "\n          " + (classNames ? classNames : '') + " checkbox\n          " + (disabled ? 'checkbox--disabled' : '') + "\n        ", onClick: function () { return _this.toggleChecked(); } },
             labelBefore ? labelBefore : null,
             React.createElement("input", { type: "checkbox", checked: this.state.checked, onChange: function () { return null; } }),
             labelAfter ? labelAfter : null));

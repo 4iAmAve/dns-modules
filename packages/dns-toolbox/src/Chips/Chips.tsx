@@ -8,7 +8,6 @@ export interface ChipsProps {
   chips: ChipDefinition[];
   onDeleteChip: (chip: any, key: number) => void;
   classNames?: any;
-  deletable?: boolean;
 }
 
 export interface ChipsState {
@@ -17,7 +16,6 @@ export interface ChipsState {
 export class Chips extends React.Component<ChipsProps, ChipsState> {
   public static defaultProps: Partial<ChipsProps> = {
     chips: [],
-    deletable: true,
   };
 
   public deleteChip = (chip: ChipDefinition, key: number) => {
@@ -25,12 +23,12 @@ export class Chips extends React.Component<ChipsProps, ChipsState> {
   }
 
   public renderChip = (chip: ChipDefinition, key: number) => {
-    const { deletable, classNames } = this.props;
+    const { classNames } = this.props;
     const onClick = chip.onClick || noop;
     return (
       <Chip
         classNames={classNames}
-        deletable={deletable}
+        deletable={chip.deletable}
         id={key}
         image={chip.image ? chip.image : null}
         key={key}

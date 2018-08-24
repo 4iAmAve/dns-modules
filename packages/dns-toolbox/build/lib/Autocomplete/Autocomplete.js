@@ -197,7 +197,7 @@ var Autocomplete = /** @class */ (function (_super) {
                 required ? React.createElement("span", { className: "input_required" }, "*") : null),
             React.createElement("div", { className: "auto-complete-input_wrapper" },
                 React.createElement("input", { type: "text", className: "auto-complete-input", onFocus: this.handleInputFocus, onChange: this.handleChange, onKeyUp: this.handleKeyUp, onBlur: this.handleBlur, ref: this.handleInputRef, tabIndex: disabled ? -1 : 1, value: value })),
-            autocompleteVisible ?
+            autocompleteVisible && !disabled ?
                 React.createElement("div", { className: "auto-complete-container", style: autocompleteInlineStyle },
                     React.createElement("ul", null, selectionList.map(function (selection, key) { return (React.createElement("li", { key: key, className: "" + (selectedItem === key ? 'acc_item--selected' : ''), onClick: function () { return _this.handleAutocompleteSelection(key, selection); }, onKeyUp: function (e) { return _this.handleSelectionKeyUp(e); } }, selection.title)); }))) : null));
     };

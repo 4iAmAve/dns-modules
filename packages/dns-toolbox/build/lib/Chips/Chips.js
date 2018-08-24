@@ -21,9 +21,9 @@ var Chips = /** @class */ (function (_super) {
             _this.props.onDeleteChip(chip, key);
         };
         _this.renderChip = function (chip, key) {
-            var _a = _this.props, deletable = _a.deletable, classNames = _a.classNames;
+            var classNames = _this.props.classNames;
             var onClick = chip.onClick || utils_1.noop;
-            return (React.createElement(Chip_1.Chip, { classNames: classNames, deletable: deletable, id: key, image: chip.image ? chip.image : null, key: key, payload: chip.payload, selectable: chip.selectable, title: chip.title, onClick: onClick, onDelete: function () { return _this.deleteChip(chip, key); } }));
+            return (React.createElement(Chip_1.Chip, { classNames: classNames, deletable: chip.deletable, id: key, image: chip.image ? chip.image : null, key: key, payload: chip.payload, selectable: chip.selectable, title: chip.title, onClick: onClick, onDelete: function () { return _this.deleteChip(chip, key); } }));
         };
         return _this;
     }
@@ -34,7 +34,6 @@ var Chips = /** @class */ (function (_super) {
     };
     Chips.defaultProps = {
         chips: [],
-        deletable: true,
     };
     return Chips;
 }(React.Component));

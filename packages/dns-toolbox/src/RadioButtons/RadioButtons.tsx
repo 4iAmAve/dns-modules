@@ -8,6 +8,7 @@ export interface RadioButtonsProps {
   buttons: RadioButton[];
   onClick: (key: number, button: RadioButton) => void;
   selected: number;
+  disabled?: boolean;
 }
 
 export interface RadioButtonsState {
@@ -32,6 +33,12 @@ export class RadioButtons extends React.Component<RadioButtonsProps, RadioButton
   }
 
   public onClick = (key: number, button: RadioButton) => {
+    const { disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     this.setState({
       selectedButton: key,
     });
