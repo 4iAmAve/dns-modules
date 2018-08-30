@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  dns_node_ts_mock_server:
+    build: .
+    ports:
+      - "1337:1337" #specify ports forwarding
+#    network_mode: bridge
+    networks:
+      - back
+    links:
+      - database
+
+  database:
+    image: mongo
+    networks:
+      - back
+    ports:
+      - "27017:27017" # specify port forwarding
+
+networks:
+  front:
+    # use the bridge driver, but enable IPv6
+    driver: bridge
+    driver_opts:
+        com.docker.network.enable_ipv6: "true"
+  back:
+    driver: bridge

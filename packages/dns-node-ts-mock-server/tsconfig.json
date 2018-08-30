@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "src/types/*"
+      ]
+    },
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "app",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "keyofStringsOnly": true
+  },
+  "include": [
+    "app/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
