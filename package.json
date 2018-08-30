@@ -12,6 +12,7 @@
     "build": "lerna run build --stream",
     "build:fe": "lerna run build --scope frontend --stream",
     "build:dns:api": "lerna run build-lib --scope @dns/api --stream",
+    "build:dns:ms": "lerna run build --scope @dns/node-ts-mock-server --stream",
     "build:dns:rj": "lerna run build-lib --scope @dns/renderJSON --stream",
     "build:dns:rx": "lerna run build-lib --scope @dns/render-xml --stream",
     "build:dns:sc": "lerna run build-lib --scope @dns/store-configuration --stream",
