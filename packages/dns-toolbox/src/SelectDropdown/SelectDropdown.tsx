@@ -315,16 +315,16 @@ export class SelectDropdown extends React.Component<SelectDropdownProps, SelectD
                 {resetLabel}
               </li>
             }
-            {
-              optionsList && optionsList.length ?
-                <div className="select-dd_list_scrollable" ref={this.handleScrollViewRef}>
-                  {optionsList.map((option: any, key: number) => {
+            <div className="select-dd_list_scrollable" ref={this.handleScrollViewRef}>
+              {
+                optionsList && optionsList.length ?
+                  optionsList.map((option: any, key: number) => {
                     return (
                       <li
                         key={'dns-dd-select_' + option.key}
                         className={`
-                            select-dd_list-item ${option.key === isSelected ? 'select-dd_list-item--active' : ''}
-                          `}
+                              select-dd_list-item ${option.key === isSelected ? 'select-dd_list-item--active' : ''}
+                            `}
                         value={key}
                         onMouseDown={() => this.handleOptionClick(key, option)}
                         onClick={() => this.handleOptionClick(key, option)}
@@ -333,9 +333,9 @@ export class SelectDropdown extends React.Component<SelectDropdownProps, SelectD
                         {option.label}
                       </li>
                     );
-                  })}
-                </div> : null
-            }
+                  }) : null
+              }
+            </div>
           </ul>
         }
       </div>
