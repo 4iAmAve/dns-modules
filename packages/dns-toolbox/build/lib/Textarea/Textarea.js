@@ -9,147 +9,103 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var utils_1 = require("@dns/utils");
-var Checkbox_1 = require("../Checkbox/Checkbox");
-var IconButton_1 = require("../IconButton/IconButton");
-var Chip_1 = require("../Chip/Chip");
-require("./Table.css");
-var Table = /** @class */ (function (_super) {
-    __extends(Table, _super);
-    function Table() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.buildOperations = function (operations, data, rowKey) {
-            var elements = [];
-            if (operations) {
-                operations.map(function (operation, id) { return (elements.push(React.createElement(IconButton_1.IconButton, { key: id, icon: operation.icon, color: operation.type, type: "simple", classNames: operation.classNames, onClick: function () { return operation.action(data, rowKey); } }))); });
+require("./Textarea.css");
+var Textarea = /** @class */ (function (_super) {
+    __extends(Textarea, _super);
+    function Textarea(props) {
+        var _this = _super.call(this, props) || this;
+        _this.onChange = function (e) {
+            var autoExpand = _this.props.autoExpand;
+            var _a = _this.state, initialRowHeight = _a.initialRowHeight, initialRows = _a.initialRows;
+            var taRows = e.target.value.split('\n').length;
+            if (initialRows > taRows) {
+                taRows = initialRows;
             }
-            return elements;
-        };
-        _this.renderHeader = function (column, key) {
-            var classNames = column.classNames, 
-            // definition,
-            label = column.label, 
-            /*action, */
-            // render,
-            small = column.small, type = column.type, withHeaderOperation = column.withHeaderOperation;
-            var operationsClass = _this.props.operationsClass;
-            var node = null;
-            switch (type) {
-                case 'select':
-                    return (React.createElement("div", { className: "\n                column_select\n                " + (classNames ? classNames : '') + "\n              ", key: key },
-                        React.createElement(Checkbox_1.Checkbox, { onChange: function () { return console.log('eeeeee'); }, id: "all" })));
-                case 'expand':
-                    return (React.createElement("div", { className: "\n                column_toggle\n                " + (classNames ? classNames : '') + "\n              ", key: key }, label));
-                case 'operations':
-                    node = _this.buildOperations(withHeaderOperation, 'header-operation');
-                    return (React.createElement("div", { key: "operations-" + key, className: "\n                column_operation\n                " + (operationsClass ? operationsClass : '') + "\n                " + (classNames ? classNames : '') + "\n              " }, node));
-                default:
-                    node = _this.buildOperations(withHeaderOperation, 'header-operation');
-                    return (React.createElement("div", { key: key, className: "\n              " + (small ? 'column--small' : '') + "\n              " + (classNames ? classNames : '') + "\n            " },
-                        label,
-                        node));
+            var height = _this.state.textareaHeight;
+            if (autoExpand && initialRowHeight) {
+                height = taRows * initialRowHeight;
             }
-        };
-        _this.handleRowClick = function (data, key) {
-            var onRowClick = _this.props.onRowClick;
-            if (onRowClick) {
-                onRowClick(data, key);
-            }
-        };
-        _this.handleColumnClick = function (column, data, key, checked) {
-            var onClick = column.onClick;
-            if (onClick) {
-                onClick(data, key, checked);
-            }
-        };
-        _this.renderRow = function (data, rowKey) {
-            var _a = _this.props, columns = _a.columns, operationsClass = _a.operationsClass, renderSubPanel = _a.renderSubPanel, selectedRow = _a.selectedRow;
-            var element = [];
-            Object.keys(columns).forEach(function (key) {
-                var column = columns[key];
-                switch (column.type) {
-                    case 'select':
-                        element.push(React.createElement("div", { className: "\n                column_select\n                " + (column.classNames ? column.classNames : '') + "\n              ", key: "select-" + key },
-                            React.createElement(Checkbox_1.Checkbox, { onChange: function (e, checked) { return _this.handleColumnClick(column, data, rowKey, checked); }, id: "single" })));
-                        break;
-                    case 'expand':
-                        element.push(React.createElement("div", { className: "\n                column_toggle\n                " + (column.classNames ? column.classNames : '') + "\n              ", key: "expand-" + key, onClick: function () { return _this.handleColumnClick(column, data, rowKey); } },
-                            React.createElement("i", { className: "material-icons" }, "keyboard_arrow_down")));
-                        break;
-                    case 'operations':
-                        var operations = _this.buildOperations(column.operations, data, rowKey);
-                        element.push(React.createElement("div", { key: "operations-" + key, className: "\n                column_operation\n                " + (operationsClass ? operationsClass : '') + "\n                " + (column.classNames ? column.classNames : '') + "\n              " }, operations));
-                        break;
-                    case 'render':
-                        var render = column.render(data, rowKey);
-                        element.push(render);
-                        break;
-                    case 'chip':
-                        var chip = (React.createElement("div", { key: "default-" + key, className: "\n                  column-chip\n                  " + (column.small ? 'column--small' : '') + "\n                  " + (column.classNames ? column.classNames : '') + "\n                " },
-                            React.createElement(Chip_1.Chip, { title: data[column.definition], id: rowKey + "-" + key, deletable: false, fullWidth: column.fullWidth, selectable: column.selectable, onClick: function () { return _this.handleColumnClick(column, data, rowKey); } })));
-                        element.push(chip);
-                        break;
-                    case 'date':
-                        var date = data[column.definition];
-                        date = column.formater(date);
-                        element.push(React.createElement("div", { key: "default-" + key, className: "\n                  " + (column.small ? 'column--small' : '') + "\n                  " + (column.classNames ? column.classNames : '') + "\n                ", onClick: function () { return _this.handleColumnClick(column, data, rowKey); } }, date));
-                        break;
-                    case 'link':
-                        var value = data[column.definition];
-                        var elem = 'invalid link';
-                        if (utils_1.validURL(value)) {
-                            elem = React.createElement("a", { href: value, target: "_blank" }, "Link");
-                        }
-                        element.push(React.createElement("div", { key: "default-" + key, className: "\n                " + (column.small ? 'column--small' : '') + "\n                " + (column.classNames ? column.classNames : '') + "\n              " }, elem));
-                        break;
-                    default:
-                        var content = data[column.definition];
-                        if (column.validate) {
-                            if (data[column.definition]) {
-                                content = column.validate[0];
-                            }
-                            else {
-                                content = column.validate[1];
-                            }
-                        }
-                        var domElement = null;
-                        domElement = (React.createElement("div", { key: "default-" + key, className: "\n                " + (column.small ? 'column--small' : '') + "\n                " + (column.classNames ? column.classNames : '') + "\n              ", onClick: function () { return _this.handleColumnClick(column, data, rowKey); } }, content));
-                        element.push(domElement);
-                        break;
-                }
+            _this.setState({
+                value: e.target.value,
+                textareaHeight: height
             });
-            return (React.createElement(React.Fragment, { key: "t_fragment-" + rowKey },
-                React.createElement("div", { className: "\n            table_content\n            " + (selectedRow === rowKey ? 'table_selected-row' : '') + "\n          ", onClick: function () { return _this.handleRowClick(data, rowKey); } }, element),
-                renderSubPanel ?
-                    React.createElement("div", { className: "table_row_sub-panel " + (selectedRow === rowKey ? 'table_selected-row' : '') }, renderSubPanel(data, rowKey)) : null));
         };
-        _this.handleRef = function (ref) { return _this.table = ref; };
+        _this.handleFocus = function (e) {
+            if (!_this.state.labelSmall) {
+                _this.setState({ labelSmall: true });
+            }
+            if (_this.props.onFocus) {
+                _this.props.onFocus(e);
+            }
+        };
+        _this.handleBlur = function (e) {
+            var _a = _this.state, labelSmall = _a.labelSmall, value = _a.value;
+            if (labelSmall && value.toString().length <= 0) {
+                _this.setState({ labelSmall: false });
+            }
+            if (_this.props.onBlur) {
+                _this.props.onBlur(e);
+            }
+        };
+        _this.handleTextareaRef = function (ref) { return _this.textarea = ref; };
+        _this.state = {
+            value: props.value || '',
+            labelSmall: !!props.value,
+            initialRowHeight: null,
+            initialRows: props.rows || 1,
+            textareaHeight: null
+        };
         return _this;
     }
-    Table.prototype.render = function () {
+    Textarea.prototype.componentDidUpdate = function (prevProps) {
+        if (prevProps.value !== this.props.value) {
+            var value = this.props.value || '';
+            this.setState({ value: value });
+            if (value.toString().length > 0) {
+                this.setState({ labelSmall: true });
+            }
+        }
+    };
+    Textarea.prototype.componentDidMount = function () {
         var _this = this;
-        var _a = this.props, classNames = _a.classNames, columns = _a.columns, data = _a.data, detailContent = _a.detailContent, emptyLabel = _a.emptyLabel, stickyHeader = _a.stickyHeader, withoutHeader = _a.withoutHeader;
-        return (React.createElement("div", { className: "\n          table_container\n          " + (classNames ? classNames : '') + "\n        ", ref: this.handleRef },
-            React.createElement("div", { className: "table " + (detailContent ? 'table--with-detail-content' : '') + "\n            " + (stickyHeader ? 'table--with-sticky-header' : '') + " " + (withoutHeader ? 'table--without-header' : '') + "\n          " },
-                withoutHeader ?
-                    null :
-                    React.createElement("div", { className: "table_header" }, columns.map(function (column, key) { return (_this.renderHeader(column, key)); })),
-                React.createElement("div", { className: "table_content-wrapper" }, data && data.length ?
-                    data.map(function (rowData, key) { return (_this.renderRow(rowData, key)); }) :
-                    React.createElement("div", { className: "table--empty" }, emptyLabel))),
-            detailContent ?
-                React.createElement("div", { className: "table_detail-content" }, detailContent) : null));
+        if (this.textarea) {
+            var paddingOffset = 16;
+            var scrollHeight = this.textarea.scrollHeight - paddingOffset;
+            var rows = parseInt(this.textarea.getAttribute('rows') || '1', 10);
+            this.setState({ initialRowHeight: scrollHeight / rows }, function () {
+                if (_this.props.autoFocus) {
+                    _this.textarea.focus();
+                }
+            });
+        }
     };
-    Table.defaultProps = {
-        columns: [],
-        data: [],
-        emptyLabel: 'no data available',
-        selectedRow: -1,
-        stickyHeader: true,
-        withoutHeader: false
+    Textarea.prototype.render = function () {
+        var _a = this.props, classNames = _a.classNames, onKeyUp = _a.onKeyUp, onClick = _a.onClick, onChange = _a.onChange, _b = _a.rows, rows = _b === void 0 ? 2 : _b, label = _a.label, _c = _a.required, required = _c === void 0 ? false : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.disableResize, disableResize = _e === void 0 ? false : _e, _f = _a.error, error = _f === void 0 ? null : _f, _g = _a.extraProps, extraProps = _g === void 0 ? {} : _g, _h = _a.style, style = _h === void 0 ? {} : _h, name = _a.name, _j = _a.maxHeight, maxHeight = _j === void 0 ? null : _j;
+        var _k = this.state, /*labelSmall,*/ textareaHeight = _k.textareaHeight, value = _k.value;
+        var labelSmall = value && value.toString().length > 0;
+        var inlineStyle = __assign({}, style, { maxHeight: maxHeight || null });
+        if (textareaHeight) {
+            inlineStyle = __assign({}, inlineStyle, { height: textareaHeight + "px" });
+        }
+        return (React.createElement("div", { className: "ta " + (classNames ? classNames : '') + " " + (disabled ? 'ta--disabled' : '') + "\n          " + (disableResize ? 'ta--resize-disabled' : '') + " " + (error ? 'ta--error' : '') + "\n        " },
+            React.createElement("textarea", __assign({}, extraProps, { required: required, value: value, rows: rows, name: name ? name : label, onKeyUp: onKeyUp, onClick: onClick, onChange: onChange ? onChange : this.onChange, onFocus: this.handleFocus, onBlur: this.handleBlur, disabled: disabled, tabIndex: disabled ? -1 : 1, style: inlineStyle, ref: this.handleTextareaRef })),
+            React.createElement("span", { className: "ta_bar--default" }),
+            React.createElement("span", { className: "ta_bar" }),
+            React.createElement("label", { className: "" + (labelSmall ? 'ta_label--small' : '') },
+                label,
+                required ? React.createElement("span", { className: "ta_required" }, "*") : null),
+            error ? React.createElement("div", { className: "ta_error" }, error) : null));
     };
-    return Table;
+    return Textarea;
 }(React.Component));
-exports.Table = Table;
+exports.Textarea = Textarea;

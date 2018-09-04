@@ -1,29 +1,41 @@
 import * as React from 'react';
-import { TableColumn } from '../definitions';
-import './Table.css';
-export interface TableProps {
-    columns: TableColumn[];
-    data: any;
+import './Textarea.css';
+export interface TextareaProps {
     classNames?: any;
-    emptyLabel?: string;
-    detailContent?: any;
-    operationsClass?: any;
-    selectedRow?: number;
-    renderSubPanel?: any;
-    stickyHeader?: boolean;
-    withoutHeader?: boolean;
-    onRowClick?: (data: any, key: number) => void;
+    disabled?: boolean;
+    error?: string | null;
+    label: string;
+    name?: string;
+    required?: boolean;
+    rows?: number;
+    value?: string | number;
+    extraProps?: any;
+    style?: any;
+    autoFocus?: boolean;
+    autoExpand?: boolean;
+    maxHeight?: number;
+    disableResize?: boolean;
+    onBlur?: (event: any) => void;
+    onFocus?: (event: any) => void;
+    onClick?: (event: any) => void;
+    onKeyUp?: (event: any) => void;
+    onChange?: (event: any) => void;
 }
-export interface TableState {
+export interface TextareaState {
+    value: number | string;
+    initialRowHeight: number | null;
+    initialRows: number;
+    labelSmall: boolean;
+    textareaHeight: number | null;
 }
-export declare class Table extends React.Component<TableProps, TableState> {
-    static defaultProps: Partial<TableProps>;
-    private table;
-    buildOperations: (operations: any, data: any, rowKey?: number | undefined) => any;
-    renderHeader: (column: TableColumn, key: number) => JSX.Element;
-    handleRowClick: (data: any, key: number) => void;
-    handleColumnClick: (column: TableColumn, data: any, key: number, checked?: boolean | undefined) => void;
-    renderRow: (data: any, rowKey: number) => JSX.Element;
-    handleRef: (ref: any) => any;
+export declare class Textarea extends React.Component<TextareaProps, TextareaState> {
+    private textarea;
+    constructor(props: TextareaProps);
+    componentDidUpdate(prevProps: TextareaProps): void;
+    componentDidMount(): void;
+    onChange: (e: any) => void;
+    handleFocus: (e: any) => void;
+    handleBlur: (e: any) => void;
+    handleTextareaRef: (ref: any) => any;
     render(): JSX.Element;
 }

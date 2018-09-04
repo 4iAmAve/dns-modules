@@ -218,10 +218,10 @@ var SelectDropdown = /** @class */ (function (_super) {
                             React.createElement("i", { className: "material-icons" }, "search")) : null,
                     resetable && resetLabel &&
                         React.createElement("li", { className: "select-dd_list-item select-dd_list-item--reset", onMouseDown: function () { return _this.handleResetSelect(); }, onClick: function () { return _this.handleResetSelect(); } }, resetLabel),
-                    optionsList && optionsList.length ?
-                        React.createElement("div", { className: "select-dd_list_scrollable", ref: this.handleScrollViewRef }, optionsList.map(function (option, key) {
-                            return (React.createElement("li", { key: 'dns-dd-select_' + option.key, className: "\n                            select-dd_list-item " + (option.key === isSelected ? 'select-dd_list-item--active' : '') + "\n                          ", value: key, onMouseDown: function () { return _this.handleOptionClick(key, option); }, onClick: function () { return _this.handleOptionClick(key, option); }, ref: function (ref) { return _this.handleSelectedRef(ref, option.key); } }, option.label));
-                        })) : null)));
+                    React.createElement("div", { className: "select-dd_list_scrollable", ref: this.handleScrollViewRef }, optionsList && optionsList.length ?
+                        optionsList.map(function (option, key) {
+                            return (React.createElement("li", { key: 'dns-dd-select_' + option.key, className: "\n                              select-dd_list-item " + (option.key === isSelected ? 'select-dd_list-item--active' : '') + "\n                            ", value: key, onMouseDown: function () { return _this.handleOptionClick(key, option); }, onClick: function () { return _this.handleOptionClick(key, option); }, ref: function (ref) { return _this.handleSelectedRef(ref, option.key); } }, option.label));
+                        }) : null))));
     };
     SelectDropdown.defaultProps = {
         defaultValue: 0,
