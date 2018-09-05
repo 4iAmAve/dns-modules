@@ -167,6 +167,78 @@ function task_docker_push_usage {
   exit 1
 }
 
+#########################
+## TAGGING
+########################
+function task_tag {
+  CMD=${1:-}
+  shift || true
+  case ${CMD} in
+    add) task_add_tag ;;
+    remove) task_remove_tag ;;
+    *) task_tag_usage ;;
+  esac
+}
+
+function task_run_e2e_on_request {
+  echo "Initially run e2e tests"
+  read -r -p "Are you sure you want to continue? [y/N] " response
+  case "$response" in
+    [yY][eE][sS]|[yY])
+      read -p 'Package name: ' packagevar
+      echo "Running e2e for $packagevar"
+      yarn e2e:$packagevar &&
+      task_run_e2e_on_request
+      ;;
+    *)
+      echo "No e2e tests will be performed"
+      true
+      ;;
+  esac
+}
+
+function task_add_tag {
+  echo "Starting tag process"
+  task_run_e2e_on_request
+  read -r -p "Are you sure you want to continue? [y/N] " response
+  case "$response" in
+    [yY][eE][sS]|[yY])
+      read -p 'Name the tag: ' tagvar
+      echo "Tagging current version with v$tagvar"
+      git tag -fa v$tagvar -m "Add tag v$tagvar"
+      git push --tag
+
+      exit 1
+      ;;
+    *)
+      echo "Cancel process"
+      exit 1
+      ;;
+  esac
+}
+
+function task_remove_tag {
+  echo "Starting tag removal"
+  read -r -p "Are you sure you want to continue? [y/N] " response
+  case "$response" in
+    [yY][eE][sS]|[yY])
+      read -p 'Name the tag to be removed: ' tagvar
+      git push origin :refs/tags/v$tagvar
+
+      exit 1
+      ;;
+    *)
+      echo "Cancel process"
+      exit 1
+      ;;
+  esac
+}
+
+function task_tag_usage {
+  echo "Usage: $0 add | remove"
+  exit 1
+}
+
 function task_usage {
   echo "Usage: $0 build | init | start | e2e | lint | build_version | protractor | pree2e"
   echo "All tasks (except for lint and build_version) can be scoped by adding: fe"
@@ -187,5 +259,6 @@ case ${CMD} in
   e2e) task_e2e ${@:1} ;;
   lint) task_lint ;;
   build_version) task_build_version ;;
+  tag) task_tag ${@:1} ;;
   *) task_usage ;;
 esac
