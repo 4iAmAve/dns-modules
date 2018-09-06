@@ -16,6 +16,6 @@ export interface OverlayProps {
 export interface OverlayState {
     menuOpen: boolean;
 }
-export declare const connectedOverlay: React.ComponentClass<Pick<OverlayProps, "title" | "classNames" | "rootID" | "id" | "withoutCloseButton" | "width">, React.ComponentState> & {
+export declare const connectedOverlay: React.ComponentClass<Pick<OverlayProps, "width" | "title" | "classNames" | "rootID" | "id" | "withoutCloseButton">, any> & {
     WrappedComponent: React.ComponentType<OverlayProps>;
 };

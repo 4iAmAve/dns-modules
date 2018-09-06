@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "typescript": "^2.8.1"
+    "typescript": "^3.0.3"
   }
 }
 

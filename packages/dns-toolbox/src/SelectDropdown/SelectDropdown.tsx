@@ -163,7 +163,7 @@ export class SelectDropdown extends React.Component<SelectDropdownProps, SelectD
       isSelected: '',
       searchValue: '',
       selected: {
-        key: '',
+        key: -1,
         label: this.props.label || '',
       },
     });

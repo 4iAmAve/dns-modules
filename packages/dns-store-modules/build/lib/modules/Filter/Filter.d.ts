@@ -10,6 +10,6 @@ export interface FilterModuleProps {
 }
 export interface FilterModuleState {
 }
-export declare const connectedFilter: React.ComponentClass<Pick<FilterModuleProps, "id" | "className" | "defaultSettings">, React.ComponentState> & {
+export declare const connectedFilter: React.ComponentClass<Pick<FilterModuleProps, "id" | "className" | "defaultSettings">, any> & {
     WrappedComponent: React.ComponentType<FilterModuleProps>;
 };

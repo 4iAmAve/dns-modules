@@ -14,9 +14,8 @@
   "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-node-ts-mock-server",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
-  "private": true,
   "devDependencies": {
     "@types/express": "^4.11.1",
-    "typescript": "^2.8.1"
+    "typescript": "^3.0.3"
   }
 }

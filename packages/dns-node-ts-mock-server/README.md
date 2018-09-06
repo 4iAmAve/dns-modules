@@ -1,4 +1,4 @@
-## NDS - NODE TS Mock Server
+## DNS - NODE TS Mock Server
 
 This package is for local use only and provides a simple express server that can be enhanced and enriched for multiple DNS services.
 
@@ -25,3 +25,8 @@ yarn start
 ```bash
 docker-compose up
 ```
+
+### License
+
+@dns/node-ts-mock-server is [MIT licensed](./LICENSE).
+

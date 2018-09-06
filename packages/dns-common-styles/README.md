@@ -13,3 +13,7 @@ yarn lint
 ```scss
 @import '~@dns/common-styles';
 ```
+
+### License
+
+@dns/common-styles is [MIT licensed](./LICENSE).

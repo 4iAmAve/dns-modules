@@ -18,6 +18,6 @@ export interface DialogueProps extends GenericDialogueD {
 }
 export interface DialogueState {
 }
-export declare const connectedDialogue: React.ComponentClass<Pick<DialogueProps, "footer" | "title" | "text" | "content" | "classNames" | "id" | "buttons" | "hero" | "containerClassNames" | "withoutCloseButton" | "onClose" | "height" | "minHeight" | "width" | "withoutOffset"> & object, React.ComponentState> & {
+export declare const connectedDialogue: React.ComponentClass<Pick<DialogueProps, "content" | "height" | "minHeight" | "width" | "footer" | "title" | "text" | "classNames" | "id" | "buttons" | "hero" | "containerClassNames" | "withoutCloseButton" | "onClose" | "withoutOffset"> & object, any> & {
     WrappedComponent: React.ComponentType<DialogueProps>;
 };

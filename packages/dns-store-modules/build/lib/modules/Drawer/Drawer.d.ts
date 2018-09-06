@@ -16,6 +16,6 @@ export interface DrawerProps {
 export interface DrawerState {
     loaded: boolean;
 }
-export declare const connectedDrawer: React.ComponentClass<Pick<DrawerProps, "classNames" | "id" | "withoutCloseButton" | "width" | "fullWidth" | "disableCloseOnOutsideClick">, React.ComponentState> & {
+export declare const connectedDrawer: React.ComponentClass<Pick<DrawerProps, "width" | "classNames" | "id" | "withoutCloseButton" | "fullWidth" | "disableCloseOnOutsideClick">, any> & {
     WrappedComponent: React.ComponentType<DrawerProps>;
 };

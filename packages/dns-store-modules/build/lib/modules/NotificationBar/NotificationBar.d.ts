@@ -13,6 +13,6 @@ export interface NotificationBarProps {
 }
 export interface NotificationBarState {
 }
-export declare const connectedNotficationBar: React.ComponentClass<Pick<NotificationBarProps, "stacked" | "position">, React.ComponentState> & {
+export declare const connectedNotficationBar: React.ComponentClass<Pick<NotificationBarProps, "position" | "stacked">, any> & {
     WrappedComponent: React.ComponentType<NotificationBarProps>;
 };

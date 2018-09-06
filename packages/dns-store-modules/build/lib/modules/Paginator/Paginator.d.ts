@@ -23,6 +23,6 @@ export interface PaginatorModuleProps {
 export interface PaginatorModuleState {
     menuOpen: boolean;
 }
-export declare const connectedPaginator: React.ComponentClass<Pick<PaginatorModuleProps, "label" | "id" | "onChange" | "defaultValue" | "className" | "pageSize" | "pageSizeOptions" | "totalItems" | "pageIndex">, React.ComponentState> & {
+export declare const connectedPaginator: React.ComponentClass<Pick<PaginatorModuleProps, "label" | "id" | "onChange" | "defaultValue" | "className" | "pageSize" | "pageSizeOptions" | "pageIndex" | "totalItems">, any> & {
     WrappedComponent: React.ComponentType<PaginatorModuleProps>;
 };

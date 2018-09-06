@@ -8,8 +8,8 @@
   },
   "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-common-styles",
   "author": "Ave <me@aves.site>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
-    "stylelint": "^9.3.0"
+    "stylelint": "^9.5.0"
   }
 }

@@ -9,6 +9,6 @@ export interface ConfirmDialogueProps {
 }
 export interface ConfirmDialogueState {
 }
-export declare const connectedConfirmDialogue: React.ComponentClass<Pick<ConfirmDialogueProps, "classNames">, React.ComponentState> & {
+export declare const connectedConfirmDialogue: React.ComponentClass<Pick<ConfirmDialogueProps, "classNames">, any> & {
     WrappedComponent: React.ComponentType<ConfirmDialogueProps>;
 };
