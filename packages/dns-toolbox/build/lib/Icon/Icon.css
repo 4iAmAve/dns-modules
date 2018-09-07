@@ -1,5 +1,6 @@
 .icon {
-  color: #333333; }
+  color: #333333;
+  font-size: inherit; }
   .icon--danger {
     color: #f44336; }
   .icon--warning {

@@ -16,6 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var utils_1 = require("@dns/utils");
 var Checkbox_1 = require("../Checkbox/Checkbox");
+var Icon_1 = require("../Icon/Icon");
 var IconButton_1 = require("../IconButton/IconButton");
 var Chip_1 = require("../Chip/Chip");
 require("./Table.css");
@@ -23,6 +24,7 @@ var Table = /** @class */ (function (_super) {
     __extends(Table, _super);
     function Table() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.sortDirection = {};
         _this.buildOperations = function (operations, data, rowKey) {
             var elements = [];
             if (operations) {
@@ -30,13 +32,33 @@ var Table = /** @class */ (function (_super) {
             }
             return elements;
         };
+        _this.handleOnSort = function (definition) {
+            var curDir = _this.sortDirection[definition];
+            var nextDir = null;
+            if (curDir) {
+                switch (curDir) {
+                    case 'desc':
+                        nextDir = 'asc';
+                        break;
+                    case 'asc':
+                        nextDir = null;
+                        break;
+                    default:
+                        nextDir = 'desc';
+                        break;
+                }
+            }
+            else {
+                nextDir = 'desc';
+            }
+            _this.sortDirection[definition] = nextDir;
+            return _this.props.onSortChange && _this.props.onSortChange(definition, nextDir);
+        };
         _this.renderHeader = function (column, key) {
-            var classNames = column.classNames, 
-            // definition,
-            label = column.label, 
+            var classNames = column.classNames, definition = column.definition, label = column.label, 
             /*action, */
             // render,
-            small = column.small, type = column.type, withHeaderOperation = column.withHeaderOperation;
+            small = column.small, sortable = column.sortable, type = column.type, withHeaderOperation = column.withHeaderOperation;
             var operationsClass = _this.props.operationsClass;
             var node = null;
             switch (type) {
@@ -52,7 +74,10 @@ var Table = /** @class */ (function (_super) {
                     node = _this.buildOperations(withHeaderOperation, 'header-operation');
                     return (React.createElement("div", { key: key, className: "\n              " + (small ? 'column--small' : '') + "\n              " + (classNames ? classNames : '') + "\n            " },
                         label,
-                        node));
+                        node,
+                        sortable ?
+                            React.createElement("span", { className: "column_sort" },
+                                React.createElement(Icon_1.Icon, { icon: 'sort_by_alpha', onClick: function () { return _this.handleOnSort(definition); } })) : null));
             }
         };
         _this.handleRowClick = function (data, key) {
@@ -133,13 +158,15 @@ var Table = /** @class */ (function (_super) {
     }
     Table.prototype.render = function () {
         var _this = this;
-        var _a = this.props, emptyLabel = _a.emptyLabel, columns = _a.columns, data = _a.data, detailContent = _a.detailContent, classNames = _a.classNames;
+        var _a = this.props, classNames = _a.classNames, columns = _a.columns, data = _a.data, detailContent = _a.detailContent, emptyLabel = _a.emptyLabel, stickyHeader = _a.stickyHeader, withoutHeader = _a.withoutHeader;
         return (React.createElement("div", { className: "\n          table_container\n          " + (classNames ? classNames : '') + "\n        ", ref: this.handleRef },
-            React.createElement("div", { className: "table " + (detailContent ? 'table--with-detail-content' : '') },
-                React.createElement("div", { className: "table_header" }, columns.map(function (column, key) { return (_this.renderHeader(column, key)); })),
-                data && data.length ?
+            React.createElement("div", { className: "table " + (detailContent ? 'table--with-detail-content' : '') + "\n            " + (stickyHeader ? 'table--with-sticky-header' : '') + " " + (withoutHeader ? 'table--without-header' : '') + "\n          " },
+                withoutHeader ?
+                    null :
+                    React.createElement("div", { className: "table_header" }, columns.map(function (column, key) { return (_this.renderHeader(column, key)); })),
+                React.createElement("div", { className: "table_content-wrapper" }, data && data.length ?
                     data.map(function (rowData, key) { return (_this.renderRow(rowData, key)); }) :
-                    React.createElement("div", { className: "table--empty" }, emptyLabel)),
+                    React.createElement("div", { className: "table--empty" }, emptyLabel))),
             detailContent ?
                 React.createElement("div", { className: "table_detail-content" }, detailContent) : null));
     };
@@ -148,6 +175,8 @@ var Table = /** @class */ (function (_super) {
         data: [],
         emptyLabel: 'no data available',
         selectedRow: -1,
+        stickyHeader: true,
+        withoutHeader: false
     };
     return Table;
 }(React.Component));

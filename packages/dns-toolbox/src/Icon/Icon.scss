@@ -2,6 +2,7 @@
 
 .icon {
   color: $black-light;
+  font-size: inherit;
 
   &--danger {
     color: $danger;

@@ -3,6 +3,7 @@ import { validURL } from '@dns/utils';
 
 import { TableColumn } from '../definitions';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { Icon } from '../Icon/Icon';
 import { IconButton } from '../IconButton/IconButton';
 import { Chip } from '../Chip/Chip';
 
@@ -17,7 +18,10 @@ export interface TableProps {
   operationsClass?: any;
   selectedRow?: number;
   renderSubPanel?: any;
+  stickyHeader?: boolean;
+  withoutHeader?: boolean;
   onRowClick?: (data: any, key: number) => void;
+  onSortChange?: (def: any, dir: number) => void;
 }
 
 export interface TableState {
@@ -29,8 +33,11 @@ export class Table extends React.Component<TableProps, TableState> {
     data: [],
     emptyLabel: 'no data available',
     selectedRow: -1,
+    stickyHeader: true,
+    withoutHeader: false
   };
 
+  private sortDirection = {};
   private table: HTMLElement;
 
   public buildOperations = (operations: any, data: any, rowKey?: number) => {
@@ -53,14 +60,39 @@ export class Table extends React.Component<TableProps, TableState> {
     return elements;
   }
 
+  public handleOnSort = (definition: string) => {
+    const curDir = this.sortDirection[definition];
+    let nextDir = null as any;
+
+    if (curDir) {
+      switch (curDir) {
+        case 'desc':
+          nextDir = 'asc';
+          break;
+        case 'asc':
+          nextDir = null;
+          break;
+        default:
+          nextDir = 'desc';
+          break;
+      }
+    } else {
+      nextDir = 'desc';
+    }
+
+    this.sortDirection[definition] = nextDir;
+    return this.props.onSortChange && this.props.onSortChange(definition, nextDir);
+  }
+
   public renderHeader = (column: TableColumn, key: number) => {
     const {
       classNames,
-      // definition,
+      definition,
       label,
       /*action, */
       // render,
       small,
+      sortable,
       type,
       withHeaderOperation
     } = column;
@@ -117,6 +149,12 @@ export class Table extends React.Component<TableProps, TableState> {
             `}
           >
             {label}{node}
+            {
+              sortable ?
+                <span className="column_sort">
+                  <Icon icon={'sort_by_alpha'} onClick={() => this.handleOnSort(definition)} />
+                </span> : null
+            }
           </div>
         );
     }
@@ -306,7 +344,7 @@ export class Table extends React.Component<TableProps, TableState> {
   handleRef = ref => this.table = ref;
 
   public render() {
-    const { emptyLabel, columns, data, detailContent, classNames } = this.props;
+    const { classNames, columns, data, detailContent, emptyLabel, stickyHeader, withoutHeader } = this.props;
     return (
       <div
         className={`
@@ -315,21 +353,31 @@ export class Table extends React.Component<TableProps, TableState> {
         `}
         ref={this.handleRef}
       >
-        <div className={`table ${detailContent ? 'table--with-detail-content' : ''}`}>
-          <div className="table_header">
-            {columns.map((column: TableColumn, key: number) => (
-              this.renderHeader(column, key)
-            ))}
-          </div>
+        <div
+          className={`table ${detailContent ? 'table--with-detail-content' : ''}
+            ${stickyHeader ? 'table--with-sticky-header' : ''} ${withoutHeader ? 'table--without-header' : ''}
+          `}
+        >
           {
-            data && data.length ?
-              data.map((rowData: any, key: number) => (
-                this.renderRow(rowData, key)
-              )) :
-              <div className="table--empty">
-                {emptyLabel}
+            withoutHeader ?
+              null :
+              <div className="table_header">
+                {columns.map((column: TableColumn, key: number) => (
+                  this.renderHeader(column, key)
+                ))}
               </div>
           }
+          <div className="table_content-wrapper">
+            {
+              data && data.length ?
+                data.map((rowData: any, key: number) => (
+                  this.renderRow(rowData, key)
+                )) :
+                <div className="table--empty">
+                  {emptyLabel}
+                </div>
+            }
+          </div>
         </div>
         {
           detailContent ?

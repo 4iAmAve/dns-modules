@@ -64,6 +64,14 @@
       line-height: 52px; }
     .table_container .table_header .checkbox {
       font-size: 1.1em; }
+    .table_container .table_header .column_sort {
+      position: relative;
+      margin-left: 2px;
+      cursor: pointer; }
+      .table_container .table_header .column_sort i {
+        padding-top: 2px;
+        position: relative;
+        top: 1px; }
   .table_container .table_content {
     display: flex;
     align-items: center;

@@ -3,18 +3,19 @@ export interface TableColumn {
     definition: string;
     label: string;
     action?: any;
-    operations?: Array<Operation>;
-    small?: boolean;
-    selectable?: boolean;
-    fullWidth?: boolean;
+    classNames?: any;
     date?: any;
-    validate?: Array<string>;
-    type?: string;
     formater?: any;
+    fullWidth?: boolean;
     headerOperations?: Array<any>;
+    operations?: Array<Operation>;
+    render?: any;
+    small?: boolean;
+    sortable?: boolean;
+    selectable?: boolean;
+    type?: string;
+    validate?: Array<string>;
     withHeaderOperation?: Array<Operation>;
     onClick?: any;
-    classNames?: any;
     onChange?: any;
-    render?: any;
 }

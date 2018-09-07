@@ -90,6 +90,18 @@
     .checkbox {
       font-size: 1.1em;
     }
+
+    .column_sort {
+      position: relative;
+      margin-left: 2px;
+      cursor: pointer;
+
+      i {
+        padding-top: 2px;
+        position: relative;
+        top: 1px;
+      }
+    }
   }
 
   .table_content {

@@ -3,11 +3,7 @@ import './Icon.css';
 export interface IconProps {
     icon: string;
     type?: 'success' | 'warning' | 'danger' | 'accent' | 'primary';
+    onClick?: () => void;
     classNames?: any;
 }
-export interface IconState {
-}
-export declare class Icon extends React.Component<IconProps, IconState> {
-    static defaultProps: Partial<IconProps>;
-    render(): JSX.Element;
-}
+export declare const Icon: React.SFC<IconProps>;
