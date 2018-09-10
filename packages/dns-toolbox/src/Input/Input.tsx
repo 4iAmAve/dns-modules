@@ -18,6 +18,7 @@ export interface InputProps {
   onClick?: (event: any) => void;
   onKeyUp?: (event: any) => void;
   onChange?: (event: any) => void;
+  onGetRef?: (ref: any) => void;
 }
 
 export interface InputState {
@@ -55,9 +56,17 @@ export class Input extends React.Component<InputProps, InputState> {
   }
 
   public onChange = (e: any) => {
+    const curCurPosEnd = e.target.selectionStart;
+    const event = e;
     this.setState({
-        value: e.target.value
+      value: e.target.value
     });
+
+    // prevent cursor from jumping
+    (this.input as any).selectionStart = curCurPosEnd;
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
   }
 
   public handleFocus = (e: any) => {
@@ -79,14 +88,19 @@ export class Input extends React.Component<InputProps, InputState> {
     }
   }
 
-  public handleInputRef = ref => this.input = ref;
+  public handleInputRef = ref => {
+    this.input = ref;
+    if (this.props.onGetRef) {
+      this.props.onGetRef(ref);
+    }
+  }
 
   public render() {
     const {
       classNames,
       onClick,
       onKeyUp,
-      onChange,
+      // onChange,
       type = 'text',
       label,
       required = false,
@@ -115,7 +129,7 @@ export class Input extends React.Component<InputProps, InputState> {
           name={name ? name : label}
           onKeyUp={onKeyUp}
           onClick={onClick}
-          onChange={onChange ? onChange : this.onChange}
+          onChange={e => this.onChange(e)}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           disabled={disabled}

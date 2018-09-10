@@ -16,6 +16,7 @@ export interface InputProps {
     onClick?: (event: any) => void;
     onKeyUp?: (event: any) => void;
     onChange?: (event: any) => void;
+    onGetRef?: (ref: any) => void;
 }
 export interface InputState {
     value: number | string;
@@ -29,6 +30,6 @@ export declare class Input extends React.Component<InputProps, InputState> {
     onChange: (e: any) => void;
     handleFocus: (e: any) => void;
     handleBlur: (e: any) => void;
-    handleInputRef: (ref: any) => any;
+    handleInputRef: (ref: any) => void;
     render(): JSX.Element;
 }
