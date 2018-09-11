@@ -27,13 +27,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var components_1 = require("./components");
 require("./styles/renderJSON.css");
-var RenderJSON = /** @class */ (function (_super) {
+var RenderJSON = (function (_super) {
     __extends(RenderJSON, _super);
     function RenderJSON(props) {
         var _this = _super.call(this, props) || this;
-        // make sure props are passed in as expected
         _this.validateInput = function () {
-            // make sure `src` prop is valid
             if (!(_this.state.data instanceof Object) && !(_this.state.data instanceof Array)) {
                 console.error('@dns/renderJSON error:', 'src property must be a valid json object');
                 _this.setState({

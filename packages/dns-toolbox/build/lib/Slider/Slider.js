@@ -32,7 +32,7 @@ var constants = {
         }
     }
 };
-var Slider = /** @class */ (function (_super) {
+var Slider = (function (_super) {
     __extends(Slider, _super);
     function Slider(props) {
         var _this = _super.call(this, props) || this;
@@ -45,7 +45,6 @@ var Slider = /** @class */ (function (_super) {
         };
         _this.handleUpdate = function () {
             if (!_this.slider) {
-                // for shallow rendering
                 return;
             }
             var orientation = _this.props.orientation;
@@ -199,18 +198,8 @@ var Slider = /** @class */ (function (_super) {
         }
     };
     Slider.prototype.render = function () {
-        var _a = this.props, _b = _a.orientation, orientation = _b === void 0 ? 'horizontal' : _b, classNames = _a.classNames, 
-        // reverseDirection,
-        min = _a.min, _c = _a.max, max = _c === void 0 ? 100 : _c, 
-        // handleLabel,
-        labelBefore = _a.labelBefore, labelAfter = _a.labelAfter;
+        var _a = this.props, _b = _a.orientation, orientation = _b === void 0 ? 'horizontal' : _b, classNames = _a.classNames, min = _a.min, _c = _a.max, max = _c === void 0 ? 100 : _c, labelBefore = _a.labelBefore, labelAfter = _a.labelAfter;
         var _d = this.state, active = _d.active, value = _d.value;
-        // const dimension = constants.orientation[orientation].dimension;
-        // const direction = reverseDirection
-        //   ? constants.orientation[orientation].reverseDirection
-        //   : constants.orientation[orientation].direction;
-        // const position = this.getPositionFromValue(value);
-        // const coords = this.coordinates(position);
         var position = (value / max) * 100;
         var draggerInlineStyle = {
             left: position + "%",

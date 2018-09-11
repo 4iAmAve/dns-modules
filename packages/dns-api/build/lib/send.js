@@ -11,7 +11,6 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import 'whatwg-fetch';
 var axios_1 = require("axios");
 var store_modules_1 = require("@dns/store-modules");
 var store_configuration_1 = require("@dns/store-configuration");
@@ -67,7 +66,6 @@ var send = function (call) {
     return function (dispatch) {
         if (!navigator.onLine) {
             dispatch(store_modules_1.addNotification('You seem to be offline. Please re-connect to continue!', 'error'));
-            // return;
         }
         var url = call.url;
         if (call.params) {
@@ -83,18 +81,10 @@ var send = function (call) {
                     i++;
                 }
             }
-            /*      Object.keys(params).forEach((key: number | string) => {
-                    if (i > 0) {
-                      url = `${url}&`;
-                    }
-                    url = `${url}${key}=${params[key]}`;
-                    i++;
-                  });*/
         }
         var options = {
             url: url,
             method: call.httpMethod || 'post',
-            // timeout: 1000,
             headers: __assign({}, call.headers, { 'Pragma': 'no-cache' }),
         };
         if (call.data) {

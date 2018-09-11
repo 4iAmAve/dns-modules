@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Checkbox.css");
-var Checkbox = /** @class */ (function (_super) {
+var Checkbox = (function (_super) {
     __extends(Checkbox, _super);
     function Checkbox(props, context) {
         var _this = _super.call(this, props, context) || this;

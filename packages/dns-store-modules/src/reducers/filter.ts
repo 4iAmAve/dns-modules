@@ -1,5 +1,5 @@
 import { getType } from 'typesafe-actions';
-import { filterActions } from '../actions/filter';
+import { filterActions } from '../actions';
 
 export interface FilterState {
   defaultState: any;
@@ -14,21 +14,21 @@ export default function filter(state: FilterState = initialState, action: any) {
     case getType(filterActions.subscribeToFilterStore):
       return {
         ...state,
-        [action.id]: action.settings,
+        [action.payload.id]: action.payload.settings,
         defaultState: {
           ...state.defaultState,
-          [action.id]: action.settings,
+          [action.payload.id]: action.payload.settings,
         }
       };
     case getType(filterActions.updateFilter):
       return {
         ...state,
-        [action.id]: action.settings,
+        [action.payload.id]: action.payload.settings,
       };
     case getType(filterActions.resetFilter):
       return {
         ...state,
-        [action.id]: state.defaultState[action.id],
+        [action.payload.id]: state.defaultState[action.payload.id],
       };
     default:
       return state;

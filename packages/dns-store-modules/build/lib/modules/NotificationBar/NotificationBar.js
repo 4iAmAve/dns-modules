@@ -18,7 +18,7 @@ var react_redux_1 = require("react-redux");
 var toolbox_1 = require("@dns/toolbox");
 var notifications_1 = require("../../actions/notifications");
 require("./NotificationBar.css");
-var NotificationBar = /** @class */ (function (_super) {
+var NotificationBar = (function (_super) {
     __extends(NotificationBar, _super);
     function NotificationBar() {
         return _super !== null && _super.apply(this, arguments) || this;

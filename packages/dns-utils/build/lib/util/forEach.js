@@ -1,5 +1,4 @@
 "use strict";
-// see https://toddmotto.com/ditch-the-array-foreach-call-nodelist-hack/
 Object.defineProperty(exports, "__esModule", { value: true });
 var forEach = function (list, callback, scope) {
     var iteration = 0;

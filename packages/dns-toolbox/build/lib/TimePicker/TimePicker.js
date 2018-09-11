@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var utils_1 = require("@dns/utils");
 require("./TimePicker.css");
-var TimePicker = /** @class */ (function (_super) {
+var TimePicker = (function (_super) {
     __extends(TimePicker, _super);
     function TimePicker(props) {
         var _this = _super.call(this, props) || this;

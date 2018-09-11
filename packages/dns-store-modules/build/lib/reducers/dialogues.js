@@ -12,18 +12,18 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typesafe_actions_1 = require("typesafe-actions");
-var dialogues_1 = require("../actions/dialogues");
+var actions_1 = require("../actions");
 var initialState = {};
 function dialogues(state, action) {
     if (state === void 0) { state = initialState; }
     var _a, _b, _c;
     switch (action.type) {
-        case typesafe_actions_1.getType(dialogues_1.dialoguesActions.subscribeToDialoguesStore):
-            return __assign({}, state, (_a = {}, _a[action.id] = false, _a));
-        case typesafe_actions_1.getType(dialogues_1.dialoguesActions.openDialogue):
-            return __assign({}, state, (_b = {}, _b[action.id] = true, _b));
-        case typesafe_actions_1.getType(dialogues_1.dialoguesActions.closeDialogue):
-            return __assign({}, state, (_c = {}, _c[action.id] = false, _c));
+        case typesafe_actions_1.getType(actions_1.dialoguesActions.subscribeToDialoguesStore):
+            return __assign({}, state, (_a = {}, _a[action.payload.id] = false, _a));
+        case typesafe_actions_1.getType(actions_1.dialoguesActions.openDialogue):
+            return __assign({}, state, (_b = {}, _b[action.payload.id] = true, _b));
+        case typesafe_actions_1.getType(actions_1.dialoguesActions.closeDialogue):
+            return __assign({}, state, (_c = {}, _c[action.payload.id] = false, _c));
         default:
             return state;
     }

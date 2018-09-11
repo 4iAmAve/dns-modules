@@ -19,7 +19,7 @@ var toolbox_1 = require("@dns/toolbox");
 var utils_1 = require("@dns/utils");
 var confirmDialogue_1 = require("../../actions/confirmDialogue");
 require("./ConfirmDialogue.css");
-var ConfirmDialogue = /** @class */ (function (_super) {
+var ConfirmDialogue = (function (_super) {
     __extends(ConfirmDialogue, _super);
     function ConfirmDialogue() {
         var _this = _super !== null && _super.apply(this, arguments) || this;

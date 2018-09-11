@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Header.css");
-var Header = /** @class */ (function (_super) {
+var Header = (function (_super) {
     __extends(Header, _super);
     function Header() {
         return _super !== null && _super.apply(this, arguments) || this;

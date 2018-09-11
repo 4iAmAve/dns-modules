@@ -12,20 +12,20 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typesafe_actions_1 = require("typesafe-actions");
-var drawers_1 = require("../actions/drawers");
+var actions_1 = require("../actions");
 var initialState = {};
 function drawers(state, action) {
     if (state === void 0) { state = initialState; }
     var _a, _b, _c;
     switch (action.type) {
-        case typesafe_actions_1.getType(drawers_1.drawerActions.subscribeToDrawerStore):
-            return __assign({}, state, (_a = {}, _a[action.id] = {
+        case typesafe_actions_1.getType(actions_1.drawerActions.subscribeToDrawerStore):
+            return __assign({}, state, (_a = {}, _a[action.payload.id] = {
                 open: false,
             }, _a));
-        case typesafe_actions_1.getType(drawers_1.drawerActions.openDrawer):
-            return __assign({}, state, (_b = {}, _b[action.id] = __assign({ open: true }, action.data), _b));
-        case typesafe_actions_1.getType(drawers_1.drawerActions.closeDrawer):
-            return __assign({}, state, (_c = {}, _c[action.id] = {
+        case typesafe_actions_1.getType(actions_1.drawerActions.openDrawer):
+            return __assign({}, state, (_b = {}, _b[action.payload.id] = __assign({ open: true }, action.payload.data), _b));
+        case typesafe_actions_1.getType(actions_1.drawerActions.closeDrawer):
+            return __assign({}, state, (_c = {}, _c[action.payload.id] = {
                 open: false,
             }, _c));
         default:

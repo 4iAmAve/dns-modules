@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var JSONViewer_1 = require("./JSONViewer");
-var ArrayType = /** @class */ (function (_super) {
+var ArrayType = (function (_super) {
     __extends(ArrayType, _super);
     function ArrayType(props) {
         var _this = _super.call(this, props) || this;

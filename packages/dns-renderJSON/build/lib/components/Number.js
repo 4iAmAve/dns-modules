@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var utils_1 = require("@dns/utils");
-var Number = /** @class */ (function (_super) {
+var Number = (function (_super) {
     __extends(Number, _super);
     function Number(props) {
         var _this = _super.call(this, props) || this;

@@ -1,6 +1,6 @@
 import { getType } from 'typesafe-actions';
 import { GenericDialogueD } from '@dns/toolbox';
-import { /*confirmDialogueAction, */ confirmDialogueActions } from '../actions/confirmDialogue';
+import { /*confirmDialogueAction,*/ confirmDialogueActions } from '../actions';
 
 export interface ConfirmDialogueState extends GenericDialogueD {
   onConfirm: any;
@@ -26,7 +26,7 @@ export default function confirmDialogue(state: ConfirmDialogueState = initialSta
     case getType(confirmDialogueActions.openDialogue):
       return {
         ...state,
-        ...action.data,
+        ...action.payload.data,
         open: true,
       };
     default:

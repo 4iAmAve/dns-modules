@@ -5,10 +5,9 @@ var redux_persist_1 = require("redux-persist");
 var history_1 = require("history");
 var connected_react_router_1 = require("connected-react-router");
 var redux_thunk_1 = require("redux-thunk");
-var storage_1 = require("redux-persist/lib/storage"); // defaults to localStorage for web and AsyncStorage for react-native
+var storage_1 = require("redux-persist/lib/storage");
 var IS_DEV = process.env.NODE_ENV === 'development';
 var BASENAME = process.env.BASENAME || '';
-// tslint:disable-next-line
 exports.history = history_1.createBrowserHistory({
     basename: BASENAME
 });

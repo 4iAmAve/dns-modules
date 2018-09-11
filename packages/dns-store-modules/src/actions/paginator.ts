@@ -2,25 +2,14 @@ import { createAction } from 'typesafe-actions';
 import { getReturnOfExpression } from 'react-redux-typescript';
 
 export const paginatorActions: any = {
-  resetPaginator: createAction('RESET_PAGINATOR', (id: string | number) => {
-    return {
-      type: 'RESET_PAGINATOR',
-      id,
-    };
+  resetPaginator: createAction('RESET_PAGINATOR', resolve => {
+    return (id: string | number) => resolve({ id });
   }),
-  updatePaginator: createAction('UPDATE_PAGINATOR', (id: string | number, settings: any) => {
-    return {
-      type: 'UPDATE_PAGINATOR',
-      id,
-      settings,
-    };
+  updatePaginator: createAction('UPDATE_PAGINATOR', resolve => {
+    return (id: string | number, settings: any) => resolve({ id, settings });
   }),
-  subscribeToPaginatorStore: createAction('SUBSCRIBE_TO_PAGINATOR_STORE', (id: string | number, settings: any) => {
-    return {
-      type: 'SUBSCRIBE_TO_PAGINATOR_STORE',
-      id,
-      settings,
-    };
+  subscribeToPaginatorStore: createAction('SUBSCRIBE_TO_PAGINATOR_STORE', resolve => {
+    return (id: string | number, settings: any) => resolve({ id, settings });
   }),
 };
 

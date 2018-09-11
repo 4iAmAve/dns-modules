@@ -29,7 +29,7 @@ var react_redux_1 = require("react-redux");
 var toolbox_1 = require("@dns/toolbox");
 var dialogues_1 = require("../../actions/dialogues");
 require("./Dialogue.css");
-var Dialogue = /** @class */ (function (_super) {
+var Dialogue = (function (_super) {
     __extends(Dialogue, _super);
     function Dialogue(props) {
         var _this = _super.call(this, props) || this;

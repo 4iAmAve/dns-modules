@@ -28,7 +28,7 @@ var React = require("react");
 var react_redux_1 = require("react-redux");
 var toolbox_1 = require("@dns/toolbox");
 var paginator_1 = require("../../actions/paginator");
-var PaginatorModule = /** @class */ (function (_super) {
+var PaginatorModule = (function (_super) {
     __extends(PaginatorModule, _super);
     function PaginatorModule(props) {
         var _this = _super.call(this, props) || this;

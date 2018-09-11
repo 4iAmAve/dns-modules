@@ -26,7 +26,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Textarea.css");
-var Textarea = /** @class */ (function (_super) {
+var Textarea = (function (_super) {
     __extends(Textarea, _super);
     function Textarea(props) {
         var _this = _super.call(this, props) || this;
@@ -97,7 +97,7 @@ var Textarea = /** @class */ (function (_super) {
     };
     Textarea.prototype.render = function () {
         var _a = this.props, classNames = _a.classNames, onKeyUp = _a.onKeyUp, onClick = _a.onClick, onChange = _a.onChange, _b = _a.rows, rows = _b === void 0 ? 2 : _b, label = _a.label, _c = _a.required, required = _c === void 0 ? false : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.disableResize, disableResize = _e === void 0 ? false : _e, _f = _a.error, error = _f === void 0 ? null : _f, _g = _a.extraProps, extraProps = _g === void 0 ? {} : _g, _h = _a.style, style = _h === void 0 ? {} : _h, name = _a.name, _j = _a.maxHeight, maxHeight = _j === void 0 ? null : _j;
-        var _k = this.state, /*labelSmall,*/ textareaHeight = _k.textareaHeight, value = _k.value;
+        var _k = this.state, textareaHeight = _k.textareaHeight, value = _k.value;
         var labelSmall = value && value.toString().length > 0;
         var inlineStyle = __assign({}, style, { maxHeight: maxHeight || null });
         if (textareaHeight) {

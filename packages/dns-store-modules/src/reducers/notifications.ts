@@ -1,7 +1,7 @@
 import { getType } from 'typesafe-actions';
 import { NotificationD } from '@dns/toolbox';
 
-import { /*notificationAction,*/ notificationActions } from '../actions/notifications';
+import { /*notificationAction,*/ notificationActions } from '../actions';
 
 export interface NotificationsState {
   items: NotificationD[];
@@ -15,11 +15,11 @@ export default function notifications(state: NotificationsState = initialState, 
   switch (action.type) {
     case getType(notificationActions.updateNotifications):
       return {
-        items: action.notifications,
+        items: action.payload.notifications,
       };
     case getType(notificationActions.closeNotification):
       return {
-        items: state.items.filter(item => item.id !== action.id),
+        items: state.items.filter(item => item.id !== action.payload.id),
       };
     default:
       return state;

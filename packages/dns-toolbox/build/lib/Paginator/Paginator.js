@@ -17,7 +17,7 @@ var React = require("react");
 var SelectDropdown_1 = require("../SelectDropdown/SelectDropdown");
 var IconButton_1 = require("../IconButton/IconButton");
 require("./Paginator.css");
-var Paginator = /** @class */ (function (_super) {
+var Paginator = (function (_super) {
     __extends(Paginator, _super);
     function Paginator() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -35,9 +35,6 @@ var Paginator = /** @class */ (function (_super) {
     Paginator.prototype.render = function () {
         var _this = this;
         var _a = this.props, className = _a.className, pageSizeOptions = _a.pageSizeOptions, defaultValue = _a.defaultValue, pageIndex = _a.pageIndex, label = _a.label, _b = _a.totalItems, totalItems = _b === void 0 ? 0 : _b, pageSize = _a.pageSize;
-        /*    const selectedPageSizeOption = pageSizeOptions.filter((value: any) => {
-              return value.selected === true;
-            });*/
         var from = pageSize * (pageIndex + 1) - pageSize + 1;
         var to = pageSize * (pageIndex + 1) < (totalItems || 0) ? pageSize * (pageIndex + 1) : totalItems;
         if (to === 0) {

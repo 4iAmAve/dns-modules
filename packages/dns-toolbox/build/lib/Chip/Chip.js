@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var utils_1 = require("@dns/utils");
 require("./Chip.css");
-var Chip = /** @class */ (function (_super) {
+var Chip = (function (_super) {
     __extends(Chip, _super);
     function Chip() {
         return _super !== null && _super.apply(this, arguments) || this;

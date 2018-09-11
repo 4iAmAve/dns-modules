@@ -2,18 +2,12 @@ import { createAction } from 'typesafe-actions';
 import { getReturnOfExpression } from 'react-redux-typescript';
 
 export const notificationActions: any = {
-  closeNotification: createAction('CLOSE_NOTIFICATION', (id: string | number) => {
-    return {
-      type: 'CLOSE_NOTIFICATION',
-      id,
-    };
+  closeNotification: createAction('CLOSE_NOTIFICATION', resolve => {
+    return (id: string | number) => resolve({ id });
   }),
-  updateNotifications: createAction('UPDATE_NOTIFICATIONS', (notifications: any) => {
-    return {
-      type: 'UPDATE_NOTIFICATIONS',
-      notifications,
-    };
-  }),
+  updateNotifications: createAction('UPDATE_NOTIFICATIONS', resolve => {
+    return (notifications: string | number) => resolve({ notifications });
+  })
 };
 
 export const returnOfActions = Object.values(notificationActions).map(getReturnOfExpression);

@@ -18,7 +18,7 @@ var react_redux_1 = require("react-redux");
 var toolbox_1 = require("@dns/toolbox");
 var drawers_1 = require("../../actions/drawers");
 require("./Drawer.css");
-var Drawer = /** @class */ (function (_super) {
+var Drawer = (function (_super) {
     __extends(Drawer, _super);
     function Drawer(props, context) {
         var _this = _super.call(this, props, context) || this;

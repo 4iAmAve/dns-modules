@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./ActivityIndicatorBar.css");
-var ActivityIndicatorBar = /** @class */ (function (_super) {
+var ActivityIndicatorBar = (function (_super) {
     __extends(ActivityIndicatorBar, _super);
     function ActivityIndicatorBar() {
         return _super !== null && _super.apply(this, arguments) || this;

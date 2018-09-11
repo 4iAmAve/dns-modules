@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./GenericDialogue.css");
-var GenericDialogue = /** @class */ (function (_super) {
+var GenericDialogue = (function (_super) {
     __extends(GenericDialogue, _super);
     function GenericDialogue() {
         return _super !== null && _super.apply(this, arguments) || this;

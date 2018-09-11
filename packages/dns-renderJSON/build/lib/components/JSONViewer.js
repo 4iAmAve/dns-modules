@@ -20,7 +20,7 @@ var Date_1 = require("./Date");
 var Number_1 = require("./Number");
 var Object_1 = require("./Object");
 var String_1 = require("./String");
-var JSONViewer = /** @class */ (function (_super) {
+var JSONViewer = (function (_super) {
     __extends(JSONViewer, _super);
     function JSONViewer() {
         var _this = _super !== null && _super.apply(this, arguments) || this;

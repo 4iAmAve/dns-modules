@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Boolean = /** @class */ (function (_super) {
+var Boolean = (function (_super) {
     __extends(Boolean, _super);
     function Boolean(props) {
         var _this = _super.call(this, props) || this;

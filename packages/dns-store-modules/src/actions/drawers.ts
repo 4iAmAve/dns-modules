@@ -2,25 +2,15 @@ import { createAction } from 'typesafe-actions';
 import { getReturnOfExpression } from 'react-redux-typescript';
 
 export const drawerActions: any = {
-  closeDrawer: createAction('CLOSE_DRAWER', (id: string | number) => {
-    return {
-      type: 'CLOSE_DRAWER',
-      id,
-    };
+  closeDrawer: createAction('CLOSE_DRAWER', resolve => {
+    return (id: string | number) => resolve({ id });
   }),
-  openDrawer: createAction('OPEN_DRAWER', (id: string | number, data: string) => {
-    return {
-      type: 'OPEN_DRAWER',
-      id,
-      data,
-    };
+  openDrawer: createAction('OPEN_DRAWER', resolve => {
+    return (id: string | number, data: string) => resolve({ id, data });
   }),
-  subscribeToDrawerStore: createAction('SUBSCRIBE_TO_DRAWER_STORE', (id: string | number) => {
-    return {
-      type: 'SUBSCRIBE_TO_DRAWER_STORE',
-      id,
-    };
-  }),
+  subscribeToDrawerStore: createAction('SUBSCRIBE_TO_DRAWER_STORE', resolve => {
+    return (id: string | number) => resolve({ id });
+  })
 };
 
 export const returnOfActions = Object.values(drawerActions).map(getReturnOfExpression);

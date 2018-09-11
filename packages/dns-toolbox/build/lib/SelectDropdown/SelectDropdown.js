@@ -28,7 +28,7 @@ var React = require("react");
 var utils_1 = require("@dns/utils");
 var Input_1 = require("../Input/Input");
 require("./SelectDropdown.css");
-var SelectDropdown = /** @class */ (function (_super) {
+var SelectDropdown = (function (_super) {
     __extends(SelectDropdown, _super);
     function SelectDropdown(props) {
         var _this = _super.call(this, props) || this;
@@ -37,7 +37,6 @@ var SelectDropdown = /** @class */ (function (_super) {
                 var area = _this.wrapper;
                 var TIMEOUT = 5;
                 if (area && !area.contains(evt.target)) {
-                    // @TODO dirty workaround to avoid race condition -> get rid of it
                     setTimeout(function () {
                         _this.setState({
                             isOpen: false,
@@ -75,7 +74,6 @@ var SelectDropdown = /** @class */ (function (_super) {
                 _this.selected = null;
             }
         };
-        // find selected value by dataValue
         var selectedValueArray = props.options.filter(function (value) {
             return value.key === props.selectedValue;
         });
@@ -110,7 +108,6 @@ var SelectDropdown = /** @class */ (function (_super) {
             this.countTopRmsList();
         }
         if (prevProps.selectedValue !== this.props.selectedValue) {
-            // find selected value by dataValue
             var selectedValueArray = this.props.options.filter(function (value) {
                 return value.key === _this.props.selectedValue;
             });
@@ -137,7 +134,6 @@ var SelectDropdown = /** @class */ (function (_super) {
             });
         }
     };
-    // the simplest way to get selected value
     SelectDropdown.prototype.getValue = function () {
         return this.state.selected.label;
     };
@@ -164,7 +160,6 @@ var SelectDropdown = /** @class */ (function (_super) {
             selected: __assign({ key: option.key, label: option.label }, option),
         });
     };
-    // change state with callback function
     SelectDropdown.prototype.changeState = function (newState) {
         this.fireChangeEvent(newState);
         this.setState(newState);
@@ -183,14 +178,12 @@ var SelectDropdown = /** @class */ (function (_super) {
             },
         });
     };
-    // fire callback function
     SelectDropdown.prototype.fireChangeEvent = function (newState) {
         if (newState.selected.label !== this.state.selected.label && this.props.onChange) {
             this.props.onChange(newState.selected);
         }
     };
     SelectDropdown.prototype.countTopRmsList = function () {
-        // const offsetHeightBottom = -this.list.offsetHeight / 2 + bottomMargin;
         var offsetListToWrapper = this.wrapper.getBoundingClientRect().top + this.list.getBoundingClientRect().height;
         var offsetHeightBottom = document.body.offsetHeight - this.list.getBoundingClientRect().height - 8;
         this.setState({
@@ -200,7 +193,7 @@ var SelectDropdown = /** @class */ (function (_super) {
     };
     SelectDropdown.prototype.render = function () {
         var _this = this;
-        var _a = this.props, classNames = _a.classNames, filterable = _a.filterable, label = _a.label, resetLabel = _a.resetLabel, /*options,*/ _b = _a.resetable, /*options,*/ resetable = _b === void 0 ? true : _b;
+        var _a = this.props, classNames = _a.classNames, filterable = _a.filterable, label = _a.label, resetLabel = _a.resetLabel, _b = _a.resetable, resetable = _b === void 0 ? true : _b;
         var listStyle = {
             left: this.state.listLeftValue,
             top: this.state.listTopValue,

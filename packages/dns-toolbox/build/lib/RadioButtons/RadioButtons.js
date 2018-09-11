@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./RadioButtons.css");
-var RadioButtons = /** @class */ (function (_super) {
+var RadioButtons = (function (_super) {
     __extends(RadioButtons, _super);
     function RadioButtons(props) {
         var _this = _super.call(this, props) || this;
@@ -42,7 +42,6 @@ var RadioButtons = /** @class */ (function (_super) {
             this.setState({ selectedButton: selected });
         }
     };
-    // @TODO add ripple to buttons
     RadioButtons.prototype.render = function () {
         var _this = this;
         var buttons = this.props.buttons;

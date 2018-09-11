@@ -3,13 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const mock_data_1 = require("./mock.data");
 class AuthRouter {
-    /**
-     * Initialize the TrackingRouter
-     */
     constructor() {
-        /**
-         * GET all Messages.
-         */
         this.authUser = (req, res, next) => {
             const { username, password } = req.query;
             let resp = {
@@ -50,17 +44,12 @@ class AuthRouter {
         this.router = express_1.Router();
         this.init();
     }
-    /**
-     * Take each handler, and attach to one of the Express.Router's
-     * endpoints.
-     */
     init() {
         this.router.get('/auth', this.authUser);
         this.router.get('/:uuid', this.getUserData);
     }
 }
 exports.AuthRouter = AuthRouter;
-// Create the TrackingRouter, and export its configured Express.Router
 const authRoutes = new AuthRouter();
 authRoutes.init();
 exports.default = authRoutes.router;

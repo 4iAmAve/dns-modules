@@ -17,7 +17,7 @@ var React = require("react");
 var ActivityIndicatorBar_1 = require("../ActivityIndicatorBar/ActivityIndicatorBar");
 var IconButton_1 = require("../IconButton/IconButton");
 require("./CollectionLane.css");
-var CollectionLane = /** @class */ (function (_super) {
+var CollectionLane = (function (_super) {
     __extends(CollectionLane, _super);
     function CollectionLane(props) {
         var _this = _super.call(this, props) || this;

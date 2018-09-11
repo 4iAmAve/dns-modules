@@ -30,7 +30,7 @@ var utils_1 = require("@dns/utils");
 var Input_1 = require("../Input/Input");
 var SelectDropdown_1 = require("../SelectDropdown/SelectDropdown");
 require("./DatePicker.css");
-var DatePicker = /** @class */ (function (_super) {
+var DatePicker = (function (_super) {
     __extends(DatePicker, _super);
     function DatePicker(props) {
         var _this = _super.call(this, props) || this;

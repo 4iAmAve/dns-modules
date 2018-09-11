@@ -20,7 +20,8 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "keyofStringsOnly": true
+    "keyofStringsOnly": true,
+    "removeComments": true
   },
   "include": [
     "app/**/*"

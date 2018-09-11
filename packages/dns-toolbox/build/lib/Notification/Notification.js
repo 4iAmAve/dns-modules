@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Notification.css");
-var Notification = /** @class */ (function (_super) {
+var Notification = (function (_super) {
     __extends(Notification, _super);
     function Notification(props, context) {
         var _this = _super.call(this, props, context) || this;

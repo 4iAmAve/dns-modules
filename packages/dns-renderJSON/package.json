@@ -28,7 +28,7 @@
     "@storybook/addon-info": "^3.4.8",
     "@storybook/addon-knobs": "^3.4.8",
     "@storybook/react": "^3.4.8",
-    "awesome-typescript-loader": "^4.0.1",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.0",
     "cpx": "^1.5.0",
     "css-loader": "^1.0.0",

@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typesafe_actions_1 = require("typesafe-actions");
-var confirmDialogue_1 = require("../actions/confirmDialogue");
+var actions_1 = require("../actions");
 var initialState = {
     onConfirm: null,
     open: false,
@@ -22,10 +22,10 @@ var initialState = {
 function confirmDialogue(state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {
-        case typesafe_actions_1.getType(confirmDialogue_1.confirmDialogueActions.closeDialogue):
+        case typesafe_actions_1.getType(actions_1.confirmDialogueActions.closeDialogue):
             return __assign({}, initialState, { open: false });
-        case typesafe_actions_1.getType(confirmDialogue_1.confirmDialogueActions.openDialogue):
-            return __assign({}, state, action.data, { open: true });
+        case typesafe_actions_1.getType(actions_1.confirmDialogueActions.openDialogue):
+            return __assign({}, state, action.payload.data, { open: true });
         default:
             return state;
     }

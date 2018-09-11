@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./MasterDetail.css");
-var MasterDetail = /** @class */ (function (_super) {
+var MasterDetail = (function (_super) {
     __extends(MasterDetail, _super);
     function MasterDetail() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -48,7 +48,6 @@ var MasterDetail = /** @class */ (function (_super) {
                 var availableDocWidth = document.body.offsetWidth - (_this.props.offsetWidth || 0);
                 if (_this.props.detailOpen) {
                     var master = _this.masterRef.getBoundingClientRect();
-                    // const detail = this.detailRef.getBoundingClientRect();
                     return {
                         master: availableDocWidth / 2,
                         detail: availableDocWidth - master.width,

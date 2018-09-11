@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Page.css");
-var Page = /** @class */ (function (_super) {
+var Page = (function (_super) {
     __extends(Page, _super);
     function Page() {
         return _super !== null && _super.apply(this, arguments) || this;

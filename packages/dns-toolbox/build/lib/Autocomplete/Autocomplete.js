@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var Chips_1 = require("../Chips/Chips");
 require("./Autocomplete.css");
-var Autocomplete = /** @class */ (function (_super) {
+var Autocomplete = (function (_super) {
     __extends(Autocomplete, _super);
     function Autocomplete(props) {
         var _this = _super.call(this, props) || this;

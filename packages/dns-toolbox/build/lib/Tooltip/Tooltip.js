@@ -15,9 +15,8 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Tooltip.css");
-var Tooltip = /** @class */ (function (_super) {
+var Tooltip = (function (_super) {
     __extends(Tooltip, _super);
-    // private mounted: boolean;
     function Tooltip(props) {
         var _this = _super.call(this, props) || this;
         _this.getElement = function () {
@@ -83,7 +82,6 @@ var Tooltip = /** @class */ (function (_super) {
             ttLeftValue: -32,
         };
         return _this;
-        // this.mounted = true;
     }
     Tooltip.prototype.componentWillUnmount = function () {
         var element = this.getElement();

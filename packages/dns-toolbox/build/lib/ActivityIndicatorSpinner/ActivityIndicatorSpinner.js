@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./ActivityIndicatorSpinner.css");
-var ActivityIndicatorSpinner = /** @class */ (function (_super) {
+var ActivityIndicatorSpinner = (function (_super) {
     __extends(ActivityIndicatorSpinner, _super);
     function ActivityIndicatorSpinner() {
         return _super !== null && _super.apply(this, arguments) || this;

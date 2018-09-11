@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ErrorBoundary = /** @class */ (function (_super) {
+var ErrorBoundary = (function (_super) {
     __extends(ErrorBoundary, _super);
     function ErrorBoundary(props, context) {
         var _this = _super.call(this, props) || this;
@@ -24,14 +24,11 @@ var ErrorBoundary = /** @class */ (function (_super) {
         return _this;
     }
     ErrorBoundary.prototype.componentDidCatch = function (error, info) {
-        // Display fallback UI
         this.setState({ hasError: true });
-        // You can also log the error to an error reporting service
         console.error(error, info);
     };
     ErrorBoundary.prototype.render = function () {
         if (this.state.hasError) {
-            // You can render any custom fallback UI
             return React.createElement("h1", null, "Something went wrong.");
         }
         return this.props.children;

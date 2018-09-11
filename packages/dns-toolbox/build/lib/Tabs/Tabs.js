@@ -17,7 +17,7 @@ var React = require("react");
 var react_swipeable_views_1 = require("react-swipeable-views");
 var IconButton_1 = require("../IconButton/IconButton");
 require("./Tabs.css");
-var Tabs = /** @class */ (function (_super) {
+var Tabs = (function (_super) {
     __extends(Tabs, _super);
     function Tabs(props) {
         var _this = _super.call(this, props) || this;
@@ -36,7 +36,6 @@ var Tabs = /** @class */ (function (_super) {
             };
         };
         _this.onTabClick = function (e, id) {
-            // const { width, left } = e.target.getBoundingClientRect();
             _this.setState({ selectedTab: id }, function () { return _this.callChange(id); });
         };
         _this.handleRef = function (key, tabRef) {
@@ -71,7 +70,6 @@ var Tabs = /** @class */ (function (_super) {
             }
             return borderStyle;
         };
-        // this.activePos = $('.tabs-header .active').position();
         _this.state = {
             selectedTab: props.selectedTab ? props.selectedTab : 0,
         };
@@ -79,17 +77,14 @@ var Tabs = /** @class */ (function (_super) {
     }
     Tabs.prototype.componentDidMount = function () {
         var selectedTab = this.props.selectedTab ? this.props.selectedTab : 0;
-        // TODO ugly workaround due to initial drawing time. try to get rid of it
         this.setState({ selectedTab: selectedTab });
     };
     Tabs.prototype.componentDidUpdate = function (prevProps) {
         if (this.props.selectedTab !== prevProps.selectedTab) {
             var selectedTab = this.props.selectedTab ? this.props.selectedTab : 0;
-            // TODO ugly workaround due to initial drawing time. try to get rid of it
             this.setState({ selectedTab: selectedTab });
         }
     };
-    // @TODO add ripple to lis
     Tabs.prototype.render = function () {
         var _this = this;
         var _a = this.props, className = _a.className, children = _a.children, swipeable = _a.swipeable, tabs = _a.tabs, withNavigation = _a.withNavigation;

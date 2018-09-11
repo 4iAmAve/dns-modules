@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_redux_1 = require("react-redux");
 var actions_1 = require("../../actions");
-var FilterModule = /** @class */ (function (_super) {
+var FilterModule = (function (_super) {
     __extends(FilterModule, _super);
     function FilterModule(props) {
         var _this = _super.call(this, props) || this;

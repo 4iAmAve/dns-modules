@@ -26,7 +26,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Input.css");
-var Input = /** @class */ (function (_super) {
+var Input = (function (_super) {
     __extends(Input, _super);
     function Input(props) {
         var _this = _super.call(this, props) || this;
@@ -36,7 +36,6 @@ var Input = /** @class */ (function (_super) {
             _this.setState({
                 value: e.target.value
             });
-            // prevent cursor from jumping
             _this.input.selectionStart = curCurPosEnd;
             if (_this.props.onChange) {
                 _this.props.onChange(event);
@@ -87,12 +86,8 @@ var Input = /** @class */ (function (_super) {
     };
     Input.prototype.render = function () {
         var _this = this;
-        var _a = this.props, classNames = _a.classNames, onClick = _a.onClick, onKeyUp = _a.onKeyUp, 
-        // onChange,
-        _b = _a.type, 
-        // onChange,
-        type = _b === void 0 ? 'text' : _b, label = _a.label, _c = _a.required, required = _c === void 0 ? false : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.error, error = _e === void 0 ? null : _e, _f = _a.extraProps, extraProps = _f === void 0 ? {} : _f, name = _a.name;
-        var /*labelSmall,*/ value = this.state.value;
+        var _a = this.props, classNames = _a.classNames, onClick = _a.onClick, onKeyUp = _a.onKeyUp, _b = _a.type, type = _b === void 0 ? 'text' : _b, label = _a.label, _c = _a.required, required = _c === void 0 ? false : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.error, error = _e === void 0 ? null : _e, _f = _a.extraProps, extraProps = _f === void 0 ? {} : _f, name = _a.name;
+        var value = this.state.value;
         var labelSmall = value && value.toString().length > 0;
         return (React.createElement("div", { className: "\n          input-group\n          " + (classNames ? classNames : '') + "\n          " + (disabled ? 'input--disabled' : '') + "\n          " + (error ? 'input--error' : '') + "\n        " },
             React.createElement("input", __assign({}, extraProps, { type: type, required: required, value: value, name: name ? name : label, onKeyUp: onKeyUp, onClick: onClick, onChange: function (e) { return _this.onChange(e); }, onFocus: this.handleFocus, onBlur: this.handleBlur, disabled: disabled, tabIndex: disabled ? -1 : 1, ref: this.handleInputRef })),

@@ -20,7 +20,7 @@ var Icon_1 = require("../Icon/Icon");
 var IconButton_1 = require("../IconButton/IconButton");
 var Chip_1 = require("../Chip/Chip");
 require("./Table.css");
-var Table = /** @class */ (function (_super) {
+var Table = (function (_super) {
     __extends(Table, _super);
     function Table() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -55,10 +55,7 @@ var Table = /** @class */ (function (_super) {
             return _this.props.onSortChange && _this.props.onSortChange(definition, nextDir);
         };
         _this.renderHeader = function (column, key) {
-            var classNames = column.classNames, definition = column.definition, label = column.label, 
-            /*action, */
-            // render,
-            small = column.small, sortable = column.sortable, type = column.type, withHeaderOperation = column.withHeaderOperation;
+            var classNames = column.classNames, definition = column.definition, label = column.label, small = column.small, sortable = column.sortable, type = column.type, withHeaderOperation = column.withHeaderOperation;
             var operationsClass = _this.props.operationsClass;
             var node = null;
             switch (type) {

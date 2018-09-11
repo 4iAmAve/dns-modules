@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var Button_1 = require("../Button/Button");
 require("./ConfirmDialogue.css");
-var ConfirmDialogue = /** @class */ (function (_super) {
+var ConfirmDialogue = (function (_super) {
     __extends(ConfirmDialogue, _super);
     function ConfirmDialogue() {
         var _this = _super !== null && _super.apply(this, arguments) || this;

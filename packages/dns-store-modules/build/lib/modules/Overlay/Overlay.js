@@ -18,7 +18,7 @@ var react_redux_1 = require("react-redux");
 var toolbox_1 = require("@dns/toolbox");
 var overlay_1 = require("../../actions/overlay");
 require("./Overlay.css");
-var Overlay = /** @class */ (function (_super) {
+var Overlay = (function (_super) {
     __extends(Overlay, _super);
     function Overlay(props, context) {
         var _this = _super.call(this, props, context) || this;
@@ -48,7 +48,6 @@ var Overlay = /** @class */ (function (_super) {
             var area = _this.node;
             var TIMEOUT = 5;
             if (area && !area.contains(evt.target)) {
-                // @TODO dirty workaround to avoid race condition -> get rid of it
                 setTimeout(function () {
                     _this.props.closeOverlay(_this.props.id);
                 }, TIMEOUT);
@@ -79,15 +78,6 @@ var Overlay = /** @class */ (function (_super) {
     };
     Overlay.prototype.render = function () {
         var _this = this;
-        // const style = {
-        //   height: 'auto',
-        //   width: '95%',
-        //   marginLeft: 20,
-        //   padding: 6,
-        //   display: 'inline-block',
-        //   backgroundColor: 'white',
-        //   position: 'relative',
-        // };
         return (React.createElement("div", { className: "\n          overlay\n          " + (this.props.overlay[this.props.id] ? 'overlay--open' : '') + "\n          " + (this.props.classNames ? this.props.classNames : '') + "\n        ", ref: this.handleRef },
             React.createElement(toolbox_1.Card, { withoutOffset: true },
                 this.props.title &&

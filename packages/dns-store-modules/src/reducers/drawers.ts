@@ -1,5 +1,5 @@
 import { getType } from 'typesafe-actions';
-import { /*drawerAction,*/ drawerActions } from '../actions/drawers';
+import { /*drawerAction,*/ drawerActions } from '../actions';
 
 export interface DrawersState {
 }
@@ -12,22 +12,22 @@ export default function drawers(state: DrawersState = initialState, action: any)
     case getType(drawerActions.subscribeToDrawerStore):
       return {
         ...state,
-        [action.id]: {
+        [action.payload.id]: {
           open: false,
         },
       };
     case getType(drawerActions.openDrawer):
       return {
         ...state,
-        [action.id]: {
+        [action.payload.id]: {
           open: true,
-          ...action.data
+          ...action.payload.data
         },
       };
     case getType(drawerActions.closeDrawer):
       return {
         ...state,
-        [action.id]: {
+        [action.payload.id]: {
           open: false,
         },
       };

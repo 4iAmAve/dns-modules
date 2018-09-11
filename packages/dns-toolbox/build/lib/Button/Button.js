@@ -27,12 +27,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var Ripple_1 = require("../Ripple/Ripple");
 require("./Button.css");
-var Button = /** @class */ (function (_super) {
+var Button = (function (_super) {
     __extends(Button, _super);
     function Button(props) {
         var _this = _super.call(this, props) || this;
         _this.handleClick = function (e) {
-            // Get Cursor Position
             var cursorPos = {
                 top: e.clientY,
                 left: e.clientX,

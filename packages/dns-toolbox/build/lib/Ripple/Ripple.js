@@ -26,19 +26,16 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./Ripple.css");
-var Ripple = /** @class */ (function (_super) {
+var Ripple = (function (_super) {
     __extends(Ripple, _super);
     function Ripple(props) {
         var _this = _super.call(this, props) || this;
         _this.rippling = function (cursorPos, parent) {
-            // Get the element
             var $button = parent;
             var buttonPos = $button.getBoundingClientRect();
             var buttonWidth = $button.offsetWidth;
             var buttonHeight = $button.offsetHeight;
-            // Make a Square Ripple
             var rippleWidthShouldBe = Math.max(buttonHeight, buttonWidth);
-            // Make Ripple Position to be center
             var centerize = rippleWidthShouldBe / 2;
             _this.setState({
                 animate: true,
@@ -61,16 +58,13 @@ var Ripple = /** @class */ (function (_super) {
     Ripple.prototype.componentDidUpdate = function (prevProps) {
         var _this = this;
         var cursorPos = prevProps.cursorPos;
-        // Prevent Component duplicates ripple effect at the same time
         if (cursorPos.time !== this.props.cursorPos.time) {
-            // If Has Animated, set state to "false" First
             if (this.state.animate) {
                 this.setState({ animate: false }, function () {
                     _this.rippling(_this.props.cursorPos, _this.props.parent);
                 });
             }
             else {
-                // else, Do Reppling
                 this.rippling(this.props.cursorPos, this.props.parent);
             }
         }

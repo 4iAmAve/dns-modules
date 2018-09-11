@@ -1,5 +1,5 @@
 import { getType } from 'typesafe-actions';
-import { paginatorActions } from '../actions/paginator';
+import { paginatorActions } from '../actions';
 
 export interface PaginatorState {
   defaultState: any;
@@ -14,21 +14,21 @@ export default function paginator(state: PaginatorState = initialState, action: 
     case getType(paginatorActions.subscribeToPaginatorStore):
       return {
         ...state,
-        [action.id]: action.settings,
+        [action.payload.id]: action.payload.settings,
         defaultState: {
           ...state.defaultState,
-          [action.id]: action.settings,
+          [action.payload.id]: action.payload.settings,
         }
       };
     case getType(paginatorActions.updatePaginator):
       return {
         ...state,
-        [action.id]: action.settings,
+        [action.payload.id]: action.payload.settings,
       };
     case getType(paginatorActions.resetPaginator):
       return {
         ...state,
-        [action.id]: state.defaultState[action.id],
+        [action.payload.id]: state.defaultState[action.payload.id],
       };
     default:
       return state;

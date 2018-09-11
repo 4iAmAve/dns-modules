@@ -26,7 +26,8 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
 
-    "keyofStringsOnly": true
+    "keyofStringsOnly": true,
+    "removeComments": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "scripts"]
