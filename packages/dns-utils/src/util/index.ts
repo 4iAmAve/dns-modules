@@ -19,6 +19,7 @@ import parseDate from './parseDate';
 import parseDateAndTimeToFixed from './parseDateAndTimeToFixed';
 import parseDateAndTime from './parseDateAndTime';
 import parseDateHumanReadable from './parseDateHumanReadable';
+import serialize from './serialize';
 import standardizeSingleLine from './standardizeSingleLine';
 import stringToColour from './stringToColour';
 import timeString2ms from './timeString2ms';
@@ -50,6 +51,7 @@ export {
   parseDateAndTime,
   parseDateAndTimeToFixed,
   parseDateHumanReadable,
+  serialize,
   standardizeSingleLine,
   stringToColour,
   timeString2ms,

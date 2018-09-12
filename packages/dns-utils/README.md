@@ -39,6 +39,7 @@ import {
   parseDateAndTime,
   parseDateAndTimeToFixed,
   parseDateHumanReadable,
+  serialize,
   standardizeSingleLine,
   stringToColour,
   timeString2ms,
@@ -69,6 +70,21 @@ const hexColor = '#FFF';
 const email = 'awesomw@mcepic.com';
 const pwd = 'Test123!;,';
 const url = 'https://aves.site';
+const maliciousObj = {
+  num: 0,
+  obj: {foo: 'foo'},
+  arr: [0, 1, 2],
+  bool: true,
+  undefined: undefined,
+  date: new Date(),
+  regexp: /([^\s]+)/g,
+  xss: '</script>'
+};
+const serializeOptions = {
+  isJSON: false,
+  space: false, // add spaces to JSON output to make it more human readable
+  unsafe: false // signal that a straight conversion is desired (w/o xss protection)
+};
 
 addToClipboard(text);
 camelize(text); // 'Hello World'
@@ -89,6 +105,7 @@ parseDate(today); // year-month-day
 parseDateAndTime(today); // year-month-day hours:minutes:seconds
 parseDateAndTimeToFixed(today, true) // second parameter is optional, sets date to start or end of day and returns the same as for parseDateAndTime
 parseDateHumanReadable(today); // Thu, 06 Sep 2018 03:30:21
+serialize(maliciousObj, serializeOptions); // '{"num":0,"obj":{"foo":"foo"},"arr":[0,1,2],"bool":true,date:new Date(),"regexp":/([^\\s]+)/g,"xss":"\\u003C\\u002Fscript\\u003E"}'
 standardizeSingleLine(textDoubleSpaces); // 'hello world'
 stringToColour('test'); // rgb(146, 68, 54)
 timeString2ms(todayString); // return date in milliseconds
