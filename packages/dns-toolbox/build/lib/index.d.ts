@@ -10,6 +10,7 @@ export { Chips } from './Chips/Chips';
 export { CollectionLane } from './CollectionLane/CollectionLane';
 export { ConfirmDialogue } from './ConfirmDialogue/ConfirmDialogue';
 export { DatePicker } from './DatePicker/DatePicker';
+export { dynamicComponent } from './dynamicComponent/dynamicComponent';
 export { ErrorBoundary } from './ErrorBoundary/ErrorBoundary';
 export { Expandable } from './Expandable/Expandable';
 export { GenericDialogue } from './GenericDialogue/GenericDialogue';

@@ -6,7 +6,7 @@
   "repository": "https://github.com/4iAmAve/dns-modules",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap --stream",
+    "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream",
     "start:fe": "lerna run start --scope frontend --stream",
     "build": "lerna run build --stream",

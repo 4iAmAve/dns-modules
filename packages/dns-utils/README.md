@@ -1,6 +1,6 @@
 ## @dns/utils
 
-A component library for useful utility functions 
+React independent library with useful utility functions 
 
 ### Setup
 
