@@ -13,38 +13,32 @@
 // Learn more about creating plugins like this:
 // https://github.com/ampedandwired/html-webpack-plugin#events
 
-"use strict";
-const escapeStringRegexp = require("escape-string-regexp");
-let tapped = 0;
+'use strict';
+const escapeStringRegexp = require('escape-string-regexp');
+
 class InterpolateHtmlPlugin {
   constructor(replacements) {
-    this.replacements = replacements;
+    this.replacements = replacements
   }
 
   apply(compiler) {
-    compiler.hooks.compilation.tap("InterpolateHtmlPlugin", compilation => {
-      if (
-        !tapped++ &&
-        compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing !== undefined
-      ) {
+    compiler.hooks.compilation.tap(
+      'InterpolateHtmlPlugin',
+      compilation => {
         compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tap(
-          "InterpolateHtmlPlugin",
-          (data, callback) => {
+          'InterpolateHtmlPlugin',
+          data => {
             // Run HTML through a series of user-specified string replacements.
             Object.keys(this.replacements).forEach(key => {
-              const value = this.replacements[key];
+              const value = this.replacements[key]
               data.html = data.html.replace(
-                new RegExp("%" + escapeStringRegexp(key) + "%", "g"),
+                new RegExp('%' + escapeStringRegexp(key) + '%', 'g'),
                 value
-              );
-            });
-            if (typeof callback === "function") {
-              callback(null, data);
-            }
+              )
+            })
           }
-        );
-      }
-    });
+        )
+      })
   }
 }
 

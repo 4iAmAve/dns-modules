@@ -227,7 +227,10 @@ module.exports = {
             test: /\.scss$/,
             // include: require.resolve('@dns/common-styles'),
             use: [
-              MiniCssExtractPlugin.loader,
+              // disabling MiniCssExtractPlugin.loader in DEV due to missing HRM support
+              // waiting for https://github.com/webpack-contrib/mini-css-extract-plugin/issues/34
+              // MiniCssExtractPlugin.loader,
+              require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
