@@ -1,7 +1,10 @@
 {
-  "lerna": "3.2.1",
+  "lerna": "3.4.0",
   "npmClient": "yarn",
-  "npmClientArgs": ["--loglevel verbose", "--stream"],
+  "npmClientArgs": [
+    "--loglevel verbose",
+    "--stream"
+  ],
   "packages": [
     "packages/*"
   ],

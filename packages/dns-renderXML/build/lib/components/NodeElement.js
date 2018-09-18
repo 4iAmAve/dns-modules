@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var StringTag_1 = require("./StringTag");
 var CollapsableTag_1 = require("./CollapsableTag");
-var NodeElement = /** @class */ (function (_super) {
+var NodeElement = (function (_super) {
     __extends(NodeElement, _super);
     function NodeElement() {
         var _this = _super !== null && _super.apply(this, arguments) || this;

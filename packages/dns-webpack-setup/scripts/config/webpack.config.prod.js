@@ -4,10 +4,10 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+// const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const InterpolateHtmlPlugin = require('./InterpolateHtmlPluginForkWP4');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
@@ -64,19 +64,6 @@ function packageSort(packages) {
   }
 }
 
-// Note: defined here because it will be used more than once.
-// const cssFilename = 'static/css/[name].css';
-const cssFilename = 'static/css/[name].[contenthash:8].css';
-
-// ExtractTextPlugin expects the build output to be flat.
-// (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
-// However, our output is structured with css, js and media folders.
-// To have this structure working with relative paths, we have to use custom options.
-const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  ? // Making sure that the publicPath goes back to to build folder.
-  { publicPath: Array(cssFilename.split('/').length).join('../') }
-  : {};
-
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -94,10 +81,6 @@ module.exports = {
       'react-dom',
       'react-router'
     ],
-    // dns: [
-    //   '@dns/toolbox',
-    //   '@dns/store-modules',
-    // ],
     main: paths.appIndexJs
   },
   // entry: [require.resolve('./polyfills'), paths.appIndexJs],
@@ -147,7 +130,6 @@ module.exports = {
       '.jsx',
     ],
     alias: {
-
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -254,25 +236,6 @@ module.exports = {
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
           // sass loader
-          /*          {
-                      test: /\.scss$/,
-                      use: ExtractTextPlugin.extract({
-                        fallback: require.resolve('style-loader'),
-                        use: [
-                          {
-                            loader: require.resolve('css-loader'),
-                            options: {
-                              modules: true,
-                              sourceMap: true,
-                              importLoaders: 2,
-                              localIdentName: "[name]_[local]_[hash:base64:5]"
-                            }
-                          },
-                          require.resolve('sass-loader')
-                        ]
-                      })
-                    },*/
-          // sass loader
           {
             test: /\.scss$/,
             use: [
@@ -361,7 +324,10 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true // set to true if you want JS source maps
+        sourceMap: true, // set to true if you want JS source maps
+        uglifyOptions: {
+          ecma: 5
+        }
       }),
       new OptimizeCSSAssetsPlugin({})
     ]
@@ -395,7 +361,7 @@ module.exports = {
       logo: './src/assets/favicon/android-chrome-512x512.png',
       prefix: 'icn-[hash:4]/',
       background: '#fff',
-      title: 'IAS - Carrier-Cockpit',
+      title: 'DNS - Demo',
       icons: {
         android: true,
         appleIcon: true,
@@ -416,7 +382,6 @@ module.exports = {
       uglifyOptions: {
         ecma: 5,
         compress: {
-          ecma: 5,
           warnings: false,
           // Disabled because of an issue with Uglify breaking seemingly valid code:
           // https://github.com/facebookincubator/create-react-app/issues/2376
@@ -424,11 +389,8 @@ module.exports = {
           // https://github.com/mishoo/UglifyJS2/issues/2011
           comparisons: false,
         },
-        mangle: {
-          safari10: true,
-        },
+        // mangle: true,
         output: {
-          ecma: 5,
           comments: false,
           // Turned on because emoji and regex is not minified properly using default
           // https://github.com/facebookincubator/create-react-app/issues/2488
@@ -441,10 +403,10 @@ module.exports = {
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     // new ExtractTextPlugin(cssFilename),
     new MiniCssExtractPlugin({
-        // Options similar to the same options in webpackOptions.output
-        // both options are optional
-        filename: "static/css/[name].[contenthash:8].css",
-        chunkFilename: "static/css/[name].[contenthash:8].css"
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "static/css/[name].[contenthash:8].css",
+      chunkFilename: "static/css/[name].[contenthash:8].css"
     }),
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without

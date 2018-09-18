@@ -1,4 +1,3 @@
-/// <reference types="react-redux" />
 import * as React from 'react';
 import { DrawersState as DrawerReducerState } from '../../reducers/drawers';
 import './Drawer.css';
@@ -16,6 +15,11 @@ export interface DrawerProps {
 export interface DrawerState {
     loaded: boolean;
 }
-export declare const connectedDrawer: React.ComponentClass<Pick<DrawerProps, "width" | "classNames" | "id" | "withoutCloseButton" | "fullWidth" | "disableCloseOnOutsideClick">, any> & {
-    WrappedComponent: React.ComponentType<DrawerProps>;
-};
+declare class Drawer extends React.Component<DrawerProps, DrawerState> {
+    static defaultProps: Partial<DrawerProps>;
+    constructor(props: DrawerProps, context: object);
+    onCloseClick: () => void;
+    render(): JSX.Element;
+}
+export declare const connectedDrawer: import("react-redux").ConnectedComponentClass<typeof Drawer, Pick<DrawerProps, "width" | "classNames" | "id" | "withoutCloseButton" | "fullWidth" | "disableCloseOnOutsideClick">>;
+export {};

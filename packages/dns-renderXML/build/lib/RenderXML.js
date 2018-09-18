@@ -27,13 +27,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var components_1 = require("./components");
 require("./styles/renderXML.css");
-var RenderXML = /** @class */ (function (_super) {
+var RenderXML = (function (_super) {
     __extends(RenderXML, _super);
     function RenderXML(props) {
         var _this = _super.call(this, props) || this;
-        // make sure props are passed in as expected
         _this.validateInput = function () {
-            // make sure `src` prop is valid
             if (typeof _this.props.data !== 'string') {
                 console.error('@dns/renderXML error:', 'src property must be a valid string');
                 _this.setState({

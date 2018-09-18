@@ -1,4 +1,3 @@
-/// <reference types="react-redux" />
 import * as React from 'react';
 import { OverlayState as OverlayReducerState } from '../../reducers/overlay';
 import './Overlay.css';
@@ -16,6 +15,18 @@ export interface OverlayProps {
 export interface OverlayState {
     menuOpen: boolean;
 }
-export declare const connectedOverlay: React.ComponentClass<Pick<OverlayProps, "width" | "title" | "classNames" | "rootID" | "id" | "withoutCloseButton">, any> & {
-    WrappedComponent: React.ComponentType<OverlayProps>;
-};
+declare class Overlay extends React.Component<OverlayProps, OverlayState> {
+    static defaultProps: Partial<OverlayProps>;
+    private node;
+    constructor(props: OverlayProps, context: object);
+    componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    getElement: () => HTMLElement;
+    handleEventListeners: (type?: string) => void;
+    onCloseClick: () => void;
+    handleDocumentClick: (evt: any) => void;
+    handleRef: (ref: any) => any;
+    render(): JSX.Element;
+}
+export declare const connectedOverlay: import("react-redux").ConnectedComponentClass<typeof Overlay, Pick<OverlayProps, "width" | "title" | "classNames" | "rootID" | "id" | "withoutCloseButton">>;
+export {};

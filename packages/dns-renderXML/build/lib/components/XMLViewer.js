@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var NodeElement_1 = require("./NodeElement");
-var XMLViewer = /** @class */ (function (_super) {
+var XMLViewer = (function (_super) {
     __extends(XMLViewer, _super);
     function XMLViewer(props) {
         var _this = _super.call(this, props) || this;

@@ -15,7 +15,6 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const IS_PROD = ['prod', 'production'].includes(process.env.NODE_ENV.toLowerCase());
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -203,25 +202,6 @@ module.exports = {
               },
             ],
           },
-          // sass loader
-          // {
-          //     test: /\.scss$/,
-          //     use: ExtractTextPlugin.extract({
-          //         fallback: require.resolve('style-loader'),
-          //         use: [
-          //           {
-          //             loader: require.resolve('css-loader'),
-          //             options: {
-          //             modules: true,
-          //             sourceMap: true,
-          //             importLoaders: 2,
-          //             localIdentName: "[name]_[local]_[hash:base64:5]"
-          //           }
-          //         },
-          //         require.resolve('sass-loader')
-          //       ]
-          //     })
-          // },
           // sass loader
           {
             test: /\.scss$/,

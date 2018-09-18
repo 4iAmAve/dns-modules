@@ -1,4 +1,3 @@
-/// <reference types="react-redux" />
 import * as React from 'react';
 import { PaginatorState } from '../../reducers';
 export interface Option {
@@ -23,6 +22,13 @@ export interface PaginatorModuleProps {
 export interface PaginatorModuleState {
     menuOpen: boolean;
 }
-export declare const connectedPaginator: React.ComponentClass<Pick<PaginatorModuleProps, "label" | "id" | "onChange" | "defaultValue" | "className" | "pageSize" | "pageSizeOptions" | "pageIndex" | "totalItems">, any> & {
-    WrappedComponent: React.ComponentType<PaginatorModuleProps>;
-};
+declare class PaginatorModule extends React.Component<PaginatorModuleProps, PaginatorModuleState> {
+    private defaultSettings;
+    constructor(props: PaginatorModuleProps);
+    componentDidUpdate(prevProps: PaginatorModuleProps): void;
+    onOptionChange: (e: Option) => void;
+    onPageChange: (e: any) => void;
+    render(): JSX.Element;
+}
+export declare const connectedPaginator: import("react-redux").ConnectedComponentClass<typeof PaginatorModule, Pick<PaginatorModuleProps, "label" | "id" | "onChange" | "defaultValue" | "className" | "pageSize" | "pageSizeOptions" | "pageIndex" | "totalItems">>;
+export {};

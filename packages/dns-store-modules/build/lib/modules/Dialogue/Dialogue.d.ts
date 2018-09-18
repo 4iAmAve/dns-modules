@@ -1,4 +1,3 @@
-/// <reference types="react-redux" />
 import * as React from 'react';
 import { GenericDialogueD } from '@dns/toolbox';
 import { DialoguesState as DialogueReducerState } from '../../reducers/dialogues';
@@ -18,6 +17,13 @@ export interface DialogueProps extends GenericDialogueD {
 }
 export interface DialogueState {
 }
-export declare const connectedDialogue: React.ComponentClass<Pick<DialogueProps, "content" | "height" | "minHeight" | "width" | "footer" | "title" | "text" | "classNames" | "id" | "buttons" | "hero" | "containerClassNames" | "withoutCloseButton" | "onClose" | "withoutOffset"> & object, any> & {
-    WrappedComponent: React.ComponentType<DialogueProps>;
-};
+declare class Dialogue extends React.Component<DialogueProps, DialogueState> {
+    static defaultProps: Partial<DialogueProps>;
+    constructor(props: DialogueProps);
+    componentDidUpdate(prevProps: DialogueProps): void;
+    handleEscapeClick: (e: any) => void;
+    onCloseClick: () => void;
+    render(): JSX.Element;
+}
+export declare const connectedDialogue: import("react-redux").ConnectedComponentClass<typeof Dialogue, Pick<DialogueProps, "content" | "height" | "minHeight" | "width" | "footer" | "title" | "text" | "classNames" | "id" | "buttons" | "hero" | "containerClassNames" | "withoutCloseButton" | "onClose" | "withoutOffset"> & object>;
+export {};

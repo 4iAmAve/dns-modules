@@ -1,4 +1,3 @@
-/// <reference types="react-redux" />
 import * as React from 'react';
 import { NotificationD } from '@dns/toolbox';
 import './NotificationBar.css';
@@ -13,6 +12,9 @@ export interface NotificationBarProps {
 }
 export interface NotificationBarState {
 }
-export declare const connectedNotficationBar: React.ComponentClass<Pick<NotificationBarProps, "position" | "stacked">, any> & {
-    WrappedComponent: React.ComponentType<NotificationBarProps>;
-};
+declare class NotificationBar extends React.Component<NotificationBarProps, NotificationBarState> {
+    static defaultProps: Partial<NotificationBarProps>;
+    render(): JSX.Element;
+}
+export declare const connectedNotficationBar: import("react-redux").ConnectedComponentClass<typeof NotificationBar, Pick<NotificationBarProps, "position" | "stacked">>;
+export {};

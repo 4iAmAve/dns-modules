@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var NodeElement_1 = require("./NodeElement");
 var generateAttributes_1 = require("../utils/generateAttributes");
-var CollapsableTag = /** @class */ (function (_super) {
+var CollapsableTag = (function (_super) {
     __extends(CollapsableTag, _super);
     function CollapsableTag(props) {
         var _this = _super.call(this, props) || this;
