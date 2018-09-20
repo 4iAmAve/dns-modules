@@ -13,6 +13,7 @@ export interface InputProps {
   value?: string | number;
   extraProps?: any;
   autoFocus?: boolean;
+  squared?: boolean;
   onBlur?: (event: any) => void;
   onFocus?: (event: any) => void;
   onClick?: (event: any) => void;
@@ -105,6 +106,7 @@ export class Input extends React.Component<InputProps, InputState> {
       label,
       required = false,
       disabled = false,
+      squared = false,
       error = null,
       extraProps = {},
       name,
@@ -119,6 +121,7 @@ export class Input extends React.Component<InputProps, InputState> {
           ${classNames ? classNames : ''}
           ${disabled ? 'input--disabled' : ''}
           ${error ? 'input--error' : ''}
+          ${squared ? 'input--not-rounded' : ''}
         `}
       >
         <input

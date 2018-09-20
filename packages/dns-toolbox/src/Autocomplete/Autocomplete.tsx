@@ -16,6 +16,7 @@ export interface AutocompleteProps {
   required?: boolean;
   rootID?: string;
   value?: string;
+  squared?: boolean;
   onBlur?: (event: any) => void;
   onKeyUp?: (event: any) => void;
   onDeleteChip?: (chip: any, key: number) => void;
@@ -231,7 +232,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
   handleInputRef = ref => this.input = ref;
 
   public render() {
-    const { chips, classNames, disabled, placeholder, required } = this.props;
+    const { chips, classNames, disabled, placeholder, required, squared } = this.props;
     const { autocompleteVisible, left, selectedItem, top, value, width } = this.state;
     const selectionList = this.getSelectionList();
     const topValue = this.calcTopValue(top, selectionList);
@@ -244,6 +245,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     if (chips && chips.length) {
       smallLabel = true;
     }
+
     return (
       <div
         className={`
@@ -251,6 +253,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
           ${classNames ? classNames : ''}
           ${disabled ? 'auto-complete--disabled' : ''}
           ${chips && chips.length ? 'auto-complete--with-chips' : ''}
+          ${squared ? 'auto-complete--not-rounded' : ''}
         `}
         ref={this.handleAutocompleteRef}
       >

@@ -5,10 +5,11 @@
   flex: 1; }
   .input-group input {
     font-size: 1em;
-    padding: 8px 8px 8px 0;
+    padding: 8px 8px 8px 12px;
     display: block;
     width: 100%;
-    border: none; }
+    border: none;
+    border-radius: 16px; }
     .input-group input:focus {
       outline: none; }
     .input-group input:focus ~ .input_bar:before,
@@ -22,7 +23,7 @@
     font-weight: normal;
     position: absolute;
     pointer-events: none;
-    left: 0;
+    left: 12px;
     top: 10px;
     transition: top 0.225s cubic-bezier(0.35, 0, 0.25, 1), font-size 0.225s cubic-bezier(0.35, 0, 0.25, 1);
     white-space: nowrap;
@@ -36,7 +37,8 @@
   .input-group .input_bar {
     position: relative;
     display: block;
-    width: 100%; }
+    width: calc(100% - 24px);
+    margin: auto; }
     .input-group .input_bar:before, .input-group .input_bar:after {
       content: '';
       height: 1px;
@@ -52,7 +54,8 @@
   .input-group .input_bar--default {
     position: relative;
     display: block;
-    width: 100%; }
+    width: calc(100% - 24px);
+    margin: auto; }
     .input-group .input_bar--default:before, .input-group .input_bar--default:after {
       content: '';
       height: 1px;
@@ -82,6 +85,17 @@
   .input-group .input_required {
     padding-left: 4px;
     color: #f44336; }
+  .input-group.input--not-rounded input {
+    border-radius: 0;
+    padding-left: 0; }
+  .input-group.input--not-rounded label {
+    left: 0; }
+  .input-group.input--not-rounded .input_bar {
+    width: 100%;
+    margin: 0; }
+  .input-group.input--not-rounded .input_bar--default {
+    width: 100%;
+    margin: 0; }
 
 @keyframes showError {
   0% {

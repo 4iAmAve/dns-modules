@@ -179,7 +179,7 @@ var Autocomplete = (function (_super) {
     };
     Autocomplete.prototype.render = function () {
         var _this = this;
-        var _a = this.props, chips = _a.chips, classNames = _a.classNames, disabled = _a.disabled, placeholder = _a.placeholder, required = _a.required;
+        var _a = this.props, chips = _a.chips, classNames = _a.classNames, disabled = _a.disabled, placeholder = _a.placeholder, required = _a.required, squared = _a.squared;
         var _b = this.state, autocompleteVisible = _b.autocompleteVisible, left = _b.left, selectedItem = _b.selectedItem, top = _b.top, value = _b.value, width = _b.width;
         var selectionList = this.getSelectionList();
         var topValue = this.calcTopValue(top, selectionList);
@@ -192,7 +192,7 @@ var Autocomplete = (function (_super) {
         if (chips && chips.length) {
             smallLabel = true;
         }
-        return (React.createElement("div", { className: "\n          auto-complete\n          " + (classNames ? classNames : '') + "\n          " + (disabled ? 'auto-complete--disabled' : '') + "\n          " + (chips && chips.length ? 'auto-complete--with-chips' : '') + "\n        ", ref: this.handleAutocompleteRef },
+        return (React.createElement("div", { className: "\n          auto-complete\n          " + (classNames ? classNames : '') + "\n          " + (disabled ? 'auto-complete--disabled' : '') + "\n          " + (chips && chips.length ? 'auto-complete--with-chips' : '') + "\n          " + (squared ? 'auto-complete--not-rounded' : '') + "\n        ", ref: this.handleAutocompleteRef },
             chips ?
                 React.createElement(Chips_1.Chips, { chips: chips, onDeleteChip: this.handleChipDelete }) : null,
             React.createElement("label", { className: "" + (smallLabel ? 'input_label--small' : '') },

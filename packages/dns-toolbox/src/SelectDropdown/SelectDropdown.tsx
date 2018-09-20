@@ -301,6 +301,7 @@ export class SelectDropdown extends React.Component<SelectDropdownProps, SelectD
                     onKeyUp={this.handleFilterChange}
                     value={searchValue}
                     autoFocus={true}
+                    squared={true}
                   />
                   <i className="material-icons">search</i>
                 </li> : null

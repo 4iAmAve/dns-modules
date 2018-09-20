@@ -86,10 +86,10 @@ var Input = (function (_super) {
     };
     Input.prototype.render = function () {
         var _this = this;
-        var _a = this.props, classNames = _a.classNames, onClick = _a.onClick, onKeyUp = _a.onKeyUp, _b = _a.type, type = _b === void 0 ? 'text' : _b, label = _a.label, _c = _a.required, required = _c === void 0 ? false : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.error, error = _e === void 0 ? null : _e, _f = _a.extraProps, extraProps = _f === void 0 ? {} : _f, name = _a.name;
+        var _a = this.props, classNames = _a.classNames, onClick = _a.onClick, onKeyUp = _a.onKeyUp, _b = _a.type, type = _b === void 0 ? 'text' : _b, label = _a.label, _c = _a.required, required = _c === void 0 ? false : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.squared, squared = _e === void 0 ? false : _e, _f = _a.error, error = _f === void 0 ? null : _f, _g = _a.extraProps, extraProps = _g === void 0 ? {} : _g, name = _a.name;
         var value = this.state.value;
         var labelSmall = value && value.toString().length > 0;
-        return (React.createElement("div", { className: "\n          input-group\n          " + (classNames ? classNames : '') + "\n          " + (disabled ? 'input--disabled' : '') + "\n          " + (error ? 'input--error' : '') + "\n        " },
+        return (React.createElement("div", { className: "\n          input-group\n          " + (classNames ? classNames : '') + "\n          " + (disabled ? 'input--disabled' : '') + "\n          " + (error ? 'input--error' : '') + "\n          " + (squared ? 'input--not-rounded' : '') + "\n        " },
             React.createElement("input", __assign({}, extraProps, { type: type, required: required, value: value, name: name ? name : label, onKeyUp: onKeyUp, onClick: onClick, onChange: function (e) { return _this.onChange(e); }, onFocus: this.handleFocus, onBlur: this.handleBlur, disabled: disabled, tabIndex: disabled ? -1 : 1, ref: this.handleInputRef })),
             React.createElement("span", { className: "input_bar--default" }),
             React.createElement("span", { className: "input_bar" }),

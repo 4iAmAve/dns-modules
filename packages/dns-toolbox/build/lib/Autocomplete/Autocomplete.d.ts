@@ -12,6 +12,7 @@ export interface AutocompleteProps {
     required?: boolean;
     rootID?: string;
     value?: string;
+    squared?: boolean;
     onBlur?: (event: any) => void;
     onKeyUp?: (event: any) => void;
     onDeleteChip?: (chip: any, key: number) => void;

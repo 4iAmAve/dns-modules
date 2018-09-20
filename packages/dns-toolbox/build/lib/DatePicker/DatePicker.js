@@ -188,7 +188,7 @@ var DatePicker = (function (_super) {
         var hourOptions = this.generateOptions(24);
         var minutesOptions = this.generateOptions(60);
         return (React.createElement("div", { className: "date-picker " + (classNames ? classNames : '') + " " + (clearable ? 'date-picker_clearable' : ''), ref: this.handleRef },
-            React.createElement(Input_1.Input, { required: required, onKeyUp: onKeyUp, onClick: onClick, value: value || '', label: label, classNames: "dp_input", onFocus: this.handleInputFocus, onChange: this.onChange }),
+            React.createElement(Input_1.Input, { required: required, onKeyUp: onKeyUp, onClick: onClick, value: value || '', label: label, squared: true, classNames: "dp_input", onFocus: this.handleInputFocus, onChange: this.onChange }),
             React.createElement("i", { className: "material-icons dp_icon dp_calendar-icon " + (iconClass ? iconClass : ''), onClick: this.handleInputFocus }, icon),
             clearable ?
                 React.createElement("i", { className: "material-icons dp_icon", onClick: this.handleClear }, "close") : null,

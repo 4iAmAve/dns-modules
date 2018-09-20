@@ -30,7 +30,6 @@
 
     &.input_label--small {
       top: -10px;
-      font-size: 12px;
       font-size: .75em;
       color: $default-border-color;
     }
@@ -53,6 +52,7 @@
       //margin: 2.5px;
       margin: 0;
       font-size: 1em;
+      border-radius: 16px;
     }
   }
 
@@ -63,6 +63,12 @@
 
     input {
       pointer-events: none;
+    }
+  }
+
+  &--not-rounded {
+    input {
+      border-radius: 0;
     }
   }
 

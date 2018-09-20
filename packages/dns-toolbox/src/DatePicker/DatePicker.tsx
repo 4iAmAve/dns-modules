@@ -243,6 +243,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
           onClick={onClick}
           value={value as string || ''}
           label={label}
+          squared={true}
           classNames="dp_input"
           onFocus={this.handleInputFocus}
           onChange={this.onChange}

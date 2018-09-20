@@ -11,6 +11,7 @@ export interface InputProps {
     value?: string | number;
     extraProps?: any;
     autoFocus?: boolean;
+    squared?: boolean;
     onBlur?: (event: any) => void;
     onFocus?: (event: any) => void;
     onClick?: (event: any) => void;

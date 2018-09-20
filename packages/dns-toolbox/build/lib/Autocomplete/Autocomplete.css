@@ -26,7 +26,6 @@
     width: 100%; }
     .auto-complete label.input_label--small {
       top: -10px;
-      font-size: 12px;
       font-size: .75em;
       color: rgba(0, 0, 0, 0.54); }
     .auto-complete label .input_required {
@@ -40,12 +39,15 @@
       box-sizing: border-box;
       width: 100%;
       margin: 0;
-      font-size: 1em; }
+      font-size: 1em;
+      border-radius: 16px; }
   .auto-complete--disabled {
     opacity: .7;
     border-bottom: 0; }
     .auto-complete--disabled input {
       pointer-events: none; }
+  .auto-complete--not-rounded input {
+    border-radius: 0; }
   .auto-complete .auto-complete-container {
     position: fixed;
     z-index: 4;

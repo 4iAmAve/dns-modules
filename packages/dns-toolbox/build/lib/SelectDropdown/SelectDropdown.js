@@ -213,7 +213,7 @@ var SelectDropdown = (function (_super) {
                 React.createElement("ul", { ref: this.handleListRef, className: "\n                select-dd_list " + (resetable ? 'select-dd_list--wrl' : '') + " " + (filterable ? 'select-dd_list--wf' : '') + "\n              ", style: listStyle },
                     filterable ?
                         React.createElement("li", { className: "select-dd_list-item select-dd_list-item--filterable" },
-                            React.createElement(Input_1.Input, { label: searchValue.length ? '' : 'Search', onKeyUp: this.handleFilterChange, value: searchValue, autoFocus: true }),
+                            React.createElement(Input_1.Input, { label: searchValue.length ? '' : 'Search', onKeyUp: this.handleFilterChange, value: searchValue, autoFocus: true, squared: true }),
                             React.createElement("i", { className: "material-icons" }, "search")) : null,
                     resetable && resetLabel &&
                         React.createElement("li", { className: "select-dd_list-item select-dd_list-item--reset", onMouseDown: function () { return _this.handleResetSelect(); }, onClick: function () { return _this.handleResetSelect(); } }, resetLabel),
