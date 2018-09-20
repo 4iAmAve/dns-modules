@@ -13,6 +13,10 @@
     "build-tsc": "node_modules/.bin/tsc",
     "build-sass": "node_modules/.bin/node-sass src/ -o src/",
     "build-storybook": "build-storybook",
+    "start-watcher": "npm run start-tsc-watcher & npm run start-sass-watcher & npm run start-sass-comp-watcher",
+    "start-tsc-watcher": "node_modules/.bin/tsc -w",
+    "start-sass-watcher": "node_modules/.bin/node-sass src/ -wo ./build/lib/",
+    "start-sass-comp-watcher": "node_modules/.bin/node-sass src/ -wo src/",
     "clean-build": "rm -rf build",
     "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"

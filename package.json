@@ -8,6 +8,10 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream",
+    "start:dns:rj": "lerna run start-watcher --scope @dns/renderJSON --stream",
+    "start:dns:tb": "lerna run start-watcher --scope @dns/toolbox --stream",
+    "start:dns:sm": "lerna run start-watcher --scope @dns/store-modules --stream",
+    "start:dns:utils": "lerna run start-watcher --scope @dns/utils --stream",
     "start:fe": "lerna run start --scope frontend --stream",
     "build": "lerna run build --stream",
     "build:fe": "lerna run build --scope frontend --stream",

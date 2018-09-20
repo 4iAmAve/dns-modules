@@ -156,7 +156,7 @@ var SelectDropdown = (function (_super) {
             listLeftValue: this.state.listLeftValue,
             listWidthValue: this.state.listWidthValue,
             isSelected: option.key,
-            searchValue: this.state.searchValue,
+            searchValue: '',
             selected: __assign({ key: option.key, label: option.label }, option),
         });
     };

@@ -139,7 +139,7 @@ export class SelectDropdown extends React.Component<SelectDropdownProps, SelectD
       listLeftValue: this.state.listLeftValue,
       listWidthValue: this.state.listWidthValue,
       isSelected: option.key,
-      searchValue: this.state.searchValue,
+      searchValue: '',
       selected: {
         key: option.key,
         label: option.label,
