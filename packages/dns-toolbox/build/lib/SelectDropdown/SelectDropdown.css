@@ -24,8 +24,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-align: left;
-  transition: margin-bottom .225s ease-in-out, font-size .225s ease-in-out, color .225s ease-in-out, opacity .225s ease-in-out;
-  z-index: 2; }
+  transition: margin-bottom .225s ease-in-out, font-size .225s ease-in-out, color .225s ease-in-out, opacity .225s ease-in-out; }
   .select-dd_label--unselected-label {
     font-size: 1em;
     margin-bottom: 24px;
@@ -83,7 +82,6 @@
   top: -26px;
   color: #999;
   cursor: pointer;
-  z-index: 2;
   left: calc(100% - 32px); }
 
 .select-dd_list {
@@ -97,7 +95,7 @@
   padding: 0;
   background-color: white;
   box-shadow: 0 3px 10px #adadad;
-  z-index: 20;
+  z-index: 10;
   min-width: 100px;
   border-radius: 6px;
   max-height: 60vh;
