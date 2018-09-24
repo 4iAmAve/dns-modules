@@ -8,6 +8,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream",
+    "start:dns:load-more": "lerna run start-watcher --scope @dns/load-more --stream",
     "start:dns:rj": "lerna run start-watcher --scope @dns/renderJSON --stream",
     "start:dns:tb": "lerna run start-watcher --scope @dns/toolbox --stream",
     "start:dns:sm": "lerna run start-watcher --scope @dns/store-modules --stream",
@@ -16,6 +17,7 @@
     "build": "lerna run build --stream",
     "build:fe": "lerna run build --scope frontend --stream",
     "build:dns:api": "lerna run build-lib --scope @dns/api --stream",
+    "build:dns:load-more": "lerna run build-lib --scope @dns/load-more --stream",
     "build:dns:ms": "lerna run build --scope @dns/node-ts-mock-server --stream",
     "build:dns:rj": "lerna run build-lib --scope @dns/renderJSON --stream",
     "build:dns:rx": "lerna run build-lib --scope @dns/render-xml --stream",

@@ -1,0 +1,11 @@
+.load-more {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block; }
+  .load-more .lm_loader {
+    width: 100%;
+    cursor: pointer;
+    display: inline-block;
+    padding: 16px;
+    text-align: center; }
