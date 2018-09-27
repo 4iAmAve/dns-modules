@@ -15,19 +15,19 @@ var typesafe_actions_1 = require("typesafe-actions");
 var actions_1 = require("../actions");
 var initialState = {};
 var subscribedState = initialState || {};
-function overlay(state, action) {
+function popover(state, action) {
     if (state === void 0) { state = initialState; }
     var _a, _b, _c;
     switch (action.type) {
-        case typesafe_actions_1.getType(actions_1.overlayActions.subscribeToOverlayStore):
+        case typesafe_actions_1.getType(actions_1.popoverActions.subscribeToPopoverStore):
             subscribedState[action.payload.id] = false;
             return __assign({}, state, (_a = {}, _a[action.payload.id] = false, _a));
-        case typesafe_actions_1.getType(actions_1.overlayActions.openOverlay):
+        case typesafe_actions_1.getType(actions_1.popoverActions.openPopover):
             return __assign({}, subscribedState, (_b = {}, _b[action.payload.id] = true, _b));
-        case typesafe_actions_1.getType(actions_1.overlayActions.closeOverlay):
+        case typesafe_actions_1.getType(actions_1.popoverActions.closePopover):
             return __assign({}, subscribedState, (_c = {}, _c[action.payload.id] = false, _c));
         default:
             return state;
     }
 }
-exports.default = overlay;
+exports.default = popover;

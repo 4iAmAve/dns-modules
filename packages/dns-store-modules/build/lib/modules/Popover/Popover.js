@@ -16,11 +16,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_redux_1 = require("react-redux");
 var toolbox_1 = require("@dns/toolbox");
-var overlay_1 = require("../../actions/overlay");
-require("./Overlay.css");
-var Overlay = (function (_super) {
-    __extends(Overlay, _super);
-    function Overlay(props, context) {
+var popover_1 = require("../../actions/popover");
+require("./Popover.css");
+var Popover = (function (_super) {
+    __extends(Popover, _super);
+    function Popover(props, context) {
         var _this = _super.call(this, props, context) || this;
         _this.getElement = function () {
             var rootID = _this.props.rootID;
@@ -42,68 +42,68 @@ var Overlay = (function (_super) {
             }
         };
         _this.onCloseClick = function () {
-            _this.props.closeOverlay(_this.props.id);
+            _this.props.closePopover(_this.props.id);
         };
         _this.handleDocumentClick = function (evt) {
             var area = _this.node;
             var TIMEOUT = 5;
             if (area && !area.contains(evt.target)) {
                 setTimeout(function () {
-                    _this.props.closeOverlay(_this.props.id);
+                    _this.props.closePopover(_this.props.id);
                 }, TIMEOUT);
             }
         };
         _this.handleRef = function (ref) { return _this.node = ref; };
-        if (!(props.id in props.overlay)) {
-            _this.props.onSubscribeToOverlayStore(_this.props.id);
+        if (!(props.id in props.popover)) {
+            _this.props.onSubscribeToPopoverStore(_this.props.id);
         }
         else {
             _this.handleEventListeners('add');
         }
         return _this;
     }
-    Overlay.prototype.componentDidUpdate = function () {
-        if (!(this.props.id in this.props.overlay)) {
-            this.props.onSubscribeToOverlayStore(this.props.id);
+    Popover.prototype.componentDidUpdate = function () {
+        if (!(this.props.id in this.props.popover)) {
+            this.props.onSubscribeToPopoverStore(this.props.id);
         }
-        if (this.props.overlay[this.props.id]) {
+        if (this.props.popover[this.props.id]) {
             this.handleEventListeners('add');
         }
         else {
             this.handleEventListeners();
         }
     };
-    Overlay.prototype.componentWillUnmount = function () {
+    Popover.prototype.componentWillUnmount = function () {
         this.handleEventListeners();
     };
-    Overlay.prototype.render = function () {
+    Popover.prototype.render = function () {
         var _this = this;
-        return (React.createElement("div", { className: "\n          overlay\n          " + (this.props.overlay[this.props.id] ? 'overlay--open' : '') + "\n          " + (this.props.classNames ? this.props.classNames : '') + "\n        ", ref: this.handleRef },
-            React.createElement(toolbox_1.Card, { withoutOffset: true },
+        return (React.createElement("div", { className: "\n          popover\n          " + (this.props.popover[this.props.id] ? 'popover--open' : '') + "\n          " + (this.props.classNames ? this.props.classNames : '') + "\n        ", ref: this.handleRef },
+            React.createElement(toolbox_1.Card, { withoutOffset: true, classNames: "popover_card" },
                 this.props.title &&
-                    React.createElement("div", { className: "overlay_title" },
-                        React.createElement("span", { className: "overlay_title" }, this.props.title),
-                        React.createElement("hr", { className: "overlay_separator" })),
-                React.createElement("div", { className: "overlay_wrapper" }, this.props.children),
+                    React.createElement("div", { className: "popover_title" },
+                        React.createElement("span", { className: "popover_title" }, this.props.title),
+                        React.createElement("hr", { className: "popover_separator" })),
+                React.createElement("div", { className: "popover_wrapper" }, this.props.children),
                 !this.props.withoutCloseButton ?
-                    React.createElement("div", { className: "overlay_close" },
-                        React.createElement("button", { className: "overlay_button", onClick: function () { return _this.onCloseClick(); } },
+                    React.createElement("div", { className: "popover_close" },
+                        React.createElement("button", { className: "popover_button", onClick: function () { return _this.onCloseClick(); } },
                             React.createElement("i", { className: "material-icons" }, "close"))) : null)));
     };
-    Overlay.defaultProps = {
+    Popover.defaultProps = {
         rootID: 'root',
-        overlay: {},
+        popover: {},
         width: 'auto',
         id: 0,
         title: null,
     };
-    return Overlay;
+    return Popover;
 }(React.Component));
 var mapStateToProps = function (state) { return ({
-    overlay: state.overlay,
+    popover: state.popover,
 }); };
 var mapDispatchToProps = function (dispatch) { return ({
-    closeOverlay: function (id) { return dispatch(overlay_1.overlayActions.closeOverlay(id)); },
-    onSubscribeToOverlayStore: function (id) { return dispatch(overlay_1.overlayActions.subscribeToOverlayStore(id)); },
+    closePopover: function (id) { return dispatch(popover_1.popoverActions.closePopover(id)); },
+    onSubscribeToPopoverStore: function (id) { return dispatch(popover_1.popoverActions.subscribeToPopoverStore(id)); },
 }); };
-exports.connectedOverlay = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Overlay);
+exports.connectedPopover = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Popover);

@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.overlay {
+.popover {
   opacity: 0;
   position: absolute;
   //position: relative;
@@ -14,11 +14,11 @@
     pointer-events: auto;
   }
 
-  .overlay_wrapper {
+  .popover_wrapper {
     padding-right: 15px;
   }
 
-  .overlay_close {
+  .popover_close {
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -26,15 +26,15 @@
     margin: $spacing * .5;
   }
 
-  .overlay_separator {
+  .popover_separator {
     border: 1px solid $defaultColor;
   }
 
-  .overlay_title {
+  .popover_title {
     margin: $spacing * 0.5;
   }
 
-  .overlay_sub-header {
+  .popover_sub-header {
     display: flex;
     color: #757575;
     font-weight: 700;
@@ -65,7 +65,7 @@
   }
 
   // abstract to component
-  .overlay_button {
+  .popover_button {
     bottom: 0;
     left: 0;
     display: flex;
@@ -120,5 +120,9 @@
     &.selected {
       color: $accent;
     }
+  }
+
+  .popover_card {
+    box-shadow: 0 3px 10px #adadad;
   }
 }

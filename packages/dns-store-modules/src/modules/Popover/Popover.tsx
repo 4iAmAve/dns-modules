@@ -2,15 +2,15 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Card } from '@dns/toolbox';
 
-import { overlayActions } from '../../actions/overlay';
-import { OverlayState as OverlayReducerState } from '../../reducers/overlay';
+import { popoverActions } from '../../actions/popover';
+import { PopoverState as PopoverReducerState } from '../../reducers/popover';
 
-import './Overlay.css';
+import './Popover.css';
 
-export interface OverlayProps {
-  onSubscribeToOverlayStore: (id: string | number) => void;
-  closeOverlay: (id: string | number) => void;
-  overlay: OverlayReducerState;
+export interface PopoverProps {
+  onSubscribeToPopoverStore: (id: string | number) => void;
+  closePopover: (id: string | number) => void;
+  popover: PopoverReducerState;
   id: string | number;
   rootID?: string;
   width?: string;
@@ -19,14 +19,14 @@ export interface OverlayProps {
   withoutCloseButton?: boolean;
 }
 
-export interface OverlayState {
+export interface PopoverState {
   menuOpen: boolean;
 }
 
-class Overlay extends React.Component<OverlayProps, OverlayState> {
-  public static defaultProps: Partial<OverlayProps> = {
+class Popover extends React.Component<PopoverProps, PopoverState> {
+  public static defaultProps: Partial<PopoverProps> = {
     rootID: 'root',
-    overlay: {},
+    popover: {},
     width: 'auto',
     id: 0,
     title: null,
@@ -34,21 +34,21 @@ class Overlay extends React.Component<OverlayProps, OverlayState> {
 
   private node: HTMLElement;
 
-  public constructor(props: OverlayProps, context: object) {
+  public constructor(props: PopoverProps, context: object) {
     super(props, context);
-    if (!(props.id in props.overlay)) {
-      this.props.onSubscribeToOverlayStore(this.props.id);
+    if (!(props.id in props.popover)) {
+      this.props.onSubscribeToPopoverStore(this.props.id);
     } else {
       this.handleEventListeners('add');
     }
   }
 
   public componentDidUpdate() {
-    if (!(this.props.id in this.props.overlay)) {
-      this.props.onSubscribeToOverlayStore(this.props.id);
+    if (!(this.props.id in this.props.popover)) {
+      this.props.onSubscribeToPopoverStore(this.props.id);
     }
 
-    if (this.props.overlay[this.props.id]) {
+    if (this.props.popover[this.props.id]) {
       this.handleEventListeners('add');
     } else {
       this.handleEventListeners();
@@ -82,7 +82,7 @@ class Overlay extends React.Component<OverlayProps, OverlayState> {
   }
 
   onCloseClick = () => {
-    this.props.closeOverlay(this.props.id);
+    this.props.closePopover(this.props.id);
   }
 
   handleDocumentClick = (evt: any) => {
@@ -93,7 +93,7 @@ class Overlay extends React.Component<OverlayProps, OverlayState> {
       // @TODO dirty workaround to avoid race condition -> get rid of it
       setTimeout(
         () => {
-          this.props.closeOverlay(this.props.id);
+          this.props.closePopover(this.props.id);
         },
         TIMEOUT
       );
@@ -115,28 +115,28 @@ class Overlay extends React.Component<OverlayProps, OverlayState> {
     return (
       <div
         className={`
-          overlay
-          ${this.props.overlay[this.props.id] ? 'overlay--open' : ''}
+          popover
+          ${this.props.popover[this.props.id] ? 'popover--open' : ''}
           ${this.props.classNames ? this.props.classNames : ''}
         `}
         ref={this.handleRef}
       >
-        <Card withoutOffset={true}>
+        <Card withoutOffset={true} classNames="popover_card">
           {
             this.props.title &&
-              <div className="overlay_title">
-                <span className="overlay_title">{this.props.title}</span>
-                <hr className="overlay_separator" />
+              <div className="popover_title">
+                <span className="popover_title">{this.props.title}</span>
+                <hr className="popover_separator" />
               </div>
           }
-          <div className="overlay_wrapper">
+          <div className="popover_wrapper">
             {this.props.children}
           </div>
           {
             !this.props.withoutCloseButton ?
-              <div className="overlay_close">
+              <div className="popover_close">
                 <button
-                  className="overlay_button"
+                  className="popover_button"
                   onClick={() => this.onCloseClick()}
                 >
                   <i className={`material-icons`}>close</i>
@@ -150,12 +150,12 @@ class Overlay extends React.Component<OverlayProps, OverlayState> {
 }
 
 const mapStateToProps = (state: any) => ({
-  overlay: state.overlay,
+  popover: state.popover,
 });
 
 const mapDispatchToProps = dispatch => ({
-  closeOverlay: (id: string | number) => dispatch(overlayActions.closeOverlay(id)),
-  onSubscribeToOverlayStore: (id: string | number) => dispatch(overlayActions.subscribeToOverlayStore(id)),
+  closePopover: (id: string | number) => dispatch(popoverActions.closePopover(id)),
+  onSubscribeToPopoverStore: (id: string | number) => dispatch(popoverActions.subscribeToPopoverStore(id)),
 });
 
-export const connectedOverlay = connect(mapStateToProps, mapDispatchToProps)(Overlay);
+export const connectedPopover = connect(mapStateToProps, mapDispatchToProps)(Popover);
