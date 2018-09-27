@@ -53,6 +53,18 @@ var Popover = (function (_super) {
                 }, TIMEOUT);
             }
         };
+        _this.detectBorder = function () {
+            var style = {};
+            if (_this.node) {
+                var exceedsBoundary = (_this.node.offsetWidth + _this.node.offsetLeft) > document.body.offsetWidth;
+                if (exceedsBoundary) {
+                    style = {
+                        right: 0
+                    };
+                }
+            }
+            return style;
+        };
         _this.handleRef = function (ref) { return _this.node = ref; };
         if (!(props.id in props.popover)) {
             _this.props.onSubscribeToPopoverStore(_this.props.id);
@@ -78,7 +90,8 @@ var Popover = (function (_super) {
     };
     Popover.prototype.render = function () {
         var _this = this;
-        return (React.createElement("div", { className: "\n          popover\n          " + (this.props.popover[this.props.id] ? 'popover--open' : '') + "\n          " + (this.props.classNames ? this.props.classNames : '') + "\n        ", ref: this.handleRef },
+        var style = this.detectBorder();
+        return (React.createElement("div", { className: "popover " + (this.props.popover[this.props.id] ? 'popover--open' : '') + "\n          " + (this.props.classNames ? this.props.classNames : '') + "\n        ", style: style, ref: this.handleRef },
             React.createElement(toolbox_1.Card, { withoutOffset: true, classNames: "popover_card" },
                 this.props.title &&
                     React.createElement("div", { className: "popover_title" },

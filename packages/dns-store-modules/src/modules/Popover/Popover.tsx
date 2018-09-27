@@ -60,7 +60,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     this.handleEventListeners();
   }
 
-  public getElement = () => {
+  getElement = () => {
     const { rootID } = this.props;
     const element = document.getElementById(rootID || 'root') as HTMLElement;
     if (element === null || element === undefined) {
@@ -69,7 +69,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     return  element;
   }
 
-  public handleEventListeners = (type?: string) => {
+  handleEventListeners = (type?: string) => {
     const element = this.getElement();
 
     if (element) {
@@ -100,6 +100,22 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     }
   }
 
+  detectBorder = () => {
+    let style = {};
+
+    if (this.node) {
+      const exceedsBoundary = (this.node.offsetWidth + this.node.offsetLeft) > document.body.offsetWidth;
+
+      if (exceedsBoundary) {
+        style = {
+          right: 0
+        };
+      }
+    }
+
+    return style;
+  }
+
   handleRef = ref => this.node = ref;
 
   render() {
@@ -112,22 +128,22 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     //   backgroundColor: 'white',
     //   position: 'relative',
     // };
+    const style = this.detectBorder();
     return (
       <div
-        className={`
-          popover
-          ${this.props.popover[this.props.id] ? 'popover--open' : ''}
+        className={`popover ${this.props.popover[this.props.id] ? 'popover--open' : ''}
           ${this.props.classNames ? this.props.classNames : ''}
         `}
+        style={style}
         ref={this.handleRef}
       >
         <Card withoutOffset={true} classNames="popover_card">
           {
             this.props.title &&
-              <div className="popover_title">
-                <span className="popover_title">{this.props.title}</span>
-                <hr className="popover_separator" />
-              </div>
+            <div className="popover_title">
+              <span className="popover_title">{this.props.title}</span>
+              <hr className="popover_separator" />
+            </div>
           }
           <div className="popover_wrapper">
             {this.props.children}

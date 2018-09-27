@@ -25,6 +25,7 @@ declare class Popover extends React.Component<PopoverProps, PopoverState> {
     handleEventListeners: (type?: string) => void;
     onCloseClick: () => void;
     handleDocumentClick: (evt: any) => void;
+    detectBorder: () => {};
     handleRef: (ref: any) => any;
     render(): JSX.Element;
 }
