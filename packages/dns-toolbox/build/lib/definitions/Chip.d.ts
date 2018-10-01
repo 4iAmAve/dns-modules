@@ -1,6 +1,7 @@
 export interface Chip {
     title: string;
     id?: number | string;
+    bgColor?: string | boolean;
     image?: any;
     selectable?: boolean;
     deletable?: boolean;

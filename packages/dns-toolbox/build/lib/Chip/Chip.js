@@ -22,8 +22,8 @@ var Chip = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Chip.prototype.render = function () {
-        var _a = this.props, classNames = _a.classNames, deletable = _a.deletable, fullWidth = _a.fullWidth, image = _a.image, id = _a.id, onClick = _a.onClick, onDelete = _a.onDelete, selectable = _a.selectable, title = _a.title;
-        var textToColour = utils_1.stringToColour(title);
+        var _a = this.props, classNames = _a.classNames, bgColor = _a.bgColor, deletable = _a.deletable, fullWidth = _a.fullWidth, image = _a.image, id = _a.id, onClick = _a.onClick, onDelete = _a.onDelete, selectable = _a.selectable, title = _a.title;
+        var textToColour = bgColor ? bgColor.toString() : utils_1.stringToColour(title);
         var textColor = utils_1.getContrastYIQ(textToColour);
         var inlineStyle = {
             backgroundColor: textToColour,

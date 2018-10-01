@@ -28,7 +28,7 @@ export {
   Dialogue,
   Drawer,
   NotificationBar,
-  Overlay
+  Popover
 }
 ```
 
@@ -48,8 +48,8 @@ export {
   notifications,
   NotificationsState,
   
-  overlay,
-  OverlayState
+  popover,
+  PopoverState
 }
 ```
 
@@ -70,8 +70,8 @@ export {
   notificationActions,
   addNotification,
   
-  overlayAction,
-  overlayActions,
+  popoverAction,
+  popoverActions,
 }
 ```
 

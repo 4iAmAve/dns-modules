@@ -8,6 +8,7 @@ import './Chip.css';
 export interface ChipProps extends ChipDef {
   title: string;
   id?: number | string;
+  bgColor?: string | boolean;
   image?: any;
   deletable?: boolean;
   fullWidth?: boolean;
@@ -29,6 +30,7 @@ export class Chip extends React.Component<ChipProps, ChipState> {
   public render() {
     const {
       classNames,
+      bgColor,
       deletable,
       fullWidth,
       image,
@@ -38,7 +40,7 @@ export class Chip extends React.Component<ChipProps, ChipState> {
       selectable,
       title
     } = this.props;
-    const textToColour = stringToColour(title);
+    const textToColour = bgColor ? bgColor.toString() : stringToColour(title);
     const textColor = getContrastYIQ(textToColour);
     const inlineStyle = {
       backgroundColor: textToColour,

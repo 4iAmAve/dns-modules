@@ -4,6 +4,7 @@ import './Chip.css';
 export interface ChipProps extends ChipDef {
     title: string;
     id?: number | string;
+    bgColor?: string | boolean;
     image?: any;
     deletable?: boolean;
     fullWidth?: boolean;
