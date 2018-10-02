@@ -14,7 +14,7 @@ export interface IconButtonProps {
   /** what type the button is supposed to be  */
   type?: 'flat' | 'simple';
   /** the theme of the icon and the ripple  */
-  color?: 'success' | 'warning' | 'danger';
+  color?: 'accent' | 'success' | 'warning' | 'danger';
   /** whether the button is clickable  */
   disabled?: boolean;
   /** whether the button is filled with the chosen color  */
@@ -78,7 +78,8 @@ export class IconButton extends React.Component<IconButtonProps, IconButtonState
     const { cursorPos, parent } = this.state;
     const modColor = color === 'success' ? 'icon-button--success' :
       color === 'danger' ? 'icon-button--danger' :
-        color === 'warning' ? 'icon-button--warning' : '';
+      color === 'accent' ? 'icon-button--accent' :
+      color === 'warning' ? 'icon-button--warning' : '';
     const modType = type === 'flat' ? '' :
       type === 'simple' ? 'icon-button--simple' : '';
     let inlineStyle = {};

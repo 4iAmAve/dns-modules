@@ -96,8 +96,8 @@ var Tabs = (function (_super) {
                 React.createElement("div", { className: "tabs_list " + (withNavigation ? 'tabs--with-navigation' : '') }, tabs.length ? tabs.map(function (tab, key) { return (React.createElement("button", { className: "tabs_tab " + (selectedTab === key ? 'tabs_tab--selected' : ''), key: key, onClick: function (e) { return _this.onTabClick(e, key); }, ref: function (tabRef) { return _this.handleRef(key, tabRef); } }, tab.title)); }) : null),
                 withNavigation ?
                     React.createElement("div", { className: "tabs_tab-nav" },
-                        React.createElement(IconButton_1.IconButton, { icon: "keyboard_arrow_left", type: "simple", disabled: selectedTab <= 0, onClick: function () { return _this.onNavigationClick('prev'); } }),
-                        React.createElement(IconButton_1.IconButton, { icon: "keyboard_arrow_right", type: "simple", disabled: selectedTab >= tabs.length - 1, onClick: function () { return _this.onNavigationClick('next'); } })) : null),
+                        React.createElement(IconButton_1.IconButton, { icon: "keyboard_arrow_left", type: "simple", disabled: selectedTab <= 0, color: 'accent', onClick: function () { return _this.onNavigationClick('prev'); } }),
+                        React.createElement(IconButton_1.IconButton, { icon: "keyboard_arrow_right", type: "simple", color: 'accent', disabled: selectedTab >= tabs.length - 1, onClick: function () { return _this.onNavigationClick('next'); } })) : null),
             React.createElement("div", { className: "tabs_content" }, swipeable ?
                 React.createElement(react_swipeable_views_1.default, { index: this.state.selectedTab, onChangeIndex: this.handleChange, animateHeight: true, enableMouseEvents: true }, children) :
                 React.createElement("div", { className: "tabs_tab-content" }, tabs.length && selectedTab > -1 ?

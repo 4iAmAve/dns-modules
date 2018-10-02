@@ -88,9 +88,9 @@ export class Button extends React.Component<ButtonProps, ButtonState> {
     const { cursorPos, parent } = this.state;
     const buttonType = color === 'danger' ? 'button--danger' :
       color === 'warning' ? 'button--warning' :
-        color === 'success' ? 'button--success' :
-          color === 'accent' ? 'button--accent' :
-            color === 'primary' ? 'button--primary' : 'button--default';
+      color === 'success' ? 'button--success' :
+      color === 'accent' ? 'button--accent' :
+      color === 'primary' ? 'button--primary' : 'button--default';
     let inlineStyle = {};
     if (style) {
       inlineStyle = {

@@ -19,6 +19,7 @@ const colorOptions = {
   dafault: '',
   success: 'success',
   warning: 'warning',
+  accent: 'accent',
   danger: 'danger',
 };
 const colorDefaultValue = 'default';

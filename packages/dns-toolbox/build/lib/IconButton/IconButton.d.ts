@@ -5,7 +5,7 @@ export interface IconButtonProps {
     classNames?: any;
     onClick?: () => void;
     type?: 'flat' | 'simple';
-    color?: 'success' | 'warning' | 'danger';
+    color?: 'accent' | 'success' | 'warning' | 'danger';
     disabled?: boolean;
     filled?: boolean;
     style?: any;

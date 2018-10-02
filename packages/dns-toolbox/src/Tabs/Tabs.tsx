@@ -87,7 +87,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     this.setState(
       { selectedTab: value },
       () => this.callChange(value)
-      );
+    );
   }
 
   public onNavigationClick = (dir: string) => {
@@ -136,34 +136,36 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
           <div
             className={`tabs_list ${withNavigation ? 'tabs--with-navigation' : ''}`}
           >
-          {
-            tabs.length ? tabs.map((tab: Tab, key: number) => (
-              <button
-                className={`tabs_tab ${selectedTab === key ? 'tabs_tab--selected' : ''}`}
-                key={key}
-                onClick={(e: any) => this.onTabClick(e, key)}
-                ref={tabRef => this.handleRef(key, tabRef)}
-              >
-                {tab.title}
-              </button>
-            )) : null
-          }
+            {
+              tabs.length ? tabs.map((tab: Tab, key: number) => (
+                <button
+                  className={`tabs_tab ${selectedTab === key ? 'tabs_tab--selected' : ''}`}
+                  key={key}
+                  onClick={(e: any) => this.onTabClick(e, key)}
+                  ref={tabRef => this.handleRef(key, tabRef)}
+                >
+                  {tab.title}
+                </button>
+              )) : null
+            }
           </div>
           { withNavigation ?
-              <div className="tabs_tab-nav">
-                <IconButton
-                  icon="keyboard_arrow_left"
-                  type="simple"
-                  disabled={selectedTab <= 0}
-                  onClick={() => this.onNavigationClick('prev')}
-                />
-                <IconButton
-                  icon="keyboard_arrow_right"
-                  type="simple"
-                  disabled={selectedTab >= tabs.length - 1}
-                  onClick={() => this.onNavigationClick('next')}
-                />
-              </div> : null
+            <div className="tabs_tab-nav">
+              <IconButton
+                icon="keyboard_arrow_left"
+                type="simple"
+                disabled={selectedTab <= 0}
+                color={'accent'}
+                onClick={() => this.onNavigationClick('prev')}
+              />
+              <IconButton
+                icon="keyboard_arrow_right"
+                type="simple"
+                color={'accent'}
+                disabled={selectedTab >= tabs.length - 1}
+                onClick={() => this.onNavigationClick('next')}
+              />
+            </div> : null
           }
         </div>
         <div className="tabs_content">

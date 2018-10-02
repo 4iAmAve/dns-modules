@@ -1,7 +1,7 @@
 @import '../styles/variables.scss';
 
 .icon-button {
-  color: $accent;
+  color: $defaultColor-darkest;
   min-width: 36px;
   width: 36px;
   height: 36px;
@@ -70,6 +70,19 @@
     &.icon-button--filled {
       color: #fff;
       background-color: $success;
+    }
+  }
+
+  &--accent {
+    color: $accent;
+
+    .icon-button_ripple {
+      background: $accent-ripple-background;
+    }
+
+    &.icon-button--filled {
+      color: #fff;
+      background-color: $accent;
     }
   }
 

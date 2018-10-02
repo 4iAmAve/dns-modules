@@ -1,5 +1,5 @@
 .icon-button {
-  color: #63b4eb;
+  color: #999999;
   min-width: 36px;
   width: 36px;
   height: 36px;
@@ -48,6 +48,13 @@
     .icon-button--success.icon-button--filled {
       color: #fff;
       background-color: #66BB6A; }
+  .icon-button--accent {
+    color: #63b4eb; }
+    .icon-button--accent .icon-button_ripple {
+      background: rgba(124, 183, 231, 0.4); }
+    .icon-button--accent.icon-button--filled {
+      color: #fff;
+      background-color: #63b4eb; }
   .icon-button--danger {
     color: #f44336; }
     .icon-button--danger .icon-button_ripple {

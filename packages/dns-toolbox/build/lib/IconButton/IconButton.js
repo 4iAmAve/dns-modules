@@ -58,7 +58,8 @@ var IconButton = (function (_super) {
         var _b = this.state, cursorPos = _b.cursorPos, parent = _b.parent;
         var modColor = color === 'success' ? 'icon-button--success' :
             color === 'danger' ? 'icon-button--danger' :
-                color === 'warning' ? 'icon-button--warning' : '';
+                color === 'accent' ? 'icon-button--accent' :
+                    color === 'warning' ? 'icon-button--warning' : '';
         var modType = type === 'flat' ? '' :
             type === 'simple' ? 'icon-button--simple' : '';
         var inlineStyle = {};
