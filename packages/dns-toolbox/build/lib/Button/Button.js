@@ -54,25 +54,18 @@ var Button = (function (_super) {
         return _this;
     }
     Button.prototype.render = function () {
-        var _a = this.props, classNames = _a.classNames, color = _a.color, disabled = _a.disabled, label = _a.label, iconBefore = _a.iconBefore, iconAfter = _a.iconAfter, raised = _a.raised, style = _a.style, type = _a.type, _b = _a.children, children = _b === void 0 ? null : _b;
+        var _a = this.props, classNames = _a.classNames, color = _a.color, disabled = _a.disabled, filled = _a.filled, label = _a.label, iconBefore = _a.iconBefore, iconAfter = _a.iconAfter, raised = _a.raised, rounded = _a.rounded, style = _a.style, _b = _a.children, children = _b === void 0 ? null : _b;
         var _c = this.state, cursorPos = _c.cursorPos, parent = _c.parent;
         var buttonType = color === 'danger' ? 'button--danger' :
             color === 'warning' ? 'button--warning' :
                 color === 'success' ? 'button--success' :
                     color === 'accent' ? 'button--accent' :
-                        color === 'primary' ? 'button--primary' :
-                            color === 'white' ? 'button--white' :
-                                color === 'default' ? 'button--default' :
-                                    color === 'white_danger' ? 'button--white_danger' :
-                                        color === 'white_accent' ? 'button--white_accent' :
-                                            color === 'white_primary' ? 'button--white_primary' :
-                                                color === 'white_warning' ? 'button--white_warning' :
-                                                    color === 'white_default' ? 'button--white_default' : 'button--default';
+                        color === 'primary' ? 'button--primary' : 'button--default';
         var inlineStyle = {};
         if (style) {
             inlineStyle = __assign({}, style);
         }
-        return (React.createElement("button", { className: "button " + (classNames ? classNames : '') + "\n          " + (color ? buttonType : '') + "\n          " + (raised ? 'button--raised' : '') + "\n          " + (iconBefore ? 'button--wib' : '') + "\n          " + (iconAfter ? 'button--wia' : '') + "\n          " + (type ? "button--type-" + type : '') + "\n        ", style: inlineStyle, disabled: disabled, onClick: this.handleClick },
+        return (React.createElement("button", { className: "button " + (classNames ? classNames : '') + "\n          " + (color ? buttonType : '') + "\n          " + (raised ? 'button--raised' : '') + "\n          " + (iconBefore ? 'button--wib' : '') + "\n          " + (iconAfter ? 'button--wia' : '') + "\n          " + (rounded ? "button--rounded" : '') + "\n          " + (filled ? "button--filled" : '') + "\n        ", style: inlineStyle, disabled: disabled, onClick: this.handleClick },
             iconBefore ? React.createElement("i", { className: "material-icons" }, iconBefore) : null,
             label ? label : null,
             children,

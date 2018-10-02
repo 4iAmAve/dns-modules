@@ -6,10 +6,11 @@ export interface ButtonProps {
     label?: string | number;
     iconBefore?: string;
     iconAfter?: string;
-    color?: 'default' | 'warning' | 'danger' | 'success' | 'accent' | 'primary' | 'white' | 'white_danger' | 'white_accent' | 'white_primary' | 'white_warning' | 'white_default';
-    type?: 'default' | 'rounded';
+    color?: 'default' | 'warning' | 'danger' | 'success' | 'accent' | 'primary';
+    rounded?: boolean;
     raised?: boolean;
     disabled?: boolean;
+    filled?: boolean;
     style?: any;
 }
 export interface ButtonState {

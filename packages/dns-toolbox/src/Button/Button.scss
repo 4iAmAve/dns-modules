@@ -41,27 +41,33 @@
     background: $default-ripple-background;
   }
 
-  &--type-rounded {
-    border-radius: 16px;
-    padding-left: 0;
-    background-color: #fff;
-  }
-
   &:hover {
     background-color: $defaultColor-light;
     box-shadow: none;
   }
 
-  &.button--primary {
-    color: $primary;
+  &.button--white {
+    color: #fff;
 
     &:hover {
-      background-color: $defaultColor-light;
       box-shadow: none;
     }
 
     .button_ripple {
       background: $default-ripple-background;
+    }
+
+    &.button--raised {
+      background-color: rgba(255, 255, 255, 0.9);;
+    }
+
+    &.button--filled {
+      color: $defaultColor-darkest;
+      background-color: rgba(255, 255, 255, 0.9);;
+
+      .button_ripple {
+        background: lighten($accent-ripple-background, 30%);
+      }
     }
   }
 
@@ -76,6 +82,19 @@
     .button_ripple {
       background: $accent-ripple-background;
     }
+
+    &.button--raised {
+      background-color: rgba(255, 255, 255, 0.9);;
+    }
+
+    &.button--filled {
+      color: #fff;
+      background-color: $accent;
+
+      .button_ripple {
+        background: lighten($accent-ripple-background, 30%);
+      }
+    }
   }
 
   &.button--success {
@@ -88,6 +107,19 @@
 
     .button_ripple {
       background: $success-ripple-background;
+    }
+
+    &.button--raised {
+      background-color: rgba(255, 255, 255, 0.9);;
+    }
+
+    &.button--filled {
+      color: #fff;
+      background-color: $success;
+
+      .button_ripple {
+        background: lighten($success-ripple-background, 30%);
+      }
     }
   }
 
@@ -102,6 +134,19 @@
     .button_ripple {
       background: $warning-ripple-background;
     }
+
+    &.button--raised {
+      background-color: rgba(255, 255, 255, 0.9);;
+    }
+
+    &.button--filled {
+      color: $defaultColor-darkest;
+      background-color: $warning;
+
+      .button_ripple {
+        background: lighten($warning-ripple-background, 30%);
+      }
+    }
   }
 
   &.button--danger {
@@ -114,6 +159,45 @@
 
     .button_ripple {
       background: $danger-ripple-background;
+    }
+
+    &.button--raised {
+      background-color: rgba(255, 255, 255, 0.9);;
+    }
+
+    &.button--filled {
+      color: #fff;
+      background-color: $danger;
+
+      .button_ripple {
+        background: lighten($danger-ripple-background, 30%);
+      }
+    }
+  }
+
+  &.button--primary {
+    color: $primary;
+
+    &:hover {
+      background-color: $defaultColor-light;
+      box-shadow: none;
+    }
+
+    .button_ripple {
+      background: $defaultColor-light;
+    }
+
+    &.button--raised {
+      background-color: rgba(255, 255, 255, 0.9);;
+    }
+
+    &.button--filled {
+      color: #fff;
+      background-color: $primary;
+
+      .button_ripple {
+        background: lighten($defaultColor-light, 30%);
+      }
     }
   }
 
@@ -130,126 +214,37 @@
     transform: translate3d(0,0,0);
     transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    color: #fff;
-    background-color: $primary;
+    //color: #fff;
+    //background-color: $primary;
     margin: $spacing / 2;
 
     &:hover {
-      background-color: $primary;
+      //background-color: $primary;
       box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     }
 
-    .button_ripple {
-      background: $defaultColor-light;
-    }
-
-    &.button--default {
-      background-color: $black-light;
-    }
-
-    &.button--accent {
-      background-color: $accent;
-
-      .button_ripple {
-        background: lighten($accent-ripple-background, 30%);
-      }
-    }
-
-    &.button--primary {
-      background-color: $primary;
-    }
-
-    &.button--success {
-      background-color: $success;
-
-      .button_ripple {
-        background: lighten($success-ripple-background, 30%);
-      }
-    }
-
-    &.button--warning {
-      background-color: $warning;
-
-      .button_ripple {
-        background: lighten($warning-ripple-background, 30%);
-      }
-    }
-
-    &.button--danger {
-      background-color: $danger;
-
-      .button_ripple {
-        background: lighten($danger-ripple-background, 30%);
-      }
-    }
-
-    &.button--white {
-      background-color: rgba(255, 255, 255, .9);
-      color: $accent;
-
-      &_default {
-        background-color: rgba(255, 255, 255, .9);
-        color: $black-light;
-      }
-
-      &_danger {
-        background-color: rgba(255, 255, 255, .9);
-        color: $danger;
-
-        .button_ripple {
-          background: lighten($danger-ripple-background, 30%);
-        }
-      }
-
-      &_warning {
-        background-color: rgba(255, 255, 255, .9);
-        color: $warning;
-
-        .button_ripple {
-          background: lighten($warning-ripple-background, 30%);
-        }
-      }
-
-      &_success {
-        background-color: rgba(255, 255, 255, .9);
-        color: $success;
-
-        .button_ripple {
-          background: lighten($success-ripple-background, 30%);
-        }
-      }
-
-      &_primary {
-        background-color: rgba(255, 255, 255, .9);
-        color: $primary;
-      }
-
-      &_accent {
-        background-color: rgba(255, 255, 255, .9);
-        color: $accent;
-
-        .button_ripple {
-          background: $accent-ripple-background;
-        }
-      }
-    }
-
     &.button--wib {
-      padding-left: $spacing / 2;
+      padding-left: 0;
 
-      &.button--type-rounded {
+      &.button--rounded {
         i {
-          margin-left: 0;
+          position: relative;
+          top: 6px;
+          margin: 0 8px;
+          font-size: 1.65em;
         }
       }
     }
 
     &.button--wia {
-      padding-right: $spacing / 2;
+      padding-right: 0;
 
-      &.button--type-rounded {
+      &.button--rounded {
         i {
-          margin-right: 0;
+          position: relative;
+          top: 6px;
+          margin: 0 8px;
+          font-size: 1.65em;
         }
       }
     }
@@ -262,26 +257,32 @@
   }
 
   &--wib {
-    padding-left: $spacing / 2;
+    padding-left: 0;
 
-    &.button--type-rounded {
+    &.button--rounded {
       i {
-        margin-left: 0;
+        position: relative;
+        top: 6px;
+        margin: 0 8px;
+        font-size: 1.65em;
       }
     }
   }
 
   &--wia {
-    padding-right: $spacing / 2;
+    padding-right: 0;
 
-    &.button--type-rounded {
+    &.button--rounded {
       i {
-        margin-right: 0;
+        position: relative;
+        top: 6px;
+        margin: 0 8px;
+        font-size: 1.65em;
       }
     }
   }
 
-  &--type-rounded {
+  &--rounded {
     border-radius: 16px;
     padding-left: 0;
   }

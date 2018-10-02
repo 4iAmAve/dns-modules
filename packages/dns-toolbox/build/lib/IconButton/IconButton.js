@@ -54,7 +54,7 @@ var IconButton = (function (_super) {
         return _this;
     }
     IconButton.prototype.render = function () {
-        var _a = this.props, classNames = _a.classNames, color = _a.color, disabled = _a.disabled, icon = _a.icon, type = _a.type, style = _a.style;
+        var _a = this.props, classNames = _a.classNames, color = _a.color, disabled = _a.disabled, filled = _a.filled, icon = _a.icon, type = _a.type, style = _a.style;
         var _b = this.state, cursorPos = _b.cursorPos, parent = _b.parent;
         var modColor = color === 'success' ? 'icon-button--success' :
             color === 'danger' ? 'icon-button--danger' :
@@ -65,7 +65,7 @@ var IconButton = (function (_super) {
         if (style) {
             inlineStyle = __assign({}, style);
         }
-        return (React.createElement("button", { className: "\n          " + (classNames ? classNames : '') + "\n          icon-button\n          " + (color ? modColor : '') + "\n          " + (type ? modType : '') + "\n        ", style: inlineStyle, disabled: disabled, onClick: this.handleClick },
+        return (React.createElement("button", { className: "\n          " + (classNames ? classNames : '') + "\n          icon-button\n          " + (color ? modColor : '') + "\n          " + (type ? modType : '') + "\n          " + (filled ? 'icon-button--filled' : '') + "\n        ", style: inlineStyle, disabled: disabled, onClick: this.handleClick },
             React.createElement("i", { className: "material-icons" }, icon),
             React.createElement(Ripple_1.Ripple, { cursorPos: cursorPos, parent: parent, classNames: "icon-button_ripple" })));
     };

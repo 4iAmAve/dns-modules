@@ -42,11 +42,8 @@
     padding: 0;
     margin-left: 0;
     min-width: 0;
-    width: 36px;
-    height: 36px;
     flex-shrink: 0;
     line-height: 36px;
-    border-radius: 50%;
 
     .icon-button_ripple {
       background: $accent-ripple-background;
@@ -58,11 +55,21 @@
     }
   }
 
+  &--filled {
+    color: #fff;
+    background-color: $accent;
+  }
+
   &--success {
     color: $success;
 
     .icon-button_ripple {
       background: $success-ripple-background;
+    }
+
+    &.icon-button--filled {
+      color: #fff;
+      background-color: $success;
     }
   }
 
@@ -72,6 +79,11 @@
     .icon-button_ripple {
       background: $danger-ripple-background;
     }
+
+    &.icon-button--filled {
+      color: #fff;
+      background-color: $danger;
+    }
   }
 
   &--warning {
@@ -79,6 +91,11 @@
 
     .icon-button_ripple {
       background: $warning-ripple-background;
+    }
+
+    &.icon-button--filled {
+      color: $defaultColor-darkest;
+      background-color: $warning;
     }
   }
 }

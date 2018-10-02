@@ -8,7 +8,6 @@ import { wInfo } from "../../utils";
 import 'material-design-icons/iconfont/material-icons.css';
 
 const selectColorLabel = 'Color';
-const selectTypeLabel = 'Type';
 const selectColorOptions = {
   dafault: '',
   success: 'success',
@@ -17,14 +16,8 @@ const selectColorOptions = {
   primary: 'primary',
   accent: 'accent',
 };
-const selectTypeOptions = {
-  dafault: 'default',
-  rounded: 'rounded',
-};
 const selectColorDefaultValue = 'default';
-const selectTypeDefaultValue = 'dafault';
 const selectColorGroupId = 'color-01';
-const selectTypeGroupId = 'type-01';
 
 storiesOf("Button", module).addWithJSX(
   "<Button />",
@@ -38,10 +31,11 @@ storiesOf("Button", module).addWithJSX(
   />
   ~~~`)(() => (
     <Button
-      label={text("label", "Enroll")}
+      label={text("label", "Label")}
       color={select(selectColorLabel, selectColorOptions, selectColorDefaultValue, selectColorGroupId)}
-      type={select(selectTypeLabel, selectTypeOptions, selectTypeDefaultValue, selectTypeGroupId)}
       raised={boolean("raised", false)}
+      filled={boolean("filled", false)}
+      rounded={boolean("rounded", false)}
       disabled={boolean("disabled", false)}
       onClick={() => alert("hello there")}
     />

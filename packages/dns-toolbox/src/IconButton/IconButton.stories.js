@@ -41,6 +41,7 @@ storiesOf("IconButton", module).addWithJSX(
       type={select(selectTypeLabel, selectTypeOptions, selectTypeDefaultValue, selectTypeGroupId)}
       color={select(colorLabel, colorOptions, colorDefaultValue, colorGroupId)}
       disabled={boolean("disabled", false)}
+      filled={boolean("filled", false)}
       onClick={() => alert("hello there i am icon")}
     />
   ))

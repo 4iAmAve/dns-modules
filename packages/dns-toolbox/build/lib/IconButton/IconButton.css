@@ -31,25 +31,34 @@
     padding: 0;
     margin-left: 0;
     min-width: 0;
-    width: 36px;
-    height: 36px;
     flex-shrink: 0;
-    line-height: 36px;
-    border-radius: 50%; }
+    line-height: 36px; }
     .icon-button--simple .icon-button_ripple {
       background: rgba(124, 183, 231, 0.4); }
     .icon-button--simple i {
       top: 6px;
       left: 0; }
+  .icon-button--filled {
+    color: #fff;
+    background-color: #63b4eb; }
   .icon-button--success {
     color: #66BB6A; }
     .icon-button--success .icon-button_ripple {
       background: rgba(102, 187, 106, 0.4); }
+    .icon-button--success.icon-button--filled {
+      color: #fff;
+      background-color: #66BB6A; }
   .icon-button--danger {
     color: #f44336; }
     .icon-button--danger .icon-button_ripple {
       background: rgba(226, 81, 65, 0.4); }
+    .icon-button--danger.icon-button--filled {
+      color: #fff;
+      background-color: #f44336; }
   .icon-button--warning {
     color: #FDD835; }
     .icon-button--warning .icon-button_ripple {
       background: rgba(253, 216, 53, 0.4); }
+    .icon-button--warning.icon-button--filled {
+      color: #999999;
+      background-color: #FDD835; }

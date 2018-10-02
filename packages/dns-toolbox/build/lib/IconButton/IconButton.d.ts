@@ -7,6 +7,7 @@ export interface IconButtonProps {
     type?: 'flat' | 'simple';
     color?: 'success' | 'warning' | 'danger';
     disabled?: boolean;
+    filled?: boolean;
     style?: any;
 }
 export interface IconButtonState {

@@ -16,25 +16,15 @@ export interface ButtonProps {
   /** icon displayed right of the label  */
   iconAfter?: string;
   /**  color of the button default | warning | danger | success | accent | primary  */
-  color?:
-    'default' |
-    'warning' |
-    'danger' |
-    'success' |
-    'accent' |
-    'primary' |
-    'white' |
-    'white_danger' |
-    'white_accent' |
-    'white_primary' |
-    'white_warning' |
-    'white_default';
-  /**  type of the button default | rounded  */
-  type?: 'default' | 'rounded';
+  color?: 'default' | 'warning' | 'danger' | 'success' | 'accent' | 'primary';
+  /**  whether to display the button raised   */
+  rounded?: boolean;
   /**  whether to display the button raised   */
   raised?: boolean;
   /** this dictates whether the button is clickable  */
   disabled?: boolean;
+  /** this dictates whether the button is filled with the chosen color  */
+  filled?: boolean;
   /** optional parameter to adjust inline style  */
   style?: any;
 }
@@ -86,27 +76,21 @@ export class Button extends React.Component<ButtonProps, ButtonState> {
       classNames,
       color,
       disabled,
+      filled,
       label,
       iconBefore,
       iconAfter,
       raised,
+      rounded,
       style,
-      type,
       children = null,
     } = this.props;
     const { cursorPos, parent } = this.state;
     const buttonType = color === 'danger' ? 'button--danger' :
       color === 'warning' ? 'button--warning' :
-      color === 'success' ? 'button--success' :
-      color === 'accent' ? 'button--accent' :
-      color === 'primary' ? 'button--primary' :
-      color === 'white' ? 'button--white' :
-      color === 'default' ? 'button--default' :
-      color === 'white_danger' ? 'button--white_danger' :
-      color === 'white_accent' ? 'button--white_accent' :
-      color === 'white_primary' ? 'button--white_primary' :
-      color === 'white_warning' ? 'button--white_warning' :
-      color === 'white_default' ? 'button--white_default' : 'button--default';
+        color === 'success' ? 'button--success' :
+          color === 'accent' ? 'button--accent' :
+            color === 'primary' ? 'button--primary' : 'button--default';
     let inlineStyle = {};
     if (style) {
       inlineStyle = {
@@ -120,7 +104,8 @@ export class Button extends React.Component<ButtonProps, ButtonState> {
           ${raised ? 'button--raised' : ''}
           ${iconBefore ? 'button--wib' : ''}
           ${iconAfter ? 'button--wia' : ''}
-          ${type ? `button--type-${type}` : ''}
+          ${rounded ? `button--rounded` : ''}
+          ${filled ? `button--filled` : ''}
         `}
         style={inlineStyle}
         disabled={disabled}

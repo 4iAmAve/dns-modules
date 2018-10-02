@@ -17,6 +17,8 @@ export interface IconButtonProps {
   color?: 'success' | 'warning' | 'danger';
   /** whether the button is clickable  */
   disabled?: boolean;
+  /** whether the button is filled with the chosen color  */
+  filled?: boolean;
   /** optional parameter to adjust inline style  */
   style?: any;
 }
@@ -68,6 +70,7 @@ export class IconButton extends React.Component<IconButtonProps, IconButtonState
       classNames,
       color,
       disabled,
+      filled,
       icon,
       type,
       style
@@ -91,6 +94,7 @@ export class IconButton extends React.Component<IconButtonProps, IconButtonState
           icon-button
           ${color ? modColor : ''}
           ${type ? modType : ''}
+          ${filled ? 'icon-button--filled' : ''}
         `}
         style={inlineStyle}
         disabled={disabled}
