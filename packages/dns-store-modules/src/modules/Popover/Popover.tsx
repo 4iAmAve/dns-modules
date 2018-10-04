@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Card } from '@dns/toolbox';
+import { Card, IconButton } from '@dns/toolbox';
 
 import { popoverActions } from '../../actions/popover';
 import { PopoverState as PopoverReducerState } from '../../reducers/popover';
@@ -20,7 +20,7 @@ export interface PopoverProps {
 }
 
 export interface PopoverState {
-  menuOpen: boolean;
+  exceedsBoundary: boolean;
 }
 
 class Popover extends React.Component<PopoverProps, PopoverState> {
@@ -36,11 +36,16 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
 
   public constructor(props: PopoverProps, context: object) {
     super(props, context);
+
     if (!(props.id in props.popover)) {
       this.props.onSubscribeToPopoverStore(this.props.id);
     } else {
       this.handleEventListeners('add');
     }
+
+    this.state = {
+      exceedsBoundary: false
+    };
   }
 
   public componentDidUpdate() {
@@ -50,6 +55,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
 
     if (this.props.popover[this.props.id]) {
       this.handleEventListeners('add');
+      this.detectBorder();
     } else {
       this.handleEventListeners();
     }
@@ -101,19 +107,14 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   }
 
   detectBorder = () => {
-    let style = {};
-
-    if (this.node) {
-      const exceedsBoundary = (this.node.offsetWidth + this.node.offsetLeft) > document.body.offsetWidth;
+    if (this.props.popover[this.props.id]) {
+      const { left } = this.node.getBoundingClientRect();
+      const exceedsBoundary = (this.node.offsetWidth + left) > document.body.offsetWidth;
 
       if (exceedsBoundary) {
-        style = {
-          right: 0
-        };
+        this.setState({ exceedsBoundary });
       }
     }
-
-    return style;
   }
 
   handleRef = ref => this.node = ref;
@@ -128,7 +129,13 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     //   backgroundColor: 'white',
     //   position: 'relative',
     // };
-    const style = this.detectBorder();
+    let style = {};
+    if (this.state.exceedsBoundary) {
+      style = {
+        right: 0
+      };
+    }
+
     return (
       <div
         className={`popover ${this.props.popover[this.props.id] ? 'popover--open' : ''}
@@ -141,7 +148,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
           {
             this.props.title &&
             <div className="popover_title">
-              <span className="popover_title">{this.props.title}</span>
+              {this.props.title}
               <hr className="popover_separator" />
             </div>
           }
@@ -151,12 +158,12 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
           {
             !this.props.withoutCloseButton ?
               <div className="popover_close">
-                <button
-                  className="popover_button"
-                  onClick={() => this.onCloseClick()}
-                >
-                  <i className={`material-icons`}>close</i>
-                </button>
+                <IconButton
+                  classNames="popover_button"
+                  type={'simple'}
+                  icon={'close'}
+                  onClick={this.onCloseClick}
+                />
               </div> : null
           }
         </Card>

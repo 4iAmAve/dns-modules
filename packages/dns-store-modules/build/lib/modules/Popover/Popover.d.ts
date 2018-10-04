@@ -13,7 +13,7 @@ export interface PopoverProps {
     withoutCloseButton?: boolean;
 }
 export interface PopoverState {
-    menuOpen: boolean;
+    exceedsBoundary: boolean;
 }
 declare class Popover extends React.Component<PopoverProps, PopoverState> {
     static defaultProps: Partial<PopoverProps>;
@@ -25,7 +25,7 @@ declare class Popover extends React.Component<PopoverProps, PopoverState> {
     handleEventListeners: (type?: string) => void;
     onCloseClick: () => void;
     handleDocumentClick: (evt: any) => void;
-    detectBorder: () => {};
+    detectBorder: () => void;
     handleRef: (ref: any) => any;
     render(): JSX.Element;
 }

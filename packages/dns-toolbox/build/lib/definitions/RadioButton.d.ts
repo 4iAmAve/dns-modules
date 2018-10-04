@@ -1,5 +1,4 @@
 export interface RadioButton {
     label: string;
-    id: string | number;
-    selected: boolean;
+    id?: string | number;
 }

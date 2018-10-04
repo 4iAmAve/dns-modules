@@ -54,16 +54,13 @@ var Popover = (function (_super) {
             }
         };
         _this.detectBorder = function () {
-            var style = {};
-            if (_this.node) {
-                var exceedsBoundary = (_this.node.offsetWidth + _this.node.offsetLeft) > document.body.offsetWidth;
+            if (_this.props.popover[_this.props.id]) {
+                var left = _this.node.getBoundingClientRect().left;
+                var exceedsBoundary = (_this.node.offsetWidth + left) > document.body.offsetWidth;
                 if (exceedsBoundary) {
-                    style = {
-                        right: 0
-                    };
+                    _this.setState({ exceedsBoundary: exceedsBoundary });
                 }
             }
-            return style;
         };
         _this.handleRef = function (ref) { return _this.node = ref; };
         if (!(props.id in props.popover)) {
@@ -72,6 +69,9 @@ var Popover = (function (_super) {
         else {
             _this.handleEventListeners('add');
         }
+        _this.state = {
+            exceedsBoundary: false
+        };
         return _this;
     }
     Popover.prototype.componentDidUpdate = function () {
@@ -80,6 +80,7 @@ var Popover = (function (_super) {
         }
         if (this.props.popover[this.props.id]) {
             this.handleEventListeners('add');
+            this.detectBorder();
         }
         else {
             this.handleEventListeners();
@@ -89,19 +90,22 @@ var Popover = (function (_super) {
         this.handleEventListeners();
     };
     Popover.prototype.render = function () {
-        var _this = this;
-        var style = this.detectBorder();
+        var style = {};
+        if (this.state.exceedsBoundary) {
+            style = {
+                right: 0
+            };
+        }
         return (React.createElement("div", { className: "popover " + (this.props.popover[this.props.id] ? 'popover--open' : '') + "\n          " + (this.props.classNames ? this.props.classNames : '') + "\n        ", style: style, ref: this.handleRef },
             React.createElement(toolbox_1.Card, { withoutOffset: true, classNames: "popover_card" },
                 this.props.title &&
                     React.createElement("div", { className: "popover_title" },
-                        React.createElement("span", { className: "popover_title" }, this.props.title),
+                        this.props.title,
                         React.createElement("hr", { className: "popover_separator" })),
                 React.createElement("div", { className: "popover_wrapper" }, this.props.children),
                 !this.props.withoutCloseButton ?
                     React.createElement("div", { className: "popover_close" },
-                        React.createElement("button", { className: "popover_button", onClick: function () { return _this.onCloseClick(); } },
-                            React.createElement("i", { className: "material-icons" }, "close"))) : null)));
+                        React.createElement(toolbox_1.IconButton, { classNames: "popover_button", type: 'simple', icon: 'close', onClick: this.onCloseClick })) : null)));
     };
     Popover.defaultProps = {
         rootID: 'root',

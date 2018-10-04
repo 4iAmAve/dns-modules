@@ -13,13 +13,14 @@
   .popover .popover_close {
     cursor: pointer;
     position: absolute;
-    top: 0;
+    top: -2px;
     right: 0;
     margin: 8px; }
   .popover .popover_separator {
     border: 1px solid #e0e0e0; }
   .popover .popover_title {
-    margin: 8px; }
+    margin: 16px;
+    margin-bottom: 8px; }
   .popover .popover_sub-header {
     display: flex;
     color: #757575;
@@ -42,51 +43,5 @@
     font-weight: 400;
     margin-top: 12px;
     flex: 2; }
-  .popover .popover_button {
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    color: #0b1f52;
-    position: relative;
-    width: 100%;
-    text-align: left;
-    padding: 0 8px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 14px;
-    font-weight: 500;
-    padding-left: 16px;
-    box-shadow: none;
-    background-color: transparent;
-    height: 35px;
-    line-height: 35px;
-    text-transform: uppercase;
-    outline: none;
-    border: none;
-    user-select: none;
-    border-radius: 2px;
-    transition: all .225s ease-out;
-    cursor: pointer; }
-    .popover .popover_button:hover {
-      background-color: #cecece;
-      box-shadow: none; }
-    .popover .popover_button:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 10px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.5);
-      opacity: 0;
-      border-radius: 100%;
-      transform: scale(1, 1) translate(-50%);
-      transform-origin: 50% 50%; }
-    .popover .popover_button:focus:not(:active)::after {
-      animation: ripple 1s ease-out; }
-    .popover .popover_button.selected {
-      color: #63b4eb; }
   .popover .popover_card {
     box-shadow: 0 3px 10px #adadad; }
