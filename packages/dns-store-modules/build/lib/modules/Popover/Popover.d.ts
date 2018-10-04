@@ -8,7 +8,7 @@ export interface PopoverProps {
     id: string | number;
     rootID?: string;
     width?: string;
-    title?: string | null;
+    title?: any;
     classNames?: any;
     withoutCloseButton?: boolean;
 }
