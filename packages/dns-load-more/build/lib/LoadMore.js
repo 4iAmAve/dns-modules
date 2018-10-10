@@ -68,7 +68,7 @@ var LoadMore = (function (_super) {
     };
     LoadMore.prototype.render = function () {
         var data = this.props.hasChildren ? this.props.children : this.renderData();
-        var everythingLoaded = this.props.endMessage || "You've seen it all!";
+        var everythingLoaded = this.props.endMessage || "You've reached the end of line!";
         var loadingText = this.props.loading || 'loading ...';
         var inlineStyle = {};
         console.log(this.props.hasMore);

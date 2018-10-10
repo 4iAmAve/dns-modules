@@ -85,7 +85,7 @@ export class LoadMore extends React.Component<LoadMoreProps, LoadMoreState> {
 
   public render() {
     const data = this.props.hasChildren ? this.props.children : this.renderData();
-    const everythingLoaded = this.props.endMessage || `You've seen it all!`;
+    const everythingLoaded = this.props.endMessage || `You've reached the end of line!`;
     const loadingText = this.props.loading || 'loading ...';
     let inlineStyle = {};
     console.log(this.props.hasMore);

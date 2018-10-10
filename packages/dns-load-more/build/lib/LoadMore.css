@@ -8,4 +8,5 @@
     cursor: pointer;
     display: inline-block;
     padding: 16px;
-    text-align: center; }
+    text-align: center;
+    color: rgba(0, 0, 0, 0.4); }
