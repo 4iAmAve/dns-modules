@@ -67,7 +67,7 @@ var Button = (function (_super) {
         }
         return (React.createElement("button", { className: "button " + (classNames ? classNames : '') + "\n          " + (color ? buttonType : '') + "\n          " + (raised ? 'button--raised' : '') + "\n          " + (iconBefore ? 'button--wib' : '') + "\n          " + (iconAfter ? 'button--wia' : '') + "\n          " + (rounded ? "button--rounded" : '') + "\n          " + (filled ? "button--filled" : '') + "\n        ", style: inlineStyle, disabled: disabled, onClick: this.handleClick },
             iconBefore ? React.createElement("i", { className: "material-icons" }, iconBefore) : null,
-            label ? label : null,
+            label ? React.createElement("span", null, label) : null,
             children,
             iconAfter ? React.createElement("i", { className: "material-icons" }, iconAfter) : null,
             React.createElement(Ripple_1.Ripple, { cursorPos: cursorPos, parent: parent, classNames: "button_ripple" })));

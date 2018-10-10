@@ -112,7 +112,7 @@ export class Button extends React.Component<ButtonProps, ButtonState> {
         onClick={this.handleClick}
       >
         {iconBefore ? <i className={`material-icons`}>{iconBefore}</i> : null}
-        {label ? label : null}
+        {label ? <span>{label}</span> : null}
         {children}
         {iconAfter ? <i className={`material-icons`}>{iconAfter}</i> : null}
         <Ripple cursorPos={cursorPos} parent={parent} classNames="button_ripple"/>
