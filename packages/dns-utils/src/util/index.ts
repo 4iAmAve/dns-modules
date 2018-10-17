@@ -5,6 +5,7 @@ import cleanObject from './cleanObject';
 import convertMillisToTime from './convertMillisToTime';
 import deepEqual from './deepEqual';
 import detectIE from './detectIE';
+import { differ } from './differ';
 import dnsLogger from './dnsLogger';
 import forEach from './forEach';
 import getContrastYIQ from './getContrastYIQ';
@@ -37,6 +38,7 @@ export {
   convertMillisToTime,
   deepEqual,
   detectIE,
+  differ,
   dnsLogger,
   forEach,
   getContrastYIQ,
