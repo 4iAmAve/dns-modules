@@ -18,10 +18,8 @@ export interface RippleState {
     left: number;
 }
 export declare class Ripple extends React.Component<RippleProps, RippleState> {
-    private rippleRef;
     constructor(props: RippleProps);
     componentDidUpdate(prevProps: RippleProps): void;
     rippling: (cursorPos: any, parent: HTMLElement) => void;
-    handleRef: (ref: any) => any;
     render(): JSX.Element;
 }

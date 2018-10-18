@@ -44,6 +44,11 @@ var ConfirmDialogue = (function (_super) {
         _this.handleInputRef = function (ref) { return _this.inputRef = ref && ref.focus(); };
         return _this;
     }
+    ConfirmDialogue.prototype.componentDidMount = function () {
+        if (this.inputRef) {
+            this.inputRef.focus();
+        }
+    };
     ConfirmDialogue.prototype.render = function () {
         var _this = this;
         var _a = this.props, confirmDialogue = _a.confirmDialogue, classNames = _a.classNames;

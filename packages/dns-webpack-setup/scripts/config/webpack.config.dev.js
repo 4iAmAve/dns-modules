@@ -5,16 +5,19 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InterpolateHtmlPlugin = require('./InterpolateHtmlPluginForkWP4');
-// const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const WatchMissingNodeModulesPlugin = require('./WatchMissingNodeModulesPluginForkWP4');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+// const InterpolateHtmlPlugin = require('./InterpolateHtmlPluginForkWP4');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+// const WatchMissingNodeModulesPlugin = require('./WatchMissingNodeModulesPluginForkWP4');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const IS_PROD = ['prod', 'production'].includes(process.env.NODE_ENV.toLowerCase());
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -148,7 +151,7 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-            // Compile .tsx?
+          // Compile .tsx?
           {
             test: /\.(ts|tsx)$/,
             include: paths.appSrc,
@@ -203,6 +206,25 @@ module.exports = {
             ],
           },
           // sass loader
+          // {
+          //     test: /\.scss$/,
+          //     use: ExtractTextPlugin.extract({
+          //         fallback: require.resolve('style-loader'),
+          //         use: [
+          //           {
+          //             loader: require.resolve('css-loader'),
+          //             options: {
+          //             modules: true,
+          //             sourceMap: true,
+          //             importLoaders: 2,
+          //             localIdentName: "[name]_[local]_[hash:base64:5]"
+          //           }
+          //         },
+          //         require.resolve('sass-loader')
+          //       ]
+          //     })
+          // },
+          // sass loader
           {
             test: /\.scss$/,
             // include: require.resolve('@dns/common-styles'),
@@ -214,9 +236,16 @@ module.exports = {
               {
                 loader: require.resolve('css-loader'),
                 options: {
-                  minimize: true
+                  minimize: true,
+                  module: true
                 }
               },
+              // {
+              //   loader: require.resolve('sass-loader'),
+              //   options: {
+              //     includePaths: [path.resolve(__dirname, 'node_modules')],
+              //   },
+              // },
               require.resolve('sass-loader'),
             ]
           },
@@ -308,18 +337,38 @@ module.exports = {
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In development, this will be an empty string.
-    new InterpolateHtmlPlugin(env.raw),
-    new FaviconsWebpackPlugin({
-      logo: './src/assets/favicon/android-chrome-512x512.png',
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+    // new FaviconsWebpackPlugin({
+    //   logo: './src/assets/favicon/android-chrome-512x512.png',
+    //   prefix: 'icn-[hash:4]/',
+    //   background: '#fff',
+    //   title: 'IAS - Carrier-Cockpit',
+    //   icons: {
+    //     android: false,
+    //     appleIcon: false,
+    //     appleStartup: false,
+    //     favicons: true,
+    //   },
+    // }),
+    // Since FaviconsWebpackPlugin isn't compatible with HtmlWebpackPlugin 4 alpha
+    // we have to resort to WebappWebpackPlugin for PWAs
+    new WebappWebpackPlugin({
+      logo: './src/assets/favicon.png',
       prefix: 'icn-[hash:4]/',
-      background: '#fff',
-      title: 'IAS - GSP',
-      icons: {
+      favicons: {
+        appName: 'DNS Webpack Setup',
+        appDescription: 'DNS Webpack Setup',
+        background: '#fff',
+        theme_color: '#333',
+        icons: {
           android: false,
           appleIcon: false,
           appleStartup: false,
           favicons: true,
-      },
+          coast: false,
+          yandex: false
+        }
+      }
     }),
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),

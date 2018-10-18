@@ -22,7 +22,7 @@ export interface RippleState {
 }
 
 export class Ripple extends React.Component<RippleProps, RippleState> {
-  private rippleRef: Element;
+  // private rippleRef: Element;
 
   public constructor(props: RippleProps) {
     super(props);
@@ -80,7 +80,7 @@ export class Ripple extends React.Component<RippleProps, RippleState> {
     });
   }
 
-  public handleRef = ref => this.rippleRef = ref;
+  // public handleRef = ref => this.rippleRef = ref;
 
   render () {
     const { animate, height, left, top, width } = this.state;
@@ -95,7 +95,7 @@ export class Ripple extends React.Component<RippleProps, RippleState> {
     return (
       <div
         className={`ripple ${animate ? 'ripple--animate' : ''} ${classNames ? classNames : ''}`}
-        ref={this.handleRef}
+        // ref={this.handleRef}
         style={style}
       />
     );

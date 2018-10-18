@@ -20,13 +20,11 @@ export interface TableState {
 export declare class Table extends React.Component<TableProps, TableState> {
     static defaultProps: Partial<TableProps>;
     private sortDirection;
-    private table;
     buildOperations: (operations: any, data: any, rowKey?: number | undefined) => any;
     handleOnSort: (definition: string) => void | undefined;
     renderHeader: (column: TableColumn, key: number) => JSX.Element;
     handleRowClick: (data: any, key: number) => void;
     handleColumnClick: (column: TableColumn, data: any, key: number, checked?: boolean | undefined) => void;
     renderRow: (data: any, rowKey: number) => JSX.Element;
-    handleRef: (ref: any) => any;
     render(): JSX.Element;
 }

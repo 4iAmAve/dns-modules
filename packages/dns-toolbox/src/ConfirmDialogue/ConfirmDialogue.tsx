@@ -22,7 +22,13 @@ export class ConfirmDialogue extends React.Component<ConfirmDialogueProps, Confi
 
   private inputRef: HTMLElement;
 
-  public handleKeyup = (e: any) => {
+  public componentDidMount() {
+    if (this.inputRef) {
+      this.inputRef.focus();
+    }
+  }
+
+  handleKeyup = (e: any) => {
     e.stopPropagation();
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
@@ -34,20 +40,20 @@ export class ConfirmDialogue extends React.Component<ConfirmDialogueProps, Confi
     }
   }
 
-  public confirmDialogue = () => {
+  confirmDialogue = () => {
     this.props.onConfirm(true);
     if (this.props.onClose) {
       this.props.onClose();
     }
   }
 
-  public closeDialogue = () => {
+  closeDialogue = () => {
     if (this.props.onClose) {
       this.props.onClose();
     }
   }
 
-  public handleInputRef = ref => this.inputRef = ref && ref.focus();
+  handleInputRef = ref => this.inputRef = ref && ref.focus();
 
   public render() {
     const {

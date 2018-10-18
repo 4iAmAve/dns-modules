@@ -29,7 +29,13 @@ class ConfirmDialogue extends React.Component<ConfirmDialogueProps, ConfirmDialo
 
   private inputRef: HTMLElement;
 
-  public handleKeyup = (e: any) => {
+  public componentDidMount() {
+    if (this.inputRef) {
+      this.inputRef.focus();
+    }
+  }
+
+  handleKeyup = (e: any) => {
     e.stopPropagation();
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();

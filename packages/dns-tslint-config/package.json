@@ -11,8 +11,8 @@
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "peerDependencies": {
-    "tslint": "^5.7.0",
-    "tslint-react": "^3.2.0"
+    "tslint": "5.7.0",
+    "tslint-react": "3.2.0"
   }
 }
 

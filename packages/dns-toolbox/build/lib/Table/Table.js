@@ -150,13 +150,12 @@ var Table = (function (_super) {
                 renderSubPanel ?
                     React.createElement("div", { className: "table_row_sub-panel " + (selectedRow === rowKey ? 'table_selected-row' : '') }, renderSubPanel(data, rowKey)) : null));
         };
-        _this.handleRef = function (ref) { return _this.table = ref; };
         return _this;
     }
     Table.prototype.render = function () {
         var _this = this;
         var _a = this.props, classNames = _a.classNames, columns = _a.columns, data = _a.data, detailContent = _a.detailContent, emptyLabel = _a.emptyLabel, stickyHeader = _a.stickyHeader, withoutHeader = _a.withoutHeader;
-        return (React.createElement("div", { className: "\n          table_container\n          " + (classNames ? classNames : '') + "\n        ", ref: this.handleRef },
+        return (React.createElement("div", { className: "\n          table_container\n          " + (classNames ? classNames : '') + "\n        " },
             React.createElement("div", { className: "table " + (detailContent ? 'table--with-detail-content' : '') + "\n            " + (stickyHeader ? 'table--with-sticky-header' : '') + " " + (withoutHeader ? 'table--without-header' : '') + "\n          " },
                 withoutHeader ?
                     null :

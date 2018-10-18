@@ -8,12 +8,10 @@
     "build/lib"
   ],
   "scripts": {
-    "storybook": "start-storybook -p 6006 -c .storybook",
     "build": "npm run build-lib && build-storybook",
     "build-lib": "npm run build-tsc && npm run build-sass && npm run copy-css-to-lib",
     "build-tsc": "node_modules/.bin/tsc",
     "build-sass": "node_modules/.bin/node-sass src/ -o src/",
-    "build-storybook": "build-storybook",
     "start-watcher": "npm run start-tsc-watcher & npm run start-sass-watcher & npm run start-sass-comp-watcher",
     "start-tsc-watcher": "node_modules/.bin/tsc -w",
     "start-sass-watcher": "node_modules/.bin/node-sass src/ -wo ./build/lib/",
@@ -26,18 +24,13 @@
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "dependencies": {
-    "@dns/utils": "^0.6.3"
+    "@dns/utils": "0.6.3"
   },
   "devDependencies": {
-    "@storybook/addon-info": "^3.4.8",
-    "@storybook/addon-knobs": "^3.4.8",
-    "@storybook/react": "^4.0.0-alpha.3",
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-core": "^6.26.0",
-    "cpx": "^1.5.0",
-    "css-loader": "^1.0.0",
-    "react-docgen-typescript-webpack-plugin": "^1.1.0",
-    "storybook-addon-jsx": "^5.3.0",
-    "typescript": "^3.0.3"
+    "babel-core": "6.26.3",
+    "cpx": "1.5.0",
+    "css-loader": "1.0.0",
+    "storybook-addon-jsx": "5.4.0",
+    "typescript": "3.1.3"
   }
 }

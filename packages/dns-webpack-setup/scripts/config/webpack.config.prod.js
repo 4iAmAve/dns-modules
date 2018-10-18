@@ -4,14 +4,17 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-// const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const InterpolateHtmlPlugin = require('./InterpolateHtmlPluginForkWP4');
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+// const InterpolateHtmlPlugin = require('./InterpolateHtmlPluginForkWP4');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -28,6 +31,9 @@ const shouldUseRelativeAssetPaths = publicPath === './';
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 // const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const shouldUseSourceMap = false;
+// Some apps do not need the benefits of saving a web request, so not inlining the chunk
+// makes for a smoother build process.
+const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
@@ -41,28 +47,42 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
 }
 
-function packageSort(packages) {
-  // packages = ['polyfills', 'vendor', 'app']
-  const len = packages.length - 1;
-  const first = packages[0];
-  const last = packages[len];
-  return function sort(a, b) {
-    // polyfills always first
-    if (a.names[0] === first) {
-      return -1;
-    }
-    // app always last
-    if (a.names[0] === last) {
-      return 1;
-    }
-    // vendor before app
-    if (a.names[0] !== first && b.names[0] === last) {
-      return -1;
-    } else {
-      return 1;
-    }
-  }
-}
+// function packageSort(packages) {
+//   console.log('packageSort', packages);
+//   // packages = ['polyfills', 'vendor', 'app']
+//   const len = packages.length - 1;
+//   const first = packages[0];
+//   const last = packages[len];
+//   return function sort(a, b) {
+//     // polyfills always first
+//     if (a.names[0] === first) {
+//       return -1;
+//     }
+//     // app always last
+//     if (a.names[0] === last) {
+//       return 1;
+//     }
+//     // vendor before app
+//     if (a.names[0] !== first && b.names[0] === last) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+// }
+
+// Note: defined here because it will be used more than once.
+// const cssFilename = 'static/css/[name].css';
+const cssFilename = 'static/css/[name].[contenthash:8].css';
+
+// ExtractTextPlugin expects the build output to be flat.
+// (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
+// However, our output is structured with css, js and media folders.
+// To have this structure working with relative paths, we have to use custom options.
+/*const extractTextPluginOptions = shouldUseRelativeAssetPaths
+  ? // Making sure that the publicPath goes back to to build folder.
+  { publicPath: Array(cssFilename.split('/').length).join('../') }
+  : {};*/
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -81,6 +101,10 @@ module.exports = {
       'react-dom',
       'react-router'
     ],
+    // dns: [
+    //   '@dns/toolbox',
+    //   '@dns/store-modules',
+    // ],
     main: paths.appIndexJs
   },
   // entry: [require.resolve('./polyfills'), paths.appIndexJs],
@@ -130,6 +154,7 @@ module.exports = {
       '.jsx',
     ],
     alias: {
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -236,6 +261,25 @@ module.exports = {
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
           // sass loader
+          /*          {
+                      test: /\.scss$/,
+                      use: ExtractTextPlugin.extract({
+                        fallback: require.resolve('style-loader'),
+                        use: [
+                          {
+                            loader: require.resolve('css-loader'),
+                            options: {
+                              modules: true,
+                              sourceMap: true,
+                              importLoaders: 2,
+                              localIdentName: "[name]_[local]_[hash:base64:5]"
+                            }
+                          },
+                          require.resolve('sass-loader')
+                        ]
+                      })
+                    },*/
+          // sass loader
           {
             test: /\.scss$/,
             use: [
@@ -337,7 +381,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
-      chunksSortMode: packageSort(['polyfills', 'libs', /*'dns',*/ 'main']),
+      chunksSortMode: 'auto',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -351,23 +395,44 @@ module.exports = {
         minifyURLs: true,
       },
     }),
+    // Inlines the webpack runtime script. This script is too small to warrant
+    // a network request.
+    shouldInlineRuntimeChunk && new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In production, it will be an empty string unless you specify "homepage"
     // in `package.json`, in which case it will be the pathname of that URL.
-    new InterpolateHtmlPlugin(env.raw),
-    new FaviconsWebpackPlugin({
-      logo: './src/assets/favicon/android-chrome-512x512.png',
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+    // new FaviconsWebpackPlugin({
+    //   logo: './src/assets/favicon/android-chrome-512x512.png',
+    //   prefix: 'icn-[hash:4]/',
+    //   background: '#fff',
+    //   title: 'IAS - Carrier-Cockpit',
+    //   icons: {
+    //     android: true,
+    //     appleIcon: true,
+    //     appleStartup: false,
+    //     favicons: true,
+    //   },
+    // }),
+    new WebappWebpackPlugin({
+      logo: './src/assets/favicon.png',
       prefix: 'icn-[hash:4]/',
-      background: '#fff',
-      title: 'DNS - Demo',
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: false,
-        favicons: true,
-      },
+      favicons: {
+        appName: 'Carrier-Cockpit | IAS',
+        appDescription: 'Carrier-Cockpit | IAS',
+        background: '#fff',
+        theme_color: '#333',
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: false,
+          favicons: true,
+          coast: false,
+          yandex: false,
+        }
+      }
     }),
     new CopyWebpackPlugin([
       { context: './src/assets', from: '**/*', to: 'static/assets' },

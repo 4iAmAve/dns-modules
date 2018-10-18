@@ -10,6 +10,6 @@
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "devDependencies": {
-    "stylelint": "^9.5.0"
+    "stylelint": "9.6.0"
   }
 }

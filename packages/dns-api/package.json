@@ -17,12 +17,12 @@
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "dependencies": {
-    "@dns/store-modules": "^1.2.1",
-    "axios": "^0.18.0"
+    "@dns/store-modules": "1.2.1",
+    "axios": "0.18.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "typescript": "^3.0.3"
+    "babel-core": "6.26.3",
+    "typescript": "3.1.3"
   }
 }
 

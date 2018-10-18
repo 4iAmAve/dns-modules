@@ -9,6 +9,7 @@ export interface ConfirmDialogueState {
 export declare class ConfirmDialogue extends React.Component<ConfirmDialogueProps, ConfirmDialogueState> {
     static defaultProps: Partial<ConfirmDialogueProps>;
     private inputRef;
+    componentDidMount(): void;
     handleKeyup: (e: any) => void;
     confirmDialogue: () => void;
     closeDialogue: () => void;

@@ -16,7 +16,7 @@ export interface LoadMoreProps {
   style?: any;
   onFetch: (position: number) => void;
   onLoaded?: () => void;
-  onRenderElement?: (data: any, key: number) => void;
+  onRenderElement?: (data: any, key: number) => any;
 }
 
 export interface LoadMoreState {

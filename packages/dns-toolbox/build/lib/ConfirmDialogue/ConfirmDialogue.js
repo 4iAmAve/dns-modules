@@ -45,6 +45,11 @@ var ConfirmDialogue = (function (_super) {
         _this.handleInputRef = function (ref) { return _this.inputRef = ref && ref.focus(); };
         return _this;
     }
+    ConfirmDialogue.prototype.componentDidMount = function () {
+        if (this.inputRef) {
+            this.inputRef.focus();
+        }
+    };
     ConfirmDialogue.prototype.render = function () {
         var _this = this;
         var _a = this.props, width = _a.width, height = _a.height, minHeight = _a.minHeight, withoutOffset = _a.withoutOffset, classNames = _a.classNames, title = _a.title, text = _a.text;

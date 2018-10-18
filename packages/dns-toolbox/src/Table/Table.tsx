@@ -38,7 +38,7 @@ export class Table extends React.Component<TableProps, TableState> {
   };
 
   private sortDirection = {};
-  private table: HTMLElement;
+  // private table: HTMLElement;
 
   public buildOperations = (operations: any, data: any, rowKey?: number) => {
     const elements = [] as any;
@@ -341,7 +341,7 @@ export class Table extends React.Component<TableProps, TableState> {
     );
   }
 
-  handleRef = ref => this.table = ref;
+  // handleRef = ref => this.table = ref;
 
   public render() {
     const { classNames, columns, data, detailContent, emptyLabel, stickyHeader, withoutHeader } = this.props;
@@ -351,7 +351,7 @@ export class Table extends React.Component<TableProps, TableState> {
           table_container
           ${classNames ? classNames : ''}
         `}
-        ref={this.handleRef}
+        // ref={this.handleRef}
       >
         <div
           className={`table ${detailContent ? 'table--with-detail-content' : ''}
