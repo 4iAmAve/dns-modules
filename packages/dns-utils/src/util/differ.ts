@@ -55,7 +55,7 @@ function determineRemoved(newObj: any, oldObj: any, cur: any) {
       } else {
         result['__removed'] = {
           ...result['__removed'],
-          [value]: newObj[value]
+          [value]: toCompare[value]
         };
       }
 
@@ -147,37 +147,40 @@ function determineUnchanged(newObj: any, oldObj: any, cur: any) {
 }
 
 function determineDiff(newObj: any, oldObj: any) {
-  let newClone = Object.assign({}, newObj);
-  let oldClone = Object.assign({}, oldObj);
+  let cNew = Object.assign({}, newObj);
+  let cOld = Object.assign({}, oldObj);
   let cur = {};
 
-  const { result: resultNew, alteredNewObj } = determineAdded(newClone, oldClone, cur);
-  newClone = alteredNewObj;
-  cur = resultNew;
+  const { result: rNew, alteredNewObj } = determineAdded(cNew, cOld, cur);
+  cNew = alteredNewObj;
+  cur = rNew;
 
-  const { result: resultOld, alteredOldObj } = determineRemoved(newClone, oldClone, cur);
-  oldClone = alteredOldObj;
-  cur = resultOld;
+  const { result: rOld, alteredOldObj } = determineRemoved(cNew, cOld, cur);
+  cOld = alteredOldObj;
+  cur = rOld;
 
-  const { result: resultChanged, alteredOldObj: aOO, alteredNewObj: aNO } = determineChanged(newClone, oldClone, cur);
-  newClone = aNO;
-  oldClone = aOO;
+  const { result: resultChanged, alteredOldObj: aOO, alteredNewObj: aNO } = determineChanged(cNew, cOld, cur);
+  cNew = aNO;
+  cOld = aOO;
   cur = resultChanged;
 
-  return determineUnchanged(newClone, oldClone, cur);
+  return determineUnchanged(cNew, cOld, cur);
 }
 
 export function differ(diffObj: DifferObj) {
   const { oldObj, newObj, excludeUnchanged, returnEntireObj } = diffObj;
-  keepUnchanged = excludeUnchanged || true;
-  entireObj = returnEntireObj || false;
+  keepUnchanged = !excludeUnchanged;
+  entireObj = returnEntireObj ? returnEntireObj : false;
 
   if (!oldObj || !newObj) {
-    throw new Error('The old or new object to compare with is missing.');
+    throw 'The old or new object to compare with is missing.';
   }
 
-  if (!(oldObj instanceof Object) && !(newObj instanceof Object)) {
-    throw new Error('The old or new object is not an instance of Object.');
+  if (
+    (!(oldObj instanceof Object) || !(oldObj instanceof Array)) &&
+    (!(newObj instanceof Object) || !(newObj instanceof Object))
+  ) {
+    throw 'The old or new object is not an instance of Object.';
   }
 
   let newClone = Object.assign({}, newObj);

@@ -26,6 +26,7 @@ import {
   convertMillisToTime,
   deepEqual,
   detectIE,
+  differ,
   dnsLogger,
   getContrastYIQ,
   getContrast50,
@@ -94,6 +95,7 @@ cleanObject(json); // { 'foo': 'bar' }
 convertMillisToTime(today); // { hours: ..., minutes: ..., seconds: ...}
 deepEqual(json, unequalJSON); // false
 detectIE(); // false -> no IE, IE version -> if IE
+differ(serializeOptions, maliciousObj) // return a JSON with computed diff between two objects
 getContrastYIQ(hexColor); // 'rgba(0, 0, 0, .9)' || 'rgba(255, 255, 255, 0.9)'
 getContrast50(hexColor); // 'rgba(0, 0, 0, .9)' || 'rgba(255, 255, 255, 0.9)'
 generateEmptyArray(2); // { length: 2 }

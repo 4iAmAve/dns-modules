@@ -52,7 +52,7 @@ function determineRemoved(newObj, oldObj, cur) {
                 };
             }
             else {
-                result['__removed'] = __assign({}, result['__removed'], (_a = {}, _a[value] = newObj[value], _a));
+                result['__removed'] = __assign({}, result['__removed'], (_a = {}, _a[value] = toCompare[value], _a));
             }
             delete toCompare[value];
         }
@@ -126,30 +126,31 @@ function determineUnchanged(newObj, oldObj, cur) {
     return result;
 }
 function determineDiff(newObj, oldObj) {
-    var newClone = Object.assign({}, newObj);
-    var oldClone = Object.assign({}, oldObj);
+    var cNew = Object.assign({}, newObj);
+    var cOld = Object.assign({}, oldObj);
     var cur = {};
-    var _a = determineAdded(newClone, oldClone, cur), resultNew = _a.result, alteredNewObj = _a.alteredNewObj;
-    newClone = alteredNewObj;
-    cur = resultNew;
-    var _b = determineRemoved(newClone, oldClone, cur), resultOld = _b.result, alteredOldObj = _b.alteredOldObj;
-    oldClone = alteredOldObj;
-    cur = resultOld;
-    var _c = determineChanged(newClone, oldClone, cur), resultChanged = _c.result, aOO = _c.alteredOldObj, aNO = _c.alteredNewObj;
-    newClone = aNO;
-    oldClone = aOO;
+    var _a = determineAdded(cNew, cOld, cur), rNew = _a.result, alteredNewObj = _a.alteredNewObj;
+    cNew = alteredNewObj;
+    cur = rNew;
+    var _b = determineRemoved(cNew, cOld, cur), rOld = _b.result, alteredOldObj = _b.alteredOldObj;
+    cOld = alteredOldObj;
+    cur = rOld;
+    var _c = determineChanged(cNew, cOld, cur), resultChanged = _c.result, aOO = _c.alteredOldObj, aNO = _c.alteredNewObj;
+    cNew = aNO;
+    cOld = aOO;
     cur = resultChanged;
-    return determineUnchanged(newClone, oldClone, cur);
+    return determineUnchanged(cNew, cOld, cur);
 }
 function differ(diffObj) {
     var oldObj = diffObj.oldObj, newObj = diffObj.newObj, excludeUnchanged = diffObj.excludeUnchanged, returnEntireObj = diffObj.returnEntireObj;
-    keepUnchanged = excludeUnchanged || true;
-    entireObj = returnEntireObj || false;
+    keepUnchanged = !excludeUnchanged;
+    entireObj = returnEntireObj ? returnEntireObj : false;
     if (!oldObj || !newObj) {
-        throw new Error('The old or new object to compare with is missing.');
+        throw 'The old or new object to compare with is missing.';
     }
-    if (!(oldObj instanceof Object) && !(newObj instanceof Object)) {
-        throw new Error('The old or new object is not an instance of Object.');
+    if ((!(oldObj instanceof Object) || !(oldObj instanceof Array)) &&
+        (!(newObj instanceof Object) || !(newObj instanceof Object))) {
+        throw 'The old or new object is not an instance of Object.';
     }
     var newClone = Object.assign({}, newObj);
     var oldClone = Object.assign({}, oldObj);
