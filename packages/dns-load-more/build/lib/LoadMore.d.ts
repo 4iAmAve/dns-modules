@@ -3,6 +3,7 @@ import './LoadMore.css';
 export interface LoadMoreProps {
     dataLength: number;
     data: any[];
+    className?: any;
     endMessage?: any;
     handleInternally?: boolean;
     hasChildren?: boolean;

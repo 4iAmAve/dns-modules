@@ -68,8 +68,9 @@ var LoadMore = (function (_super) {
     };
     LoadMore.prototype.render = function () {
         var data = this.props.hasChildren ? this.props.children : this.renderData();
-        var everythingLoaded = this.props.endMessage || "You've reached the end of line!";
+        var everythingLoaded = this.props.endMessage || "You've seen it all!";
         var loadingText = this.props.loading || 'loading ...';
+        var className = this.props.className;
         var inlineStyle = {};
         console.log(this.props.hasMore);
         if (this.props.style) {
@@ -78,7 +79,7 @@ var LoadMore = (function (_super) {
         if (this.props.maxHeight) {
             inlineStyle = __assign({}, inlineStyle, { maxHeight: this.props.maxHeight });
         }
-        return (React.createElement("div", { className: "load-more", style: inlineStyle },
+        return (React.createElement("div", { className: "load-more " + (className ? className : ''), style: inlineStyle },
             React.createElement("div", { className: "lm_wrapper" }, data),
             React.createElement("div", { className: "lm_loader", onClick: this.onLoad }, !this.state.loading && this.props.hasMore ? this.props.loader :
                 !this.props.hasMore ? everythingLoaded : loadingText)));

@@ -5,6 +5,7 @@ import './LoadMore.css';
 export interface LoadMoreProps {
   dataLength: number;
   data: any[];
+  className?: any;
   endMessage?: any;
   handleInternally?: boolean; // requires all data to be passed to the module
   hasChildren?: boolean;
@@ -85,8 +86,9 @@ export class LoadMore extends React.Component<LoadMoreProps, LoadMoreState> {
 
   public render() {
     const data = this.props.hasChildren ? this.props.children : this.renderData();
-    const everythingLoaded = this.props.endMessage || `You've reached the end of line!`;
+    const everythingLoaded = this.props.endMessage || `You've seen it all!`;
     const loadingText = this.props.loading || 'loading ...';
+    const className = this.props.className;
     let inlineStyle = {};
     console.log(this.props.hasMore);
 
@@ -104,7 +106,7 @@ export class LoadMore extends React.Component<LoadMoreProps, LoadMoreState> {
     }
 
     return (
-      <div className="load-more" style={inlineStyle}>
+      <div className={`load-more ${className ? className : ''}`} style={inlineStyle}>
         <div className="lm_wrapper">
           {data}
         </div>
