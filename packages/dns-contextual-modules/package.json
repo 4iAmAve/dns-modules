@@ -1,6 +1,6 @@
 {
-  "name": "@dns/contextual-modules",
-  "version": "1.2.1",
+  "name": "@datns/contextual-modules",
+  "version": "1.2.3",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "files": [
@@ -25,8 +25,8 @@
     "typescript": "3.2.2"
   },
   "dependencies": {
-    "@dns/toolbox": "0.4.1",
-    "@dns/tslint-config": "3.2.4",
-    "@dns/utils": "0.6.3"
+    "@datns/toolbox": "0.4.1",
+    "@datns/tslint-config": "3.2.4",
+    "@datns/utils": "0.6.3"
   }
 }
