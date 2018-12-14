@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var toolbox_1 = require("@dns/toolbox");
+var toolbox_1 = require("@datns/toolbox");
 var PopoversStore_1 = require("./PopoversStore");
 var Popover = (function (_super) {
     __extends(Popover, _super);

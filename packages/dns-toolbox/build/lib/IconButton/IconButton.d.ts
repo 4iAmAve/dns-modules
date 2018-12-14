@@ -9,6 +9,10 @@ export interface IconButtonProps {
     disabled?: boolean;
     filled?: boolean;
     style?: any;
+    onTouchStart?: (e: any) => void;
+    onMouseEnter?: (e: any) => void;
+    onTouchEnd?: (e: any) => void;
+    onMouseLeave?: (e: any) => void;
 }
 export interface IconButtonState {
     cursorPos: {

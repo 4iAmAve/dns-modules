@@ -1,13 +1,13 @@
 export interface MasterDetail {
-    master: any;
+    className?: any;
     detail: any;
+    detailMaxHeight?: number;
+    detailMaxWidth?: number;
     detailOpen: boolean;
+    master: any;
+    masterMaxHeight?: number;
+    masterMaxWidth?: number;
     offsetTop?: number;
     offsetWidth?: number;
-    masterMaxHeight?: number;
-    detailMaxHeight?: number;
-    masterMaxWidth?: number;
-    detailMaxWidth?: number;
     orientation?: 'vertical' | 'horizontal';
-    className?: any;
 }

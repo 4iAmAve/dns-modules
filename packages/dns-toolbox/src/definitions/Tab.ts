@@ -1,6 +1,6 @@
 export interface Tab {
-  title: string;
-  selected: boolean;
   content?: any;
+  selected: boolean;
   target?: any;
+  title: string;
 }

@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var utils_1 = require("@dns/utils");
+var utils_1 = require("@datns/utils");
 var PopoversStoreProvider_1 = require("./PopoversStoreProvider");
 var actionProvider = {
     openPopover: utils_1.noop,

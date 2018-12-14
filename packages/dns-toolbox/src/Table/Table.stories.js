@@ -1,7 +1,7 @@
 import React from "react";
 
 import { storiesOf } from "@storybook/react";
-import {parseDateAndTime} from '@dns/utils';
+import {parseDateAndTime} from '@datns/utils';
 import { Table } from "./Table";
 import { wInfo } from "../../utils";
 

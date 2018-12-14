@@ -14,8 +14,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var toolbox_1 = require("@dns/toolbox");
-var utils_1 = require("@dns/utils");
+var toolbox_1 = require("@datns/toolbox");
+var utils_1 = require("@datns/utils");
 var NotificationsBarProvider_1 = require("./NotificationsBarProvider");
 require("./NotificationsBar.css");
 var actionProvider = {

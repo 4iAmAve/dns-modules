@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Drawer, DrawerD } from '@dns/toolbox';
-import { noop } from '@dns/utils';
+import { Drawer, DrawerD } from '@datns/toolbox';
+import { noop } from '@datns/utils';
 
 import DrawersProvider, { DrawersContext } from './DrawersProvider';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Paginator } from '@dns/toolbox';
+import { Paginator } from '@datns/toolbox';
 
 import { paginatorActions } from '../../actions/paginator';
 import { PaginatorState } from '../../reducers';

@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -42,26 +42,26 @@ var ConfirmDialogue = (function (_super) {
                 _this.props.onClose();
             }
         };
-        _this.handleInputRef = function (ref) { return _this.inputRef = ref && ref.focus(); };
+        _this.handleInputRef = function (ref) { return _this._inputRef = ref && ref.focus(); };
         return _this;
     }
     ConfirmDialogue.prototype.componentDidMount = function () {
-        if (this.inputRef) {
-            this.inputRef.focus();
+        if (this._inputRef) {
+            this._inputRef.focus();
         }
     };
     ConfirmDialogue.prototype.render = function () {
         var _this = this;
-        var _a = this.props, width = _a.width, height = _a.height, minHeight = _a.minHeight, withoutOffset = _a.withoutOffset, classNames = _a.classNames, title = _a.title, text = _a.text;
+        var _a = this.props, width = _a.width, height = _a.height, minHeight = _a.minHeight, withoutOffset = _a.withoutOffset, className = _a.className, title = _a.title, content = _a.content;
         var inlineStyle = {
             width: width,
             height: height,
             minHeight: minHeight,
         };
-        return (React.createElement("div", { className: "\n          confirm-dialogue\n          " + (withoutOffset ? 'without-offset' : '') + "\n          " + (classNames ? classNames : '') + "\n        ", style: inlineStyle },
+        return (React.createElement("div", { className: "\n          confirm-dialogue\n          " + (withoutOffset ? 'without-offset' : '') + "\n          " + (className ? className : '') + "\n        ", style: inlineStyle },
             React.createElement("h2", null, title),
             React.createElement("div", null,
-                text ? React.createElement("p", { className: "c-d_text" }, text) : null,
+                content ? React.createElement("p", { className: "c-d_text" }, content) : null,
                 React.createElement("p", null, "Are you sure you want to proceed?")),
             React.createElement("div", null,
                 React.createElement(Button_1.Button, { onClick: function () { return _this.confirmDialogue(); }, label: "Yes" }),

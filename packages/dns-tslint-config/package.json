@@ -1,7 +1,7 @@
 {
   "name": "@datns/tslint-config",
   "version": "3.2.4",
-  "description": "TSLint configuration for @dns packages",
+  "description": "TSLint configuration for @datns packages",
   "main": "tslint.js",
   "scripts": {
     "build": "npm run build-lib",

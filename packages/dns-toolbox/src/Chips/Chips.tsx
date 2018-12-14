@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { noop } from '@dns/utils';
+import { noop } from '@datns/utils';
 
 import { Chip as ChipDefinition } from '../definitions';
 import { Chip } from '../Chip/Chip';

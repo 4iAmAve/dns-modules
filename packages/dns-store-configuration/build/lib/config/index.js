@@ -30,7 +30,7 @@ else {
     composeEnhancers = redux_1.compose;
 }
 var persistedReducer = function (id, rootReducer, whitelist) {
-    return redux_persist_1.persistReducer(persistConfig(id, whitelist), connected_react_router_1.connectRouter(exports.history)(rootReducer));
+    return redux_persist_1.persistReducer(persistConfig(id, whitelist), rootReducer(exports.history));
 };
 exports.configureStore = function (storeConfig) {
     var _a = storeConfig.id, id = _a === void 0 ? 'store' : _a, initialState = storeConfig.initialState, rootReducer = storeConfig.rootReducer, _b = storeConfig.whitelist, whitelist = _b === void 0 ? [] : _b;

@@ -1,7 +1,7 @@
 // import 'whatwg-fetch';
 import axios, { AxiosResponse } from 'axios';
-import { addNotification } from '@dns/contextual-modules';
-import { history } from '@dns/store-configuration';
+import { addNotification } from '@datns/contextual-modules';
+import { history } from '@datns/store-configuration';
 
 import { Call } from './definitions';
 

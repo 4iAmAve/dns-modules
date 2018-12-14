@@ -65,7 +65,7 @@ export class RenderJSON extends React.Component<RenderJSONProps, RenderJSONState
   public validateInput = () => {
     // make sure `src` prop is valid
     if (!(this.state.data instanceof Object) && !(this.state.data instanceof Array)) {
-      console.error('@dns/renderJSON error:', 'src property must be a valid json object');
+      console.error('@datns/renderJSON error:', 'src property must be a valid json object');
       this.setState({
         name: 'ERROR',
         data: {

@@ -1,0 +1,67 @@
+.drawer {
+  display: block;
+  height: 100vh;
+  min-width: 75vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 5;
+  pointer-events: none;
+  transition: top 0.225s cubic-bezier(0.35, 0, 0.25, 1), right 0.225s cubic-bezier(0.35, 0, 0.25, 1), bottom 0.225s cubic-bezier(0.35, 0, 0.25, 1), left 0.225s cubic-bezier(0.35, 0, 0.25, 1), z-index 0.225s cubic-bezier(0.35, 0, 0.25, 1), opacity 0.225s cubic-bezier(0.35, 0, 0.25, 1); }
+  .drawer--top {
+    top: -100vh; }
+  .drawer--right {
+    right: -100vw; }
+  .drawer--bottom {
+    bottom: -100vh; }
+  .drawer--left {
+    left: -100vh; }
+  .drawer--open {
+    pointer-events: auto;
+    opacity: 1;
+    left: 0; }
+    .drawer--open.drawer--top {
+      top: 0; }
+    .drawer--open.drawer--right {
+      right: 0; }
+    .drawer--open.drawer--bottom {
+      bottom: 0; }
+    .drawer--open.drawer--left {
+      left: 0; }
+  .drawer .drawer_backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1); }
+  .drawer .drawer_close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 16px; }
+  .drawer .drawer_content {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 16px;
+    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12); }
+    .drawer .drawer_content--full-width {
+      width: calc(100vw - 32px); }
+  .drawer .drawer_title {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #63b4eb;
+    margin: 8px 0 16px 0;
+    display: block; }

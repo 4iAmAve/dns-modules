@@ -1,5 +1,5 @@
 {
-  "name": "@datns/renderJSON",
+  "name": "@datns/render-json",
   "description": "React component for displaying javascript arrays and JSON objects.",
   "version": "0.12.2",
   "main": "build/lib/index.js",

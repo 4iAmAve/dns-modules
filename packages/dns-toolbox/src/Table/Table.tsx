@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { validURL } from '@dns/utils';
+import { validURL } from '@datns/utils';
 
 import { TableColumn } from '../definitions';
 import { Checkbox } from '../Checkbox/Checkbox';

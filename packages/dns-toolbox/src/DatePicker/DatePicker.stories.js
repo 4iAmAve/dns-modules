@@ -1,5 +1,5 @@
 import React from "react";
-import { noop } from '@dns/utils';
+import { noop } from '@datns/utils';
 
 import { storiesOf } from "@storybook/react";
 import { text } from "@storybook/addon-knobs/react";

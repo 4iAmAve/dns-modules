@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DrawerD } from '@dns/toolbox';
+import { DrawerD } from '@datns/toolbox';
 export interface DrawersPayload extends DrawerD {
     id: string | number;
     content: any;

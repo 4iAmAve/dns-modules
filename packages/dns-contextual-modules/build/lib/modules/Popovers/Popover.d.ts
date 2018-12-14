@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PopoverD } from '@dns/toolbox';
+import { PopoverD } from '@datns/toolbox';
 export interface PopoverProps {
     id: string | number;
     onClose?: () => void;

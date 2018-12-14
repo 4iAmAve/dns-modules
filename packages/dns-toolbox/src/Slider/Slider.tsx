@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { capitalize } from '@dns/utils';
+import { capitalize } from '@datns/utils';
 
 import './Slider.css';
 

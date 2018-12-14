@@ -1,11 +1,11 @@
-## @datns/renderJSON
+## @datns/render-json
 
 React component for displaying javascript arrays and JSON objects.
 
 ### Usage
 
 ```javascript
-import RenderJSON from '@datns/renderJSON'
+import RenderJSON from '@datns/render-json'
 // If you're using Immutable.js: `npm i --save immutable`
 import { Map } from 'immutable'
 

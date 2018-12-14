@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var utils_1 = require("@dns/utils");
+var utils_1 = require("@datns/utils");
 require("./Icon.css");
 exports.Icon = function (props) {
     var classNames = props.classNames, icon = props.icon, type = props.type, onClick = props.onClick;

@@ -1,4 +1,4 @@
-import { parseDateHumanReadable } from '@dns/utils';
+import { parseDateHumanReadable } from '@datns/utils';
 
 export interface Auth {
   name: string;

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, GenericDialogue } from '@dns/toolbox';
-import { noop } from '@dns/utils';
+import { Button, GenericDialogue } from '@datns/toolbox';
+import { noop } from '@datns/utils';
 
 import ConfirmDialogueProvider, { ConfirmDialogueContext } from './ConfirmDialogueProvider';
 

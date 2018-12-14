@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { GenericDialogue } from '@dns/toolbox';
-import { noop } from '@dns/utils';
+import { GenericDialogue } from '@datns/toolbox';
+import { noop } from '@datns/utils';
 
 import DialoguesProvider, { DialoguesContext } from './DialoguesProvider';
 

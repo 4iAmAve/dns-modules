@@ -71,7 +71,7 @@ Note: As for `Popovers`, you can add them wherever you like with `<Popover id={'
 Call actions wherever you need them like this:
 
 ```javascript
-import { openConfirmDialogue } from '@dns/contextual-modules';
+import { openConfirmDialogue } from '@datns/contextual-modules';
 
 openConfirmDialogue({
   title: 'test-title',
@@ -81,7 +81,7 @@ openConfirmDialogue({
 ```
 
 ```javascript
-import { addDialogue, closeDialogue } from '@dns/contextual-modules';
+import { addDialogue, closeDialogue } from '@datns/contextual-modules';
 
 addDialogue({
   content: (<div>Test Content</div>),
@@ -94,7 +94,7 @@ closeDialogue('dialogue-id');
 ```
 
 ```javascript
-import { addDrawer, closeDrawer } from '@dns/contextual-modules';
+import { addDrawer, closeDrawer } from '@datns/contextual-modules';
 
 addDrawer({
   content: (<div>Test Content</div>),
@@ -107,7 +107,7 @@ closeDrawer('drawer-id');
 ```
 
 ```javascript
-import { addNotification, closeNotification } from '@dns/contextual-modules';
+import { addNotification, closeNotification } from '@datns/contextual-modules';
 
 addNotification({
   id: 'optional-id-parameter-to-close-notification-on-request', 
@@ -119,7 +119,7 @@ closeNotification('optional-id-parameter-to-close-notification-on-request');
 ```
 
 ```javascript
-import { openPopover } from '@dns/contextual-modules';
+import { openPopover } from '@datns/contextual-modules';
 
 openPopover({
   content: (<div>Test Content</div>),
@@ -129,7 +129,7 @@ openPopover({
 });
 ```
 
-Addendum: To see all available parameters, simply take a look into '@dns/toolbox' definitions.
+Addendum: To see all available parameters, simply take a look into '@datns/toolbox' definitions.
 
 ### NOTE
 

@@ -1,9 +1,9 @@
 export interface AutoCompleteSelection {
-    title: string;
     className: any;
     color?: any;
     disabled?: boolean;
     node?: HTMLElement;
     payload?: any;
+    title: string;
     type?: 'header' | 'node';
 }

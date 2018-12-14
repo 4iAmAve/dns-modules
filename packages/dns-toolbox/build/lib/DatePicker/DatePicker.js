@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -26,7 +26,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var entry_nostyle_1 = require("react-calendar/dist/entry.nostyle");
-var utils_1 = require("@dns/utils");
+var utils_1 = require("@datns/utils");
 var Input_1 = require("../Input/Input");
 var SelectDropdown_1 = require("../SelectDropdown/SelectDropdown");
 require("./DatePicker.css");

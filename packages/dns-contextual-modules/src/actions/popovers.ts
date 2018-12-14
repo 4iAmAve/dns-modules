@@ -1,4 +1,4 @@
-import { PopoverD } from '@dns/toolbox';
+import { PopoverD } from '@datns/toolbox';
 import { getOpenPopover } from '../modules';
 
 export function openPopover(popover: PopoverD) {

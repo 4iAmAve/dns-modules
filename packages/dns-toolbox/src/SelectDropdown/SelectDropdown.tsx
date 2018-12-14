@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { deepEqual } from '@dns/utils';
+import { deepEqual } from '@datns/utils';
 
 import { Input } from '../Input/Input';
 

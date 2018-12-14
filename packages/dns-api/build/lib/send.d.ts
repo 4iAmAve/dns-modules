@@ -1,3 +1,3 @@
 import { Call } from './definitions';
-declare const send: (call: Call) => (dispatch: any) => void;
+declare const send: (call: Call) => void;
 export default send;

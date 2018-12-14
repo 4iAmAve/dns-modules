@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { addToClipboard } from '@dns/utils';
+import { addToClipboard } from '@datns/utils';
 
 export interface DateTypeProps {
   data: any;

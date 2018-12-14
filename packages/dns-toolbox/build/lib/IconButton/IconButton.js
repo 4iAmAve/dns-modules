@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -33,9 +33,9 @@ var IconButton = (function (_super) {
         var _this = _super.call(this, props) || this;
         _this.handleClick = function (e) {
             var cursorPos = {
-                top: e.clientY,
                 left: e.clientX,
-                time: Date.now()
+                time: Date.now(),
+                top: e.clientY,
             };
             var parent = e.target;
             _this.setState({ cursorPos: cursorPos, parent: parent });
@@ -45,16 +45,16 @@ var IconButton = (function (_super) {
         };
         _this.state = {
             cursorPos: {
-                top: 0,
                 left: 0,
                 time: Date.now(),
+                top: 0,
             },
             parent: null,
         };
         return _this;
     }
     IconButton.prototype.render = function () {
-        var _a = this.props, classNames = _a.classNames, color = _a.color, disabled = _a.disabled, filled = _a.filled, icon = _a.icon, type = _a.type, style = _a.style;
+        var _a = this.props, classNames = _a.classNames, color = _a.color, disabled = _a.disabled, filled = _a.filled, icon = _a.icon, type = _a.type, style = _a.style, onMouseEnter = _a.onMouseEnter, onMouseLeave = _a.onMouseLeave, onTouchEnd = _a.onTouchEnd, onTouchStart = _a.onTouchStart;
         var _b = this.state, cursorPos = _b.cursorPos, parent = _b.parent;
         var modColor = color === 'success' ? 'icon-button--success' :
             color === 'danger' ? 'icon-button--danger' :
@@ -66,7 +66,7 @@ var IconButton = (function (_super) {
         if (style) {
             inlineStyle = __assign({}, style);
         }
-        return (React.createElement("button", { className: "\n          " + (classNames ? classNames : '') + "\n          icon-button\n          " + (color ? modColor : '') + "\n          " + (type ? modType : '') + "\n          " + (filled ? 'icon-button--filled' : '') + "\n        ", style: inlineStyle, disabled: disabled, onClick: this.handleClick },
+        return (React.createElement("button", { className: "\n          " + (classNames ? classNames : '') + "\n          icon-button\n          " + (color ? modColor : '') + "\n          " + (type ? modType : '') + "\n          " + (filled ? 'icon-button--filled' : '') + "\n        ", style: inlineStyle, disabled: disabled, onClick: this.handleClick, onMouseEnter: onMouseEnter, onMouseLeave: onMouseLeave, onTouchEnd: onTouchEnd, onTouchStart: onTouchStart },
             React.createElement("i", { className: "material-icons" }, icon),
             React.createElement(Ripple_1.Ripple, { cursorPos: cursorPos, parent: parent, classNames: "icon-button_ripple" })));
     };

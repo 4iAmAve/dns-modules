@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Notification } from '@dns/toolbox';
-import { noop } from '@dns/utils';
+import { Notification } from '@datns/toolbox';
+import { noop } from '@datns/utils';
 
 import NotificationsBarProvider, { NotificationsBarContext } from './NotificationsBarProvider';
 

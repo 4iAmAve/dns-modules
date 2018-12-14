@@ -1,13 +1,13 @@
 export interface Chip {
-  title: string;
-  id?: number | string;
   bgColor?: string | boolean;
-  image?: any;
-  selectable?: boolean;
+  classNames?: any;
   deletable?: boolean;
   fullWidth?: boolean;
-  classNames?: any;
-  payload?: any;
+  id?: number | string;
+  image?: any;
+  title: string;
   onClick?: () => void;
   onDelete?: () => void;
+  payload?: any;
+  selectable?: boolean;
 }

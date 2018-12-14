@@ -11,7 +11,7 @@ storiesOf("NativeSelect", module).addWithJSX(
   wInfo(`
   ### Note
   
-  Native select element in @dns design
+  Native select element in @datns design
   
   ### Usage
   ~~~js

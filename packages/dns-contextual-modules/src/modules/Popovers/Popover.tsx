@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover as PopoverComponent, PopoverD } from '@dns/toolbox';
+import { Popover as PopoverComponent, PopoverD } from '@datns/toolbox';
 
 import { getRemovePopover, getSubscribePopover } from './PopoversStore';
 

@@ -13,18 +13,18 @@ export interface ConfirmDialogueState {
 }
 
 export class ConfirmDialogue extends React.Component<ConfirmDialogueProps, ConfirmDialogueState> {
-  public static defaultProps: Partial<ConfirmDialogueProps> = {
+  static defaultProps: Partial<ConfirmDialogueProps> = {
     title: 'Confirm',
     width: '40em',
     height: 'auto',
     minHeight: '10%',
   };
 
-  private inputRef: HTMLElement;
+  _inputRef: HTMLElement;
 
-  public componentDidMount() {
-    if (this.inputRef) {
-      this.inputRef.focus();
+  componentDidMount() {
+    if (this._inputRef) {
+      this._inputRef.focus();
     }
   }
 
@@ -53,17 +53,17 @@ export class ConfirmDialogue extends React.Component<ConfirmDialogueProps, Confi
     }
   }
 
-  handleInputRef = ref => this.inputRef = ref && ref.focus();
+  handleInputRef = ref => this._inputRef = ref && ref.focus();
 
-  public render() {
+  render() {
     const {
       width,
       height,
       minHeight,
       withoutOffset,
-      classNames,
+      className,
       title,
-      text,
+      content,
     } = this.props;
     const inlineStyle = {
       width,
@@ -75,13 +75,13 @@ export class ConfirmDialogue extends React.Component<ConfirmDialogueProps, Confi
         className={`
           confirm-dialogue
           ${withoutOffset ? 'without-offset' : ''}
-          ${classNames ? classNames : ''}
+          ${className ? className : ''}
         `}
         style={inlineStyle}
       >
         <h2>{title}</h2>
         <div>
-          {text ? <p className="c-d_text">{text}</p> : null}
+          {content ? <p className="c-d_text">{content}</p> : null}
           <p>Are you sure you want to proceed?</p>
         </div>
         <div>

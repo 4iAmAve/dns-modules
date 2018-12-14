@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Calendar from 'react-calendar/dist/entry.nostyle';
-import { parseDate, parseDateAndTime } from '@dns/utils';
+import { parseDate, parseDateAndTime } from '@datns/utils';
 
 import { Input } from '../Input/Input';
 import { SelectDropdown } from '../SelectDropdown/SelectDropdown';

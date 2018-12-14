@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PopoverD } from '@dns/toolbox';
+import { PopoverD } from '@datns/toolbox';
 
 interface PopoverSubscription {
   id: string | number;

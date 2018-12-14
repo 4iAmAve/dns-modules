@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NotificationD } from '@dns/toolbox';
+import { NotificationD } from '@datns/toolbox';
 interface NotifcationPayload {
     message: string;
     type: string;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { convertMillisToTime } from '@dns/utils';
+import { convertMillisToTime } from '@datns/utils';
 
 import './TimePicker.css';
 

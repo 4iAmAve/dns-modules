@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getContrastYIQ, stringToColour } from '@dns/utils';
+import { getContrastYIQ, stringToColour } from '@datns/utils';
 
 import { Chip as ChipDef } from '../definitions';
 
