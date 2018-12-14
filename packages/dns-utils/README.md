@@ -1,4 +1,4 @@
-## @dns/utils
+## @datns/utils
 
 React independent library with useful utility functions 
 
@@ -48,7 +48,7 @@ import {
   validatePassword,
   validURL,
   xmlToJson,
-} from '@dns/utils';
+} from '@datns/utils';
 ```
 
 
@@ -119,4 +119,4 @@ xmlToJson($xmlString); // returns a JSON with NodeName = NodeValue
 ```
 ### License
 
-@dns/utils is [MIT licensed](./LICENSE).
+@datns/utils is [MIT licensed](./LICENSE).

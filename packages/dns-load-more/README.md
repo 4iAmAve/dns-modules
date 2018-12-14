@@ -1,11 +1,11 @@
-## @dns/load-more
+## @datns/load-more
 
 React component for lazy loading and rendering data on demand.
 
 ### Usage
 
 ```javascript
-import { LoadMore } from '@dns/load-more'
+import { LoadMore } from '@datns/load-more'
 
 const data = [
   {
@@ -66,4 +66,4 @@ yarn start-watcher
 
 ### License
 
-@dns/load-more is [MIT licensed](./LICENSE).
+@datns/load-more is [MIT licensed](./LICENSE).

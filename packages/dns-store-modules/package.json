@@ -1,5 +1,5 @@
 {
-  "name": "@dns/store-modules",
+  "name": "@datns/store-modules",
   "version": "1.2.1",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
@@ -19,7 +19,7 @@
     "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
   },
-  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-store-modules",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-store-modules",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "devDependencies": {
@@ -29,8 +29,8 @@
     "typescript": "3.2.2"
   },
   "dependencies": {
-    "@dns/toolbox": "0.4.1",
-    "@dns/tslint-config": "3.2.4",
-    "@dns/utils": "0.6.3"
+    "@datns/toolbox": "0.4.1",
+    "@datns/tslint-config": "3.2.4",
+    "@datns/utils": "0.6.3"
   }
 }

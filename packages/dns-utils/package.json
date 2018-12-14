@@ -1,5 +1,5 @@
 {
-  "name": "@dns/utils",
+  "name": "@datns/utils",
   "version": "0.6.3",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
@@ -14,7 +14,7 @@
     "clean-build": "rm -rf build",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
   },
-  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-utils",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-utils",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "devDependencies": {

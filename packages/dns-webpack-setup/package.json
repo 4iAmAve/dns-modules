@@ -1,12 +1,12 @@
 {
-  "name": "@dns/webpack-setup",
+  "name": "@datns/webpack-setup",
   "version": "0.6.3",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "files": [
     "build/lib"
   ],
-  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-utils",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-utils",
   "author": "Ave <me@aves.site>",
   "license": "MIT"
 }

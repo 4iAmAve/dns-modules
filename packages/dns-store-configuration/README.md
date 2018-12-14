@@ -1,4 +1,4 @@
-## @dns/store-configuration
+## @datns/store-configuration
 
 Library for default redux store configuration
 
@@ -43,7 +43,7 @@ In your index.ts
 ```javascript
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
-import { configureStore } from '@dns/store-configuration';
+import { configureStore } from '@datns/store-configuration';
 
 import { rootReducer } from './reducers';
 
@@ -79,4 +79,4 @@ ReactDOM.render(
 
 ### License
 
-@dns/store-configuration is [MIT licensed](./LICENSE).
+@datns/store-configuration is [MIT licensed](./LICENSE).

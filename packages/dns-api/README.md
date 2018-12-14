@@ -1,10 +1,10 @@
-## @dns/api
+## @datns/api
 
 HTTP requests with [axios](https://github.com/axios/axios)
 
 ### Usage
 ```
-import { send, subscribe, endCallForId } from '@dns/api'
+import { send, subscribe, endCallForId } from '@datns/api'
 
 const call = {
   url: 'your request url string',
@@ -23,4 +23,4 @@ endCallForId('id for call');
 
 ### License
 
-@dns/api is [MIT licensed](./LICENSE).
+@datns/api is [MIT licensed](./LICENSE).

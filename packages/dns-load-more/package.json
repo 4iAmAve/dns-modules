@@ -1,5 +1,5 @@
 {
-  "name": "@dns/load-more",
+  "name": "@datns/load-more",
   "description": "React component for lazy loading data on demand.",
   "version": "1.0.2",
   "main": "build/lib/index.js",
@@ -20,11 +20,11 @@
     "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
   },
-  "repository": "",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-load-more",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "dependencies": {
-    "@dns/utils": "0.6.3"
+    "@datns/utils": "0.6.3"
   },
   "devDependencies": {
     "babel-core": "6.26.3",

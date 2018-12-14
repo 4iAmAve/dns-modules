@@ -1,4 +1,4 @@
-## @dns/tslint-config
+## @datns/tslint-config
 
 TSLint configuration
 
@@ -8,11 +8,11 @@ In `tslint.json`:
 
 ```json
 {
-  "extends": "@dns/tslint-config"
+  "extends": "@datns/tslint-config"
 }
 
 ```
 
 ### License
 
-@dns/tslint-config is [MIT licensed](./LICENSE).
+@datns/tslint-config is [MIT licensed](./LICENSE).

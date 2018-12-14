@@ -13,6 +13,7 @@ This repository houses a multitude of npm modules, mostly for React applications
 Note: modules are constantly updated and enhanced
 
 [dns-api](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-api/README.md) \
+[dns-contextual-modules](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-contextual-modules/README.md) \
 [dns-common-styles](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-common-styles/README.md) \
 [dns-load-more](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-load-more/README.md) \
 [dns-node-ts-mock-server](https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-node-ts-mock-server/README.md) \

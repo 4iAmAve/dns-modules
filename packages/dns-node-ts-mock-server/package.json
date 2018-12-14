@@ -1,5 +1,5 @@
 {
-  "name": "@dns/node-ts-mock-server",
+  "name": "@datns/node-ts-mock-server",
   "version": "0.2.3",
   "main": "dist/server.js",
   "files": [
@@ -11,7 +11,7 @@
     "clean-build": "rm -rf build",
     "lint": "tslint --exclude **/*.d.ts app/**/*.ts"
   },
-  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-node-ts-mock-server",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-node-ts-mock-server",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "devDependencies": {

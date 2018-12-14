@@ -1,6 +1,6 @@
 {
   "extends": [
     "tslint-react",
-    "@dns/tslint-config"
+    "@datns/tslint-config"
   ]
 }

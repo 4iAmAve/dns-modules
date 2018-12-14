@@ -15,7 +15,7 @@
     "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
   },
-  "repository": "",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-contextual-modules",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "devDependencies": {

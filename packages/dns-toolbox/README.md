@@ -1,4 +1,4 @@
-## @dns/toolbox
+## @datns/toolbox
 
 A component library for react 
 
@@ -186,4 +186,4 @@ In case of style adjustments use SASS/SCSS. This will be compiled to CSS in the 
 
 ### License
 
-@dns/toolbox is [MIT licensed](./LICENSE).
+@datns/toolbox is [MIT licensed](./LICENSE).

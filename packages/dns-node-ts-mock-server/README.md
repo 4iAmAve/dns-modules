@@ -1,6 +1,6 @@
-## DNS - NODE TS Mock Server
+## @datns/node-ts-mock-server
 
-This package is for local use only and provides a simple express server that can be enhanced and enriched for multiple DNS services.
+This package is for local use only and provides a simple express server that can be enhanced and enriched for multiple @datns services.
 
 ### SET-UP
 
@@ -28,5 +28,5 @@ docker-compose up
 
 ### License
 
-@dns/node-ts-mock-server is [MIT licensed](./LICENSE).
+@datns/node-ts-mock-server is [MIT licensed](./LICENSE).
 

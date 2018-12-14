@@ -1,5 +1,5 @@
 {
-  "name": "@dns/renderJSON",
+  "name": "@datns/renderJSON",
   "description": "React component for displaying javascript arrays and JSON objects.",
   "version": "0.12.2",
   "main": "build/lib/index.js",
@@ -20,11 +20,11 @@
     "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
   },
-  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-renderJSON",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-renderJSON",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "dependencies": {
-    "@dns/utils": "0.6.3"
+    "@datns/utils": "0.6.3"
   },
   "devDependencies": {
     "babel-core": "6.26.3",

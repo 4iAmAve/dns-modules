@@ -17,7 +17,7 @@
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "dependencies": {
-    "@datns/contextual-modules": "1.2.1",
+    "@datns/contextual-modules": "1.2.3",
     "axios": "0.18.0"
   },
   "devDependencies": {

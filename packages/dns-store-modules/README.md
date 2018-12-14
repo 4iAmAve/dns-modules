@@ -1,4 +1,4 @@
-## @dns/store-modules
+## @datns/store-modules
 
 A redux store connectable modules library for react 
 
@@ -81,4 +81,4 @@ In case of style adjustments use SASS/SCSS. This will be compiled to CSS in the 
 
 ### License
 
-@dns/store-modules is [MIT licensed](./LICENSE).
+@datns/store-modules is [MIT licensed](./LICENSE).

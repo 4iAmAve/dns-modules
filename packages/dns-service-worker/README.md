@@ -1,4 +1,4 @@
-## @dns/service-worker
+## @datns/service-worker
 
 Library for default redux store configuration
 
@@ -17,7 +17,7 @@ This link also includes instructions on opting out of this behavior.
 ### Usage
 
 ```javascript
-import registerServiceWorker from '@dns/service-worker';
+import registerServiceWorker from '@datns/service-worker';
 
 ...
 
@@ -42,4 +42,4 @@ yarn build
 
 ### License
 
-@dns/service-worker is [MIT licensed](./LICENSE).
+@datns/service-worker is [MIT licensed](./LICENSE).

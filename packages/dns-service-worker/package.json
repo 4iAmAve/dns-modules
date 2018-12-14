@@ -1,5 +1,5 @@
 {
-  "name": "@dns/service-worker",
+  "name": "@datns/service-worker",
   "description": "Service worker to serve assets from local cache",
   "version": "1.1.2",
   "main": "build/lib/index.js",
@@ -12,7 +12,7 @@
     "build-lib": "node_modules/.bin/tsc",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
   },
-  "repository": "https://github.com/4iAmAve/dns-modules/packages/dns-service-worker",
+  "repository": "https://github.com/4iAmAve/dns-modules/tree/master/packages/dns-service-worker",
   "author": "Ave <me@aves.site>",
   "license": "MIT",
   "devDependencies": {

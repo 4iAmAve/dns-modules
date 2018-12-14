@@ -1,4 +1,4 @@
-## @dns/contextual-modules
+## @datns/contextual-modules
 
 React context API modules library. 
 
@@ -137,4 +137,4 @@ In case of style adjustments use SASS/SCSS. This will be compiled to CSS in the 
 
 ### License
 
-@dns/contextual-modules is [MIT licensed](./LICENSE).
+@datns/contextual-modules is [MIT licensed](./LICENSE).

@@ -1,11 +1,11 @@
-## @dns/renderXML
+## @datns/renderXML
 
 React component for displaying XML serialized and collapsable as dom element.
 
 ### Usage
 
 ```javascript
-import RenderXML from '@dns/renderXML'
+import RenderXML from '@datns/renderXML'
 // If you're using Immutable.js: `npm i --save immutable`
 import { Map } from 'immutable'
 
@@ -41,4 +41,4 @@ yarn build
 
 ### License
 
-@dns/renderXML is [MIT licensed](./LICENSE).
+@datns/renderXML is [MIT licensed](./LICENSE).
