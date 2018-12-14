@@ -235,10 +235,9 @@ module.exports = {
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
-                options: {
-                  minimize: true,
-                  module: true
-                }
+                /*options: {
+                  modules: true
+                }*/
               },
               // {
               //   loader: require.resolve('sass-loader'),

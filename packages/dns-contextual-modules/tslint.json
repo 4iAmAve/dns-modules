@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "tslint-react",
+    "@dns/tslint-config"
+  ],
+  "rules": {
+    "no-empty": false
+  }
+}

@@ -1,0 +1,24 @@
+- !!! provide typings by enabling definitons in tsconfig
+
+- provide Tabs module
+  - (/) to store tab settings and selectedTab
+  - resolve initial loading/render issue (get rid of setTimeout)
+- provide master detail module
+  - master and detail mapper via switch
+- (/) provide connected paginator module
+  - make paginator module that includes @dns/toolbox component and subs to store to handle multiple views
+- provide confirmDialogue and genericDialogue modules
+  - rework dialogues
+    - (/) make confirm dialogue global in App.tsx and only open/close that one
+      - props: title: string, body: string, onConfirm: fn, onClose: fn
+    - generic dialogue should be handled like notifications and have a mapper function to handle content
+      - props: title: string, content: string
+      - mapper: switch case through content and map to corresponding module
+
+
+- !!!! upgrade ts-loader after upgrading webpack to 4
+
+
+- maybe use react
+  https://github.com/jamiebuilds/react-loadable and https://webpack.js.org/guides/code-splitting/
+  => https://github.com/coryhouse/dynamic-import-example

@@ -3,6 +3,7 @@ import { camelizeKeys, camelize } from './camelize';
 import capitalize from './capitalize';
 import cleanObject from './cleanObject';
 import convertMillisToTime from './convertMillisToTime';
+import deepClone from './deepClone';
 import deepEqual from './deepEqual';
 import detectIE from './detectIE';
 import { differ } from './differ';
@@ -36,6 +37,7 @@ export {
   capitalize,
   cleanObject,
   convertMillisToTime,
+  deepClone,
   deepEqual,
   detectIE,
   differ,

@@ -1,0 +1,80 @@
+@import '../../styles/variables.scss';
+
+.dialogue {
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity .225s ease-in-out, z-index .225s ease-in-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .dialogue_back-drop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .1);
+  }
+
+  .dialogue_container {
+    //position: absolute;
+    //left: 50%;
+    //top: 50%;
+    //transform: translate(-50%, -50%) scale(.95);
+    //background: cyan;
+    margin-top: 50px;
+    height: auto;
+    width: auto;
+    transition: margin-top .225s $cubic-bezier, transform .225s $cubic-bezier;
+    position: relative;
+  }
+
+  &.dialogue--open {
+    z-index: 15;
+    pointer-events: auto;
+    opacity: 1;
+
+    .dialogue_container {
+      margin-top: 0;
+      //transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.confirm-dialogue {
+  .dialogue_container {
+    .gd {
+      max-width: 40vw;
+
+      .cd_content {
+        margin-top: $spacing;
+        white-space: pre-line;
+      }
+
+      .dialogue_hidden-input {
+        max-height: 0;
+        max-width: 0;
+        overflow: hidden;
+        outline: none;
+        pointer-events: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

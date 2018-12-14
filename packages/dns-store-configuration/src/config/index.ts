@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import { createBrowserHistory } from 'history';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web and AsyncStorage for react-native
 
@@ -56,7 +56,7 @@ if (IS_DEV && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
 }
 
 const persistedReducer = (id: string, rootReducer: any, whitelist: string[]) =>
-  persistReducer(persistConfig(id, whitelist), connectRouter(history)(rootReducer));
+  persistReducer(persistConfig(id, whitelist), rootReducer(history));
 
 export const configureStore: any = (storeConfig: StoreConfig) => {
   const { id = 'store', initialState, rootReducer, whitelist = []} = storeConfig;

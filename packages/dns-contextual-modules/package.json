@@ -1,0 +1,32 @@
+{
+  "name": "@dns/contextual-modules",
+  "version": "1.2.1",
+  "main": "build/lib/index.js",
+  "types": "build/lib/index.d.ts",
+  "files": [
+    "build/lib"
+  ],
+  "scripts": {
+    "build": "npm run build-lib",
+    "build-lib": "npm run build-tsc && npm run build-sass && npm run copy-css-to-lib",
+    "build-tsc": "node_modules/.bin/tsc",
+    "build-sass": "node_modules/.bin/node-sass src/ -o src/",
+    "clean-build": "rm -rf build",
+    "copy-css-to-lib": "cpx \"./src/**/*.css\" ./build/lib",
+    "lint": "tslint --exclude **/*.d.ts src/**/*.ts src/**/*.tsx"
+  },
+  "repository": "",
+  "author": "Ave <me@aves.site>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "cpx": "1.5.0",
+    "css-loader": "2.0.0",
+    "typescript": "3.2.2"
+  },
+  "dependencies": {
+    "@dns/toolbox": "0.4.1",
+    "@dns/tslint-config": "3.2.4",
+    "@dns/utils": "0.6.3"
+  }
+}

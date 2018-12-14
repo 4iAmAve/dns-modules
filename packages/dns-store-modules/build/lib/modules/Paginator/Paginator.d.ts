@@ -30,5 +30,5 @@ declare class PaginatorModule extends React.Component<PaginatorModuleProps, Pagi
     onPageChange: (e: any) => void;
     render(): JSX.Element;
 }
-export declare const connectedPaginator: import("react-redux").ConnectedComponentClass<typeof PaginatorModule, Pick<PaginatorModuleProps, "label" | "id" | "onChange" | "defaultValue" | "className" | "pageSize" | "pageSizeOptions" | "pageIndex" | "totalItems">>;
+export declare const connectedPaginator: import("react-redux").ConnectedComponentClass<typeof PaginatorModule, Pick<PaginatorModuleProps, "label" | "id" | "className" | "onChange" | "defaultValue" | "pageSize" | "pageSizeOptions" | "pageIndex" | "totalItems">>;
 export {};

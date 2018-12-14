@@ -1,0 +1,98 @@
+@import '../styles/variables.scss';
+
+.drawer {
+  display: block;
+  height: 100vh;
+  min-width: 75vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 5;
+  pointer-events: none;
+  transition: top .225s $cubic-bezier, right .225s $cubic-bezier, bottom .225s $cubic-bezier, left .225s $cubic-bezier, z-index .225s $cubic-bezier, opacity .225s $cubic-bezier;
+
+  &--top {
+    top: -100vh;
+  }
+
+  &--right {
+    right: -100vw;
+  }
+
+  &--bottom {
+    bottom: -100vh;
+  }
+
+  &--left {
+    left: -100vh;
+  }
+
+  &--open {
+    pointer-events: auto;
+    opacity: 1;
+    left: 0;
+
+    &.drawer--top {
+      top: 0;
+    }
+
+    &.drawer--right {
+      right: 0;
+    }
+
+    &.drawer--bottom {
+      bottom: 0;
+    }
+
+    &.drawer--left {
+      left: 0;
+    }
+  }
+
+  .drawer_backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .1);
+  }
+
+  .drawer_close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: $spacing;
+  }
+
+  .drawer_content {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding: $spacing;
+    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+
+    &--full-width {
+      width: calc(100vw - 32px);
+    }
+  }
+
+  .drawer_title {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #63b4eb;
+    margin: 8px 0 16px 0;
+    display: block;
+  }
+}

@@ -1,0 +1,51 @@
+.dialogue {
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity .225s ease-in-out, z-index .225s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .dialogue .dialogue_back-drop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1); }
+  .dialogue .dialogue_container {
+    margin-top: 50px;
+    height: auto;
+    width: auto;
+    transition: margin-top 0.225s cubic-bezier(0.35, 0, 0.25, 1), transform 0.225s cubic-bezier(0.35, 0, 0.25, 1);
+    position: relative; }
+  .dialogue.dialogue--open {
+    z-index: 15;
+    pointer-events: auto;
+    opacity: 1; }
+    .dialogue.dialogue--open .dialogue_container {
+      margin-top: 0; }
+
+.confirm-dialogue .dialogue_container .gd {
+  max-width: 40vw; }
+  .confirm-dialogue .dialogue_container .gd .cd_content {
+    margin-top: 16px;
+    white-space: pre-line; }
+  .confirm-dialogue .dialogue_container .gd .dialogue_hidden-input {
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+    outline: none;
+    pointer-events: none;
+    border: none; }
+    .confirm-dialogue .dialogue_container .gd .dialogue_hidden-input:focus {
+      outline: none; }

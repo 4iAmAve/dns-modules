@@ -21,6 +21,14 @@ export interface IconButtonProps {
   filled?: boolean;
   /** optional parameter to adjust inline style  */
   style?: any;
+  /** optional parameter handle touch start event  */
+  onTouchStart?: (e: any) => void;
+  /** optional parameter handle mouse enter event  */
+  onMouseEnter?: (e: any) => void;
+  /** optional parameter handle touch end event */
+  onTouchEnd?: (e: any) => void;
+  /** optional parameter handle mouse leave event  */
+  onMouseLeave?: (e: any) => void;
 }
 
 export interface IconButtonState {
@@ -43,9 +51,9 @@ export class IconButton extends React.Component<IconButtonProps, IconButtonState
 
     this.state = {
       cursorPos: {
-        top: 0,
         left: 0,
         time: Date.now(),
+        top: 0,
       },
       parent: null,
     };
@@ -54,9 +62,9 @@ export class IconButton extends React.Component<IconButtonProps, IconButtonState
   public handleClick = (e: any) => {
     // Get Cursor Position
     const cursorPos = {
-      top: e.clientY,
       left: e.clientX,
-      time: Date.now()
+      time: Date.now(),
+      top: e.clientY,
     };
     const parent = e.target;
     this.setState({ cursorPos: cursorPos, parent });
@@ -73,7 +81,11 @@ export class IconButton extends React.Component<IconButtonProps, IconButtonState
       filled,
       icon,
       type,
-      style
+      style,
+      onMouseEnter,
+      onMouseLeave,
+      onTouchEnd,
+      onTouchStart
     } = this.props;
     const { cursorPos, parent } = this.state;
     const modColor = color === 'success' ? 'icon-button--success' :
@@ -100,6 +112,10 @@ export class IconButton extends React.Component<IconButtonProps, IconButtonState
         style={inlineStyle}
         disabled={disabled}
         onClick={this.handleClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onTouchEnd={onTouchEnd}
+        onTouchStart={onTouchStart}
       >
         <i className={`material-icons`}>{icon}</i>
         <Ripple cursorPos={cursorPos} parent={parent} classNames="icon-button_ripple"/>

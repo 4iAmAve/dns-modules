@@ -79,6 +79,8 @@ module.exports = {
       "check-open-brace",
       "check-whitespace"
     ],
+    // "ordered-imports": true,
+    // "object-literal-sort-keys": true,
     quotemark: [
       true,
       "single",

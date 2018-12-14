@@ -1,0 +1,11 @@
+.notification-bar {
+  width: 100vw;
+  z-index: 15;
+  pointer-events: none;
+  max-width: 100vw;
+  position: fixed;
+  left: 0; }
+  .notification-bar--tc, .notification-bar--tr, .notification-bar--tl {
+    top: 0; }
+  .notification-bar--bc, .notification-bar--br, .notification-bar--bl {
+    bottom: 0; }

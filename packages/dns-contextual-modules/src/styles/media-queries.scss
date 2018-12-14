@@ -1,0 +1,33 @@
+$break-xs: 320px;
+$break-sm: 667px;
+$break-md: 812px;
+$break-lg: 1024px;
+$break-xl: 1200px;
+$break-xxl: 1600px;
+
+$breakpoint-laptop: 1200px;
+$retina: "(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)";
+
+@mixin screen($media) {
+  @if $media == xs {
+    @media only screen and (max-width: $break-xs) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: $break-xs) and (max-width: $break-sm - 1) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: $break-md) and (max-width: $break-lg) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: $break-lg + 1) and (max-width: $break-xl - 1) { @content; }
+  }
+  @else if $media == xl {
+    @media only screen and (min-width: $break-xl + 1) and (max-width: $break-xxl - 1) { @content; }
+  }
+  @else if $media == xxl {
+    @media only screen and (min-width: $break-xxl) { @content; }
+  }
+  @else if $media == retina {
+    @media only screen and (min-width: $break-xxl) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) { @content; }
+  }
+}

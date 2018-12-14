@@ -14,5 +14,5 @@ declare class FilterModule extends React.Component<FilterModuleProps, FilterModu
     componentDidUpdate(prevProps: FilterModuleProps): void;
     render(): JSX.Element;
 }
-export declare const connectedFilter: import("react-redux").ConnectedComponentClass<typeof FilterModule, Pick<FilterModuleProps, "id" | "className" | "defaultSettings">>;
+export declare const connectedFilter: import("react-redux").ConnectedComponentClass<typeof FilterModule, Pick<FilterModuleProps, "id" | "defaultSettings" | "className">>;
 export {};
